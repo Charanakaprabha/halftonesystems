@@ -4,19 +4,21 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
     z-index: 1000;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    background-color: rgba(255, 255, 255, 0.98);
 }
 
 /* ── ROW 1: Top bar ─────────────────────────────────────────── */
 .navbar-top {
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
     padding: 10px 0;
 }
 
@@ -123,21 +125,18 @@
 /* ── ROW 2: Nav links bar ───────────────────────────────────── */
 .navbar-bottom {
     padding: 0;
-    background: #ffffff;
+    background: transparent;
 }
 
 .navbar-links {
     display: flex;
     align-items: stretch;
-    height: 44px;
+    height: 52px;
 }
 
 /* Vertical divider between nav items */
 .nav-divider {
-    width: 1px;
-    background: #e5e7eb;
-    align-self: stretch;
-    margin: 8px 0;
+    display: none;
 }
 
 .nav-item {
@@ -146,74 +145,187 @@
     align-items: center;
     height: 100%;
     cursor: pointer;
+    margin: 0 2px;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    display: none;
+}
+
+.nav-item:hover::after {
+    display: block;
 }
 
 .nav-link {
     font-weight: 500;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
-    gap: 4px;
-    color: #374151;
-    padding: 0 1.1rem;
-    height: 100%;
-    transition: color 0.2s;
+    gap: 6px;
+    color: #4b5563;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
     white-space: nowrap;
 }
 
 /* Nav link turns violet on hover */
 .nav-item:hover .nav-link {
-    background: var(--c-primary);
-    color: #ffffff;
+    background-color: rgba(99, 102, 241, 0.04);
+    color: var(--c-primary, #6366f1);
 }
 
 .nav-item:hover .nav-link .dropdown-icon {
     opacity: 1;
+    transform: rotate(180deg);
 }
 
 .dropdown-icon {
-    transition: transform 0.2s;
-    opacity: 0.7;
-}
-
-.nav-item:hover .dropdown-icon {
-    transform: rotate(180deg);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.5;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
 }
 
 /* ── Dropdown menu ──────────────────────────────────────────── */
 .dropdown-menu {
     position: absolute;
     top: 100%;
+    margin-top: 4px;
+    /* Using margin-top for visual gap instead of absolute top positioning */
     left: 0;
-    background-color: var(--c-primary);
-    color: #ffffff;
-    min-width: 210px;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: #1f2937;
+    min-width: 220px;
     padding: 0.6rem;
-    border-radius: 0;
-    box-shadow: 0 12px 32px rgba(91, 33, 182, 0.25);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08), 0 4px 16px -4px rgba(0, 0, 0, 0.04);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.15s ease, visibility 0.15s ease;
+    transform: translateY(-8px);
+    pointer-events: none;
+    /* Sliding up and fade out effect on close */
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition-delay: 0s;
     z-index: 200;
 }
 
-.nav-item:hover .dropdown-menu {
+.nav-item:hover .dropdown-menu,
+.nav-item:focus-within .dropdown-menu {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    /* Sliding down on open */
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s 0s;
+    transition-delay: 0s;
+}
+
+.nav-item:hover .dropdown-icon,
+.nav-item:focus-within .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.nav-item:hover .nav-link,
+.nav-item:focus-within .nav-link {
+    background-color: rgba(99, 102, 241, 0.04);
+    color: var(--c-primary, #6366f1);
 }
 
 .dropdown-item {
     display: block;
-    padding: 0.55rem 1rem;
-    font-size: 0.85rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.88);
-    transition: background 0.15s, color 0.15s;
+    color: #4b5563;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(-8px);
+    /* slide up on close */
+    transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.2s, color 0.2s;
 }
 
-.dropdown-item:hover {
-    background-color: rgba(255, 255, 255, 0.18);
-    color: #ffffff;
+.nav-item:hover .dropdown-item,
+.nav-item:focus-within .dropdown-item {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.35s ease var(--d, 0s),
+        transform 0.35s ease var(--d, 0s),
+        background-color 0.2s 0s, color 0.2s 0s;
+}
+
+.nav-item:hover .dropdown-item:hover,
+.nav-item:focus-within .dropdown-item:hover,
+.nav-item:focus-within .dropdown-item:focus {
+    background-color: rgba(99, 102, 241, 0.05);
+    color: var(--c-primary, #6366f1);
+    transform: translateX(4px);
+    transition: background-color 0.2s 0s, color 0.2s 0s, transform 0.2s ease 0s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(1) {
+    --d: 0.12s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(2) {
+    --d: 0.15s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(3) {
+    --d: 0.18s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(4) {
+    --d: 0.21s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(5) {
+    --d: 0.24s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(6) {
+    --d: 0.27s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(7) {
+    --d: 0.30s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(8) {
+    --d: 0.33s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(9) {
+    --d: 0.36s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(10) {
+    --d: 0.39s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(11) {
+    --d: 0.42s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(12) {
+    --d: 0.45s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(13) {
+    --d: 0.48s;
+}
+
+.nav-item:hover .dropdown-item:nth-child(14) {
+    --d: 0.51s;
 }
 
 /* What We Do: 3 columns */
@@ -309,5 +421,7 @@
         color: #6b7280;
         padding: 0.4rem 0.8rem;
         font-size: 0.85rem;
+        opacity: 1;
+        transform: none;
     }
 }

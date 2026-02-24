@@ -14,6 +14,16 @@ export const Navbar = () => {
 
     const navLinks = [
         {
+            name: 'Products',
+            href: '#products',
+            dropdown: [
+                { name: 'Analytics Platform', href: '#products' },
+                { name: 'Cloud Infrastructure', href: '#products' },
+                { name: 'Developer Tools', href: '#products' },
+                { name: 'Security Suite', href: '#products' }
+            ]
+        },
+        {
             name: 'What We Do',
             href: '#intro',
             dropdown: [
@@ -121,7 +131,8 @@ export const Navbar = () => {
                                         {link.name} <ChevronDown size={13} className="dropdown-icon" />
                                     </a>
                                     <div className={`dropdown-menu ${link.name === 'What We Do' ? 'grid-3col' :
-                                        link.name === 'Industries' ? 'grid-2col' : ''
+                                        link.name === 'Industries' ? 'grid-2col' :
+                                            link.name === 'Products' ? 'grid-2col' : ''
                                         }`}>
                                         {link.dropdown.map((item) => (
                                             <a
