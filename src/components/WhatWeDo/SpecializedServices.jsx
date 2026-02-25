@@ -65,9 +65,9 @@ export const SpecializedServices = () => {
         <section id="specialized-services" className="specialized section-padding bg-dark-alt" style={{ position: 'relative' }}>
             <motion.div
                 className="wwd-step-circle"
-                initial={{ backgroundColor: 'transparent', color: 'var(--c-primary)' }}
+                initial={{ backgroundColor: '#ffffff', color: 'var(--c-primary)' }}
                 whileInView={{ backgroundColor: 'var(--c-primary)', color: '#ffffff' }}
-                viewport={{ once: false, margin: "2000px 0px -50% 0px" }}
+                viewport={{ margin: "0px 0px -50% 0px" }}
             >
                 3
             </motion.div>

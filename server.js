@@ -92,7 +92,7 @@ app.post('/api/chat', async (req, res) => {
         });
     }
 });
-
+console.log(process.env.GROQ_API_KEY);
 app.listen(port, () => {
     console.log(`Stable server running at http://localhost:${port}`);
 });

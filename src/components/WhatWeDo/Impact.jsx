@@ -26,18 +26,18 @@ export const Impact = () => {
     ];
 
     return (
-        <section className="impact section-padding bg-dark">
+        <section className="impact section-padding" style={{ backgroundColor: 'var(--c-primary)' }}>
             <div className="container">
                 <div className="section-header text-center">
-                    <h2 className="section-title section-title-light">OUR IMPACT IN NUMBERS</h2>
-                    <p className="section-subtitle">Real results delivered for real businesses — proven across industries, geographies, and scales.</p>
+                    <h2 className="section-title text-white">OUR IMPACT IN NUMBERS</h2>
+                    <p className="section-subtitle" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Real results delivered for real businesses — proven across industries, geographies, and scales.</p>
                 </div>
                 <div className="impact-grid">
                     {stats.map((stat, i) => (
                         <div key={i} className="impact-item text-center">
-                            <h3 className="impact-number">{stat.number}</h3>
-                            <p className="impact-label">{stat.label}</p>
-                            <p className="impact-sub">{stat.sub}</p>
+                            <h3 className="impact-number text-white" style={{ background: 'none', WebkitTextFillColor: 'initial', color: '#fff' }}>{stat.number}</h3>
+                            <p className="impact-label" style={{ color: '#fff' }}>{stat.label}</p>
+                            <p className="impact-sub" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>{stat.sub}</p>
                         </div>
                     ))}
                 </div>
