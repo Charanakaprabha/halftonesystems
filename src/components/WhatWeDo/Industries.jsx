@@ -1,22 +1,60 @@
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import {
     Car, HeartPulse, Pill, Microscope, Stethoscope,
     ShoppingBag, Plane, GraduationCap, Briefcase, Clapperboard,
-    CheckCircle2, TrendingUp, ChevronRight
+    CheckCircle2, TrendingUp
 } from 'lucide-react';
 import './Industries.css';
 
-export const Industries = () => {
-    const [activeIndustry, setActiveIndustry] = useState(0);
-    const scrollContainerRef = useRef(null);
+const IndustryCard = ({ icon: Icon, number, name, tagline, description, capabilities, outcomes, image }) => {
+    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
+    return (
+        <div id={slug} className="ind-card" style={{ '--bg-image': `url(${image})` }}>
+            <div className="ind-header">
+                <div className="ind-top">
+                    <span className="ind-number">{number}</span>
+                    <Icon size={32} className="ind-icon" />
+                </div>
+                <h3 className="ind-name">{name}</h3>
+                <p className="ind-tagline">{tagline}</p>
+            </div>
+
+            <div className="ind-content">
+                <p className="ind-description">{description}</p>
+
+                <div className="ind-details-grid">
+                    <div className="ind-section">
+                        <h4 className="ind-section-title"><CheckCircle2 size={18} className="text-primary" /> Our Capabilities</h4>
+                        <ul className="ind-list">
+                            {capabilities.map((cap, i) => (
+                                <li key={i}>{cap}</li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className="ind-section">
+                        <h4 className="ind-section-title"><TrendingUp size={18} className="text-success" /> Business Outcomes</h4>
+                        <ul className="ind-list outcomes">
+                            {outcomes.map((out, i) => (
+                                <li key={i}>{out}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export const Industries = () => {
     const industries = [
         {
             icon: Car,
             number: "01",
             name: "AUTOMOTIVE",
             tagline: "Driving the Future of Mobility & Manufacturing",
+            image: "https://images.unsplash.com/photo-1562426509-5044a121aa49?auto=format&fit=crop&q=80",
             description: "The automotive industry is undergoing its most dramatic transformation in a century — from connected vehicles and electric powertrains to smart factories and autonomous systems. Halftone Systems engineers the digital backbone that powers this revolution.",
             capabilities: [
                 "Connected Vehicle & IoT Platforms",
@@ -39,6 +77,7 @@ export const Industries = () => {
             number: "02",
             name: "HEALTHCARE",
             tagline: "Transforming Patient Care Through Intelligent Technology",
+            image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
             description: "Healthcare demands precision, compliance, and compassion — all at scale. Halftone Systems delivers secure, HIPAA-compliant digital platforms that empower clinicians, streamline operations, and place patients at the center of every experience.",
             capabilities: [
                 "Electronic Health Records (EHR/EMR)",
@@ -61,6 +100,7 @@ export const Industries = () => {
             number: "03",
             name: "PHARMACEUTICAL",
             tagline: "Accelerating Drug Discovery & Regulatory Excellence",
+            image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80",
             description: "In an industry where speed and compliance save lives, Halftone Systems delivers intelligent technology that accelerates drug development pipelines, ensures airtight regulatory adherence, and transforms how pharmaceutical companies operate globally.",
             capabilities: [
                 "Clinical Trial Management Systems",
@@ -83,6 +123,7 @@ export const Industries = () => {
             number: "04",
             name: "LIFE SCIENCES",
             tagline: "Powering Breakthroughs from Lab to Market",
+            image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80",
             description: "Life sciences companies operate at the intersection of innovation and regulation. Halftone Systems provides the digital infrastructure — from genomics data management to bioinformatics platforms — enabling scientists to focus on advancing human health.",
             capabilities: [
                 "Genomics & Bioinformatics Platforms",
@@ -105,6 +146,7 @@ export const Industries = () => {
             number: "05",
             name: "MEDICAL",
             tagline: "Engineering Precision Solutions for Medical Excellence",
+            image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80",
             description: "From medical device manufacturers to specialty clinics, Halftone Systems builds digital ecosystems that ensure precision, safety, and seamless patient outcomes across the full medical technology continuum.",
             capabilities: [
                 "Medical Device Software (FDA/CE Certified)",
@@ -127,6 +169,7 @@ export const Industries = () => {
             number: "06",
             name: "RETAIL",
             tagline: "Reimagining Shopping Experiences for the Digital Age",
+            image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80",
             description: "Today's retail winners are built on intelligent digital foundations — omnichannel excellence, AI-driven personalization, and frictionless customer journeys. Halftone Systems equips retailers with the technology to compete, captivate, and grow.",
             capabilities: [
                 "Omnichannel Commerce Platforms",
@@ -149,6 +192,7 @@ export const Industries = () => {
             number: "07",
             name: "TRAVEL & TOURISM",
             tagline: "Crafting Seamless Journeys in the Experience Economy",
+            image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80",
             description: "Travel is the world's most experience-driven industry. Halftone Systems helps airlines, hotels, tour operators, and travel agencies harness AI, mobile, and analytics to create unforgettable journeys that inspire lasting loyalty.",
             capabilities: [
                 "Travel Booking & Reservation Platforms",
@@ -171,6 +215,7 @@ export const Industries = () => {
             number: "08",
             name: "EDUCATION & RESEARCH",
             tagline: "Empowering Learners & Advancing Knowledge at Scale",
+            image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80",
             description: "Education is the foundation of all progress. Halftone Systems delivers intelligent learning platforms, research management tools, and institutional technology that empowers educators, engages learners, and drives academic excellence worldwide.",
             capabilities: [
                 "Learning Management Systems (LMS)",
@@ -193,6 +238,7 @@ export const Industries = () => {
             number: "09",
             name: "SERVICES INDUSTRY",
             tagline: "Elevating Service Delivery Through Smart Automation",
+            image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80",
             description: "Whether professional services, financial services, or managed services — Halftone Systems equips service organizations with the digital tools to work smarter, deliver faster, and build lasting client relationships that drive sustained growth.",
             capabilities: [
                 "Professional Services Automation (PSA)",
@@ -215,6 +261,7 @@ export const Industries = () => {
             number: "10",
             name: "MEDIA & ENTERTAINMENT",
             tagline: "Powering Content, Engagement & Digital Experience",
+            image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80",
             description: "The media and entertainment landscape demands relentless innovation — from streaming platforms and content monetization to audience analytics and immersive experiences. Halftone Systems engineers the digital infrastructure that keeps creators and audiences connected.",
             capabilities: [
                 "OTT & Streaming Platform Development",
@@ -236,7 +283,7 @@ export const Industries = () => {
 
     return (
         <section id="industries" className="industries section-padding">
-            <div className="container" style={{ padding: 0 }}>
+            <div className="container">
                 <div className="section-header text-center">
                     <p className="section-subtitle-small">
                         — Sector-Specific Expertise. Enterprise-Grade Results. —
@@ -245,92 +292,31 @@ export const Industries = () => {
                     <p className="section-intro">
                         Halftone Systems brings deep domain knowledge and cutting-edge technology to every industry we serve. We don't offer generic solutions — we engineer precision-built digital transformations tailored to your sector's unique challenges, regulations, and growth opportunities.
                     </p>
-                </div>
-
-                <div className="industries-scroll-area" ref={scrollContainerRef}>
-                    <div className="industries-sticky-layout">
-                        {/* Fixed Left Sidebar Menu */}
-                        <div className="industries-sidebar">
-                            <ul className="ind-menu">
-                                {industries.map((ind, i) => (
-                                    <li
-                                        key={i}
-                                        className={`ind-menu-item ${activeIndustry === i ? 'active' : ''}`}
-                                        onClick={() => {
-                                            const el = document.getElementById(`ind-content-${i}`);
-                                            if (el && scrollContainerRef.current) {
-                                                // Smooth scroll the internal right container precisely to the top of the element
-                                                const containerTop = scrollContainerRef.current.getBoundingClientRect().top;
-                                                const elTop = el.getBoundingClientRect().top;
-                                                const targetY = scrollContainerRef.current.scrollTop + (elTop - containerTop);
-                                                scrollContainerRef.current.scrollTo({ top: targetY, behavior: 'smooth' });
-                                            }
-                                        }}
-                                    >
-                                        <span className="ind-menu-number">{ind.number}</span>
-                                        <span className="ind-menu-name">{ind.name}</span>
-                                        {activeIndustry === i && <ChevronRight size={16} className="ind-menu-arrow" />}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Scrolling Right Content */}
-                        <div className="industries-content">
-                            {industries.map((ind, i) => (
-                                <motion.div
-                                    id={`ind-content-${i}`}
-                                    key={i}
-                                    className="ind-scroll-card"
-                                    viewport={{ root: scrollContainerRef, margin: "-10% 0px -80% 0px", amount: 'some' }}
-                                    onViewportEnter={() => setActiveIndustry(i)}
-                                >
-                                    <div className="ind-card-header">
-                                        <div className="ind-icon-wrapper">
-                                            <ind.icon size={48} className="ind-main-icon" />
-                                        </div>
-                                        <div className="ind-card-title-group">
-                                            <h3 className="ind-card-name">{ind.name}</h3>
-                                            <p className="ind-card-tagline">{ind.tagline}</p>
-                                        </div>
-                                    </div>
-
-                                    <p className="ind-card-desc">{ind.description}</p>
-
-                                    <div className="ind-details-grid">
-                                        <div className="ind-section">
-                                            <div className="ind-section-content">
-                                                <h4 className="ind-section-title"><CheckCircle2 size={18} className="text-primary" /> Our Capabilities</h4>
-                                                <ul className="ind-list">
-                                                    {ind.capabilities.map((cap, idx) => (
-                                                        <li key={idx}><span>•</span> {cap}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div className="ind-section">
-                                            <div className="ind-section-content">
-                                                <h4 className="ind-section-title"><TrendingUp size={18} className="text-success" /> Business Outcomes</h4>
-                                                <ul className="ind-list outcomes">
-                                                    {ind.outcomes.map((out, idx) => (
-                                                        <li key={idx}><span>•</span> {out}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
+                    <div className="ind-badges">
+                        <span>10 Industries</span>
+                        <span className="dot">·</span>
+                        <span>Proven Impact</span>
+                        <span className="dot">·</span>
+                        <span>Transformative Technology</span>
                     </div>
                 </div>
 
-                <div className="section-footer text-center" style={{ marginTop: '6rem' }}>
+                <div className="industries-grid-detailed">
+                    {industries.map((ind, i) => <IndustryCard key={i} {...ind} />)}
+                </div>
+
+                <div className="section-footer text-center">
                     <h3 className="footer-heading">Your Industry. Our Expertise. Extraordinary Results.</h3>
                     <p className="footer-text">
                         No matter which sector you operate in, Halftone Systems brings the domain depth, technological excellence, and strategic partnership you need to lead your industry in the digital age.
                     </p>
+                    <div className="footer-links">
+                        <span>✦ Free Industry Consultation</span>
+                        <span className="divider">|</span>
+                        <span>Tailored Technology Roadmap</span>
+                        <span className="divider">|</span>
+                        <span>Measurable ROI from Day One ✦</span>
+                    </div>
                     <a href="#" className="btn btn-primary mt-4">Contact Halftone Systems</a>
                 </div>
             </div>
