@@ -2,18 +2,21 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import https from 'https';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Halftone AI Backend is running!');
-});
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', message: 'Stable backend active' });
@@ -92,7 +95,9 @@ app.post('/api/chat', async (req, res) => {
         });
     }
 });
-console.log(process.env.GROQ_API_KEY);
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+});
 app.listen(port, () => {
     console.log(`Stable server running at http://localhost:${port}`);
 });
