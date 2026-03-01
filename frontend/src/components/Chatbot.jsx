@@ -44,7 +44,7 @@ const Chatbot = () => {
 
         try {
             // Send the request to your local Node.js backend
-            const response = await fetch('/api/chat', {
+            const response = await fetch('https://halftonesystems-backend.onrender.com/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
