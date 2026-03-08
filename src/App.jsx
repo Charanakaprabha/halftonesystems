@@ -6,6 +6,7 @@ import { useScrollReveal } from './hooks/useScrollReveal';
 
 import { Home } from './pages/Home';
 import { WhoWeArePage } from './pages/WhoWeArePage';
+import { WhatWeDoPage } from './pages/WhatWeDoPage';
 import { IndustriesPage } from './pages/IndustriesPage';
 import { SuccessStoriesPage } from './pages/SuccessStoriesPage';
 import { ContactPage } from './pages/ContactPage';
@@ -20,6 +21,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/what-we-do" element={<WhatWeDoPage />} />
           <Route path="/who-we-are" element={<WhoWeArePage />} />
           <Route path="/industries" element={<IndustriesPage />} />
           <Route path="/success-stories" element={<SuccessStoriesPage />} />

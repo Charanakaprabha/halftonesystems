@@ -64,6 +64,15 @@ export const Navbar = () => {
             ]
         },
         {
+            name: 'What We Do',
+            href: '/what-we-do',
+            dropdown: [
+                { name: 'Why Choose Us', href: '/what-we-do' },
+                { name: 'Our Tech Suite', href: '/what-we-do' },
+                { name: 'Specialized Services', href: '/what-we-do' }
+            ]
+        },
+        {
             name: 'Success Stories',
             href: '/success-stories',
             dropdown: [

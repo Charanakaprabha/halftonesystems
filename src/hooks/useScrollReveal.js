@@ -7,11 +7,13 @@ export const useScrollReveal = () => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
+                    } else {
+                        // Remove class when scrolling out of view so it repeats
+                        entry.target.classList.remove('visible');
                     }
                 });
             },
-            { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
+            { threshold: 0.05, rootMargin: '0px 0px -50px 0px' }
         );
 
         // Observe both individual reveal elements AND group containers

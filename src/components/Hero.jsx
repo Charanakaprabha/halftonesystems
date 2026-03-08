@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { CurveSeparator } from './SectionSeparator';
 import { HeroLogo3D } from './HeroLogo3D';
 
 import './Hero.css';
@@ -63,7 +62,6 @@ export const Hero = () => {
 
                 </div>
             </div>
-            <CurveSeparator fill="var(--c-primary)" height="80px" inverted={true} />
         </section>
     );
 };
