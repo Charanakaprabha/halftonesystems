@@ -97,7 +97,7 @@ export const Contact = () => {
                     className="section-header text-center"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, amount: 0.1 }}
                     variants={fadeUpVariants}
                 >
                     <p className="section-subtitle-small">● WE'RE READY TO CONNECT ●</p>
@@ -112,7 +112,7 @@ export const Contact = () => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, amount: 0.1 }}
                 >
                     <motion.div className="contact-info" variants={fadeUpVariants}>
                         <h3 className="info-heading">─── CONTACT INFORMATION</h3>
@@ -151,7 +151,7 @@ export const Contact = () => {
                     className="global-presence text-center"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, amount: 0.1 }}
                     variants={containerVariants}
                 >
                     <motion.div variants={fadeUpVariants}>

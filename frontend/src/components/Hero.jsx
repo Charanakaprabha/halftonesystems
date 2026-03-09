@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { CurveSeparator } from './SectionSeparator';
 import { HeroLogo3D } from './HeroLogo3D';
 
 import './Hero.css';
 
+const useTypewriter = (text, speed = 100, delay = 1000) => {
+    const [displayText, setDisplayText] = useState('');
+    const [isComplete, setIsComplete] = useState(false);
+
+    useEffect(() => {
+        let timeout;
+        let currentIndex = 0;
+
+        const type = () => {
+            if (currentIndex < text.length) {
+                setDisplayText(text.slice(0, currentIndex + 1));
+                currentIndex++;
+                timeout = setTimeout(type, speed);
+            } else {
+                setIsComplete(true);
+            }
+        };
+
+        timeout = setTimeout(type, delay);
+        return () => clearTimeout(timeout);
+    }, [text, speed, delay]);
+
+    return { displayText, isComplete };
+};
+
 export const Hero = () => {
+    const { displayText: typingText, isComplete } = useTypewriter('Transformation.', 120, 1500);
+
     return (
         <section className="hero">
             <div className="hero-overlay"></div>
@@ -13,7 +39,7 @@ export const Hero = () => {
                 <div className="hero-grid">
                     <div className="hero-content">
                         <h1 className="hero-title">
-                            Growth. Transformation.<br />
+                            Growth. <span className="typewriter-text">{typingText}<span className={`cursor ${isComplete ? 'blink' : ''}`}>|</span></span><br />
                             <span className="highlight">Opportunity.</span>
                         </h1>
                         <p className="hero-subtitle">
@@ -36,7 +62,6 @@ export const Hero = () => {
 
                 </div>
             </div>
-            <CurveSeparator fill="var(--c-primary)" height="80px" inverted={true} />
         </section>
     );
 };

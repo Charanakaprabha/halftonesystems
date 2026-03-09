@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Car, HeartPulse, Pill, Microscope, Stethoscope,
     ShoppingBag, Plane, GraduationCap, Briefcase, Clapperboard,
@@ -281,6 +281,8 @@ export const Industries = () => {
         }
     ];
 
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
     return (
         <section id="industries" className="industries section-padding">
             <div className="container">
@@ -289,20 +291,34 @@ export const Industries = () => {
                         — Sector-Specific Expertise. Enterprise-Grade Results. —
                     </p>
                     <h2 className="section-title section-title-dark">INDUSTRIES WE SERVE</h2>
-                    <p className="section-intro">
-                        Halftone Systems brings deep domain knowledge and cutting-edge technology to every industry we serve. We don't offer generic solutions — we engineer precision-built digital transformations tailored to your sector's unique challenges, regulations, and growth opportunities.
-                    </p>
-                    <div className="ind-badges">
-                        <span>10 Industries</span>
-                        <span className="dot">·</span>
-                        <span>Proven Impact</span>
-                        <span className="dot">·</span>
-                        <span>Transformative Technology</span>
+                    <div className="ind-top-nav">
+                        {industries.map((ind, i) => (
+                            <React.Fragment key={`nav-${i}`}>
+                                <button
+                                    className={`ind-nav-btn ${i === selectedIndex ? 'active' : ''}`}
+                                    onClick={() => setSelectedIndex(i)}
+                                >
+                                    {ind.name}
+                                </button>
+                                {i < industries.length - 1 && (
+                                    <span className="ind-nav-separator">|</span>
+                                )}
+                            </React.Fragment>
+                        ))}
                     </div>
                 </div>
 
-                <div className="industries-grid-detailed">
-                    {industries.map((ind, i) => <IndustryCard key={i} {...ind} />)}
+                <div className="industries-slider-container">
+                    <div
+                        className="industries-slider-track"
+                        style={{ transform: `translate3d(-${selectedIndex * 100}%, 0, 0)` }}
+                    >
+                        {industries.map((ind, i) => (
+                            <div className="industries-slide" key={`slide-${i}`}>
+                                <IndustryCard {...ind} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 <div className="section-footer text-center">
@@ -320,6 +336,6 @@ export const Industries = () => {
                     <a href="#" className="btn btn-primary mt-4">Contact Halftone Systems</a>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
