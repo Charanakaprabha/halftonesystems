@@ -1,107 +1,124 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, Phone } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const location = useLocation();
 
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 50);
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            setIsScrolled(currentScrollY > 50);
+
+            // Hide navbar if scrolling down and we're past the top area
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                setIsHidden(true);
+            } else {
+                // Show navbar if scrolling up
+                setIsHidden(false);
+            }
+            setLastScrollY(currentScrollY);
+        };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [lastScrollY]);
+
+    // Also close mobile menu on route change
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+        window.scrollTo(0, 0);
+    }, [location]);
 
     const navLinks = [
         {
-            name: 'What We Do',
-            href: '#intro',
-            dropdown: [
-                { name: 'Enterprise Applications', href: '#enterprise-business-applications' },
-                { name: 'AI & Machine Learning', href: '#ai-machine-learning' },
-                { name: 'Blockchain Solutions', href: '#blockchain-solutions' },
-                { name: 'Cloud Technologies', href: '#cloud-technologies' },
-                { name: 'Cybersecurity', href: '#cybersecurity-solutions' },
-                { name: 'Mobile Development', href: '#mobile-app-development' },
-                { name: 'Data Science', href: '#data-science-analytics' },
-                { name: 'Automation', href: '#automation-intelligent-rpa' },
-                { name: 'Web Development', href: '#web-development' },
-                { name: 'Digital Marketing', href: '#digital-marketing-growth' },
-                { name: 'IT Consulting', href: '#it-consulting-strategy' },
-                { name: 'Staffing & Talent', href: '#staffing-talent-solutions' },
-                { name: 'Product Development', href: '#product-development' }
-            ]
+            name: 'Home',
+            href: '/',
+            dropdown: []
         },
         {
             name: 'Industries',
-            href: '#industries',
+            href: '/industries',
             dropdown: [
-                { name: 'Automotive', href: '#automotive' },
-                { name: 'Healthcare', href: '#healthcare' },
-                { name: 'Pharmaceutical', href: '#pharmaceutical' },
-                { name: 'Life Sciences', href: '#life-sciences' },
-                { name: 'Retail', href: '#retail' },
-                { name: 'Travel & Tourism', href: '#travel-tourism' },
-                { name: 'Education & Research', href: '#education-research' },
-                { name: 'Media & Entertainment', href: '#media-entertainment' }
+                { name: 'Automotive', href: '/industries#automotive' },
+                { name: 'Healthcare', href: '/industries#healthcare' },
+                { name: 'Pharmaceutical', href: '/industries#pharmaceutical' },
+                { name: 'Life Sciences', href: '/industries#life-sciences' },
+                { name: 'Retail', href: '/industries#retail' },
+                { name: 'Travel & Tourism', href: '/industries#travel-tourism' },
+                { name: 'Education & Research', href: '/industries#education-research' },
+                { name: 'Media & Entertainment', href: '/industries#media-entertainment' }
             ]
         },
         {
             name: 'Who We Are',
-            href: '#who-we-are',
+            href: '/who-we-are',
             dropdown: [
-                { name: 'Our History', href: '#who-we-are' },
-                { name: 'Our Journey', href: '#who-we-are' },
-                { name: 'Six Pillars', href: '#who-we-are' }
+                { name: 'Our History', href: '/who-we-are' },
+                { name: 'Our Journey', href: '/who-we-are' },
+                { name: 'Six Pillars', href: '/who-we-are' }
+            ]
+        },
+        {
+            name: 'What We Do',
+            href: '/what-we-do',
+            dropdown: [
+                { name: 'Why Choose Us', href: '/what-we-do' },
+                { name: 'Our Tech Suite', href: '/what-we-do' },
+                { name: 'Specialized Services', href: '/what-we-do' }
             ]
         },
         {
             name: 'Success Stories',
-            href: '#success-stories',
+            href: '/success-stories',
             dropdown: [
-                { name: 'Case Studies', href: '#success-stories' },
-                { name: 'Client Testimonials', href: '#success-stories' },
-                { name: 'Impact Reports', href: '#success-stories' }
+                { name: 'Case Studies', href: '/success-stories' },
+                { name: 'Client Testimonials', href: '/success-stories' },
+                { name: 'Impact Reports', href: '/success-stories' }
             ]
         },
         {
             name: 'Careers',
-            href: '#careers',
+            href: '/careers',
             dropdown: [
-                { name: 'Open Positions', href: '#careers' },
-                { name: 'Our Culture', href: '#careers' },
-                { name: 'Life at Halftone', href: '#careers' }
+                { name: 'Open Positions', href: '/careers' },
+                { name: 'Our Culture', href: '/careers' },
+                { name: 'Life at Halftone', href: '/careers' }
             ]
         },
     ];
 
-    const handleLinkClick = () => setIsMobileMenuOpen(false);
-
     const scrollToTop = (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setIsMobileMenuOpen(false);
+        if (location.pathname === '/') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setIsMobileMenuOpen(false);
+        }
     };
 
     return (
-        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+        <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isHidden ? 'hidden' : ''}`}>
 
             {/* ── ROW 1: Brand + Utility actions ── */}
             <div className="navbar-top">
                 <div className="container navbar-top-inner">
                     {/* Logo / Brand */}
                     <div className="navbar-logo">
-                        <a href="#" className="logo-link" onClick={scrollToTop}>
+                        <Link to="/" className="logo-link" onClick={scrollToTop}>
                             <img src="/src/assets/HS_LOGO.png" alt="Halftone Logo" className="logo-img hs-logo" />
                             <img src="/src/assets/name.png" alt="Halftone Systems" className="logo-img name-img" />
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Utility: Contact + Mobile toggle */}
                     <div className="navbar-utility">
-                        <a href="#contact" className="contact-btn" onClick={handleLinkClick}>
+                        <Link to="/contact" className="contact-btn">
                             Contact Us
-                        </a>
+                        </Link>
                         <button className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
                         </button>
@@ -117,23 +134,26 @@ export const Navbar = () => {
                             <React.Fragment key={link.name}>
                                 {idx > 0 && <span className="nav-divider" />}
                                 <div className="nav-item">
-                                    <a href={link.href} className="nav-link" onClick={handleLinkClick}>
-                                        {link.name} <ChevronDown size={13} className="dropdown-icon" />
-                                    </a>
-                                    <div className={`dropdown-menu ${link.name === 'What We Do' ? 'grid-3col' :
-                                        link.name === 'Industries' ? 'grid-2col' : ''
-                                        }`}>
-                                        {link.dropdown.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className="dropdown-item"
-                                                onClick={handleLinkClick}
-                                            >
-                                                {item.name}
-                                            </a>
-                                        ))}
-                                    </div>
+                                    <Link to={link.href} className="nav-link">
+                                        {link.name}
+                                        {link.dropdown && link.dropdown.length > 0 && <ChevronDown size={13} className="dropdown-icon" />}
+                                    </Link>
+                                    {link.dropdown && link.dropdown.length > 0 && (
+                                        <div className={`dropdown-menu ${link.name === 'Home' ? 'grid-3col' :
+                                            link.name === 'Industries' ? 'grid-2col' :
+                                                link.name === 'Products' ? 'grid-2col' : ''
+                                            }`}>
+                                            {link.dropdown.map((item) => (
+                                                <a
+                                                    key={item.name}
+                                                    href={item.href}
+                                                    className="dropdown-item"
+                                                >
+                                                    {item.name}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             </React.Fragment>
                         ))}

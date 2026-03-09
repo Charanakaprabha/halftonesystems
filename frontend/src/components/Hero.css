@@ -1,12 +1,10 @@
 .hero {
     position: relative;
-    min-height: 100vh;
     background-color: #ffffff;
     overflow: hidden;
     display: flex;
-    align-items: center;
-    color: var(--c-text-main);
-    padding-top: var(--header-height);
+    padding-top: var(--header-height, 60px);
+    padding-bottom: 2rem;
 }
 
 /* Violet glow effects */
@@ -82,6 +80,33 @@
 
 .hero-title .highlight {
     color: var(--c-primary);
+}
+
+.typewriter-text {
+    display: inline-block;
+    position: relative;
+    color: inherit;
+    /* inherit from the parent h1 color */
+}
+
+.typewriter-text .cursor {
+    color: #0ea5e9;
+    /* Sky blue color for cursor */
+    font-weight: 300;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .hero-subtitle {

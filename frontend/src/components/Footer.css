@@ -1,8 +1,8 @@
 .footer {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.95rem;
-    background-color: #060F1E;
-    /* Slightly darker than the main #0A192F for footer depth */
+    background-color: #0b1f40;
+    /* Clean dark blue background */
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     z-index: 10;

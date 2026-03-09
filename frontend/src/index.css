@@ -173,21 +173,21 @@ img {
 
 /* ─── Scroll Reveal ─────────────────────────────── */
 .reveal {
-  opacity: 0;
-  transform: translateY(32px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
     transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* Staggered children inside a .reveal-group */
 .reveal-group>* {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.55s ease, transform 0.55s ease;
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Twitter, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 export const Footer = () => {
@@ -43,29 +44,29 @@ export const Footer = () => {
                     <motion.div className="footer-col" variants={itemVariants}>
                         <h4>Company</h4>
                         <ul>
-                            <li><a href="#intro">About Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Newsroom</a></li>
+                            <li><Link to="/who-we-are">About Us</Link></li>
+                            <li><Link to="/careers">Careers</Link></li>
+                            <li><Link to="/success-stories">Partners</Link></li>
+                            <li><Link to="/">Newsroom</Link></li>
                         </ul>
                     </motion.div>
 
                     <motion.div className="footer-col" variants={itemVariants}>
                         <h4>Services</h4>
                         <ul>
-                            <li><a href="#it-consulting-strategy">Digital Strategy</a></li>
-                            <li><a href="#cloud-technologies">Cloud & DevOps</a></li>
-                            <li><a href="#data-science-analytics">Data & Analytics</a></li>
-                            <li><a href="#cybersecurity-solutions">Cybersecurity</a></li>
+                            <li><Link to="/#it-consulting-strategy">Digital Strategy</Link></li>
+                            <li><Link to="/#cloud-technologies">Cloud & DevOps</Link></li>
+                            <li><Link to="/#data-science-analytics">Data & Analytics</Link></li>
+                            <li><Link to="/#cybersecurity-solutions">Cybersecurity</Link></li>
                         </ul>
                     </motion.div>
 
                     <motion.div className="footer-col" variants={itemVariants}>
                         <h4>Contact</h4>
                         <ul>
-                            <li><a href="#contact">Locations</a></li>
-                            <li><a href="#contact">Contact Support</a></li>
-                            <li><a href="#contact">Sales Inquiry</a></li>
+                            <li><Link to="/contact">Locations</Link></li>
+                            <li><Link to="/contact">Contact Support</Link></li>
+                            <li><Link to="/contact">Sales Inquiry</Link></li>
                         </ul>
                     </motion.div>
                 </motion.div>

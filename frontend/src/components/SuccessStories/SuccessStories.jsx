@@ -61,7 +61,7 @@ export const SuccessStories = () => {
             desc: "End-to-end delivery of iOS and Android mobile applications paired with a comprehensive Fleet Management system — giving OHM real-time visibility and operational control.",
             tag: "Mobility & Fleet Tech",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1519003722824-2c7003c27be6?auto=format&fit=crop&q=80&w=800"
+            image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800"
         },
         {
             icon: <Ambulance size={28} className="ss-icon" />,
@@ -69,7 +69,7 @@ export const SuccessStories = () => {
             desc: "Architected and deployed a full iOS and Android mobile application with integrated fleet management — dramatically improving emergency response coordination.",
             tag: "Healthcare & Emergency Tech",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800"
+            image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800"
         },
         {
             icon: <GraduationCap size={28} className="ss-icon" />,
@@ -77,7 +77,7 @@ export const SuccessStories = () => {
             desc: "Delivered strategic technology services to Creighton University — supporting their academic digital ecosystem, systems integration, and institutional technology goals.",
             tag: "Education & EdTech",
             colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
-            image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800"
+            image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800"
         },
         {
             icon: <TestTube2 size={28} className="ss-icon" />,
@@ -85,7 +85,7 @@ export const SuccessStories = () => {
             desc: "Provided specialised technology services to Virchow Biotech — enabling them to optimise operations, enhance compliance workflows, and accelerate digital transformation.",
             tag: "Healthcare & Pharma",
             colSpan: "col-span-1 md:col-span-2 lg:col-span-1",
-            image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80&w=800"
+            image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=800"
         },
         {
             icon: <Network size={28} className="ss-icon" />,
@@ -93,7 +93,7 @@ export const SuccessStories = () => {
             desc: "Designed and deployed a robust enterprise networking architecture — ensuring secure, high-availability connectivity across critical laboratory environments.",
             tag: "Life Sciences & Networking",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800"
+            image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
         },
         {
             icon: <Building2 size={28} className="ss-icon" />,
@@ -109,7 +109,7 @@ export const SuccessStories = () => {
             desc: "Provided end-to-end technology services to Promea — helping them build scalable digital infrastructure and accelerate their path from vision to high-growth operation.",
             tag: "Technology Services",
             colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
-            image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800"
+            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
         },
         {
             icon: <Wheat size={28} className="ss-icon" />,
@@ -117,7 +117,7 @@ export const SuccessStories = () => {
             desc: "Supported Mithuna Foods with technology services enabling smarter supply chain management, digital commerce capabilities, and operational efficiency.",
             tag: "Food & Agri Trade",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1495539361138-c64dcbed4ff9?auto=format&fit=crop&q=80&w=800"
+            image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800"
         },
         {
             icon: <Zap size={28} className="ss-icon" />,
@@ -133,7 +133,7 @@ export const SuccessStories = () => {
             desc: "Delivered technology services to Royal Orbit Holding Group — enabling cross-portfolio digital integration and strategic technology advisory.",
             tag: "Finance & Holdings",
             colSpan: "col-span-1 md:col-span-2 lg:col-span-1",
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+            image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800"
         },
         {
             icon: <Globe2 size={28} className="ss-icon" />,
