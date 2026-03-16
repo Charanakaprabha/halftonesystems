@@ -2,13 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import https from 'https';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = 3000;
@@ -16,17 +11,25 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from the dist directory
-app.use(express.static(path.join(__dirname, 'dist')));
+app.get('/', (req, res) => {
+    res.send('Halftone AI Backend is running!');
+});
 
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', message: 'Stable backend active' });
 });
 
 const SYSTEM_INSTRUCTION = `
-You are the Halftone AI Assistant. Provide CRISP, SHORT information about Halftone Systems in bullet points.
-- Founder: Nagaraj Adireddy.
-- Services: IT Consulting, Staffing, Product Development, Custom Software.
+You are HTS IntelliAssist, the official AI assistant for Halftone Systems. Provide CRISP, SHORT information about Halftone Systems in bullet points.
+- Name: Halftone Systems (HTS)
+- Founder: Nagaraj Adireddy
+- Mission: Delivering innovative technology solutions tailored to business needs.
+- Our Offerings (Companies Technology Suites): 
+    - IT Consulting: Strategic guidance for digital transformation.
+    - Staffing: Providing top-tier technical talent to bridge skill gaps.
+    - Product Development: Building scalable and robust software products from scratch.
+    - Custom Software: Tailored solutions for unique business challenges.
+- Recognition: Known for quality delivery and a client-centric approach in the technology sector.
 `;
 
 app.post('/api/chat', async (req, res) => {
@@ -95,12 +98,6 @@ app.post('/api/chat', async (req, res) => {
             details: error.message
         });
     }
-});
-
-// Catch-all route to serve the frontend for any other requests
-// This should be LAST
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(port, () => {
