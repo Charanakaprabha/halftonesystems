@@ -29,8 +29,9 @@ export const Impact = () => {
         <section className="impact section-padding" style={{ backgroundColor: 'var(--c-primary)' }}>
             <div className="container">
                 <div className="section-header text-center">
-                    <h2 className="section-title text-white">OUR IMPACT IN NUMBERS</h2>
-                    <p className="section-subtitle" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Real results delivered for real businesses — proven across industries, geographies, and scales.</p>
+                    <h2 className="section-title impact-title reveal reveal-fade-up" style={{ color: '#fff' }}>
+                    OUR IMPACT IN NUMBERS
+                </h2>    <p className="section-subtitle" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Real results delivered for real businesses — proven across industries, geographies, and scales.</p>
                 </div>
                 <div className="impact-grid">
                     {stats.map((stat, i) => (

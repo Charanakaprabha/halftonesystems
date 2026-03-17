@@ -5,3 +5,4 @@ export { TechSuite } from './TechSuite';
 export { SpecializedServices } from './SpecializedServices';
 export { Impact } from './Impact';
 export { Industries } from './Industries';
+export { IndustriesHero } from './IndustriesHero';

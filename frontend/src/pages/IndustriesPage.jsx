@@ -1,9 +1,9 @@
-import React from 'react';
-import { Industries } from '../components/WhatWeDo';
+import { Industries, IndustriesHero } from '../components/WhatWeDo';
 
 export const IndustriesPage = () => {
     return (
         <div className="page-wrapper" style={{ paddingTop: '80px' }}>
+            <IndustriesHero />
             <Industries />
         </div>
     );

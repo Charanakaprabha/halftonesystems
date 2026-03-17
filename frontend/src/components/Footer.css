@@ -42,17 +42,13 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
+    border: none;
     transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: #00D4FF;
-    border-color: rgba(0, 212, 255, 0.3);
-    background: rgba(0, 212, 255, 0.05);
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+    color: #3b82f6;
     transform: translateY(-2px);
 }
 
@@ -74,8 +70,8 @@
 }
 
 .footer-col ul li a:hover {
-    color: #00D4FF;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+    color: #3b82f6;
+    text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
     padding-left: 5px;
 }
 
@@ -99,7 +95,7 @@
 }
 
 .footer-legal a:hover {
-    color: #00D4FF;
+    color: #3b82f6;
 }
 
 @media (max-width: 768px) {

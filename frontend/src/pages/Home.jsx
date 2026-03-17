@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Target, Award, Zap, Brain, Handshake, BarChart, Globe, Smartphone, Building, Lightbulb, RefreshCw, Cloud, Settings, Activity, Bot, Microscope, Trophy } from 'lucide-react';
 import { Hero } from '../components/Hero';
 import './Home.css';
@@ -9,29 +10,35 @@ export const Home = () => {
             <Hero />
 
             {/* 1. Hero & Stats Bar */}
-            <section className="home-hero reveal" style={{
-                background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop")',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
+            <section className="home-hero-stats reveal" style={{
+                background: '#ffffff',
+                color: '#0b1f40'
             }}>
-                <div className="container" style={{ textAlign: 'center' }}>
-                    <p className="hero-subtitle" style={{ margin: '0 auto 1.5rem', textAlign: 'center' }}>— Your Premier Technology Transformation Partner —</p>
-                    <h1 className="hero-title reveal reveal-stagger-1">
+                <div className="container" style={{ textAlign: 'center', padding: '6rem 1rem 4rem' }}>
+                    <p className="hero-subtitle" style={{ margin: '0 auto 1.5rem', textAlign: 'center', color: '#3b82f6' }}>— Your Premier Technology Transformation Partner —</p>
+                    <h1 className="hero-title reveal reveal-stagger-1" style={{ 
+                        color: '#0b1f40',
+                        fontFamily: "'Inter', system-ui, sans-serif",
+                        fontSize: 'clamp(2.5rem, 7vw, 4.5rem)',
+                        fontWeight: 800,
+                        letterSpacing: '-0.03em',
+                        lineHeight: 1.1
+                    }}>
                         TRANSFORM YOUR<br />
-                        <span className="text-blue">DIGITAL FUTURE</span><br />
-                        WITH HALFTONE SYSTEMS
+                        DIGITAL FUTURE<br />
+                        WITH <span className="text-blue" style={{ color: '#3b82f6' }}>HALFTONE SYSTEMS</span>
                     </h1>
-                    <div className="hero-divider reveal reveal-stagger-2"></div>
-                    <p className="hero-tagline reveal reveal-stagger-3">
+                    <div className="hero-divider reveal reveal-stagger-2" style={{ backgroundColor: '#0b1f40' }}></div>
+                    <p className="hero-tagline reveal reveal-stagger-3" style={{ color: '#475569' }}>
                         Where Innovation Drives Excellence — and Your Success Is Our Mission.
                     </p>
                     <h2 className="hero-quote text-blue reveal reveal-stagger-4">
                         " HALFTONE SYSTEMS RUNS TECHNOLOGIES "
                     </h2>
-                    <h3 className="hero-subquote reveal reveal-stagger-5">
+                    <h3 className="hero-subquote reveal reveal-stagger-5" style={{ color: '#0b1f40' }}>
                         BUSINESSES WITH INFORMATION TECHNOLOGY & TECHNOLOGY PRODUCTS
                     </h3>
-                    <p className="hero-description reveal reveal-stagger-6">
+                    <p className="hero-description reveal reveal-stagger-6" style={{ color: '#475569' }}>
                         From Fortune 500 enterprises to ambitious startups, Halftone Systems crafts digital experiences that revolutionize how you do business. We don't just deliver technology — we architect competitive advantages that last.
                     </p>
                 </div>
@@ -61,15 +68,22 @@ export const Home = () => {
             </section>
 
             {/* 2. Accelerate Section */}
-            <section className="home-section light-bg reveal">
+            <section className="home-section light-bg">
                 <div className="container">
                     <div className="section-header-centered reveal">
-                        <h2 style={{ fontFamily: "'Rubik', sans-serif" }}>ACCELERATE YOUR DIGITAL TRANSFORMATION</h2>
+                        <h2 style={{ 
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontWeight: 800,
+                            letterSpacing: '-0.03em',
+                            lineHeight: 1.1,
+                            color: '#0b1f40'
+                        }}>ACCELERATE YOUR DIGITAL TRANSFORMATION</h2>
                         <p className="header-subtitle">The partner you need. The expertise you deserve. The results that matter.</p>
                     </div>
 
-                    <div className="accelerate-grid">
-                        <div className="accelerate-left reveal reveal-stagger-1">
+                    <div className="accelerate-sticky-wrapper">
+                        <div className="accelerate-left-sticky">
                             <div className="accelerate-content-box" style={{ position: 'relative' }}>
                                 <div className="journey-stamp">
                                     Strategic
@@ -80,34 +94,44 @@ export const Home = () => {
                                 <p>We've transformed organizations across North America and India — helping them unlock full potential through cutting-edge technology, strategic innovation, and results you can measure from day one.</p>
                             </div>
                         </div>
-                        <div className="accelerate-right accelerate-bento-grid">
-                            <div className="bento-card rotate-neg-2 reveal reveal-stagger-2">
-                                <div className="bento-content-header">
-                                    <h4 style={{ fontFamily: "'Rubik', sans-serif" }}><Target className="feature-icon" size={20} /> Risk-Free Innovation</h4>
-                                </div>
-                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400" alt="Innovation" className="bento-image" />
-                                <div className="bento-content-body">
-                                    <p>Battle-tested methodologies that minimize project risk while maximizing ROI on every investment.</p>
-                                </div>
-                            </div>
-                            <div className="bento-card rotate-pos-2 reveal reveal-stagger-3">
-                                <div className="bento-content-header">
-                                    <h4 style={{ fontFamily: "'Rubik', sans-serif" }}><Award className="feature-icon" size={20} /> 100% Referenceable</h4>
-                                </div>
-                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=400" alt="Referenceable" className="bento-image" />
-                                <div className="bento-content-body">
-                                    <p>Every client becomes a long-term success story built on repeat partnerships and unwavering trust.</p>
-                                </div>
-                            </div>
-                            <div className="bento-card rotate-neg-1 reveal reveal-stagger-4">
-                                <div className="bento-content-header">
-                                    <h4 style={{ fontFamily: "'Rubik', sans-serif" }}><Zap className="feature-icon" size={20} /> Agile Collaboration</h4>
-                                </div>
-                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400" alt="Collaboration" className="bento-image" />
-                                <div className="bento-content-body">
-                                    <p>Our high-performance teams integrate seamlessly with yours — driving alignment and speed.</p>
-                                </div>
-                            </div>
+                        <div className="accelerate-right-scroll">
+                            {[
+                                {
+                                    title: "Risk-Free Innovation",
+                                    icon: <Target className="feature-icon" size={20} />,
+                                    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400",
+                                    desc: "Battle-tested methodologies that minimize project risk while maximizing ROI on every investment."
+                                },
+                                {
+                                    title: "100% Referenceable",
+                                    icon: <Award className="feature-icon" size={20} />,
+                                    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=400",
+                                    desc: "Every client becomes a long-term success story built on repeat partnerships and unwavering trust."
+                                },
+                                {
+                                    title: "Agile Collaboration",
+                                    icon: <Zap className="feature-icon" size={20} />,
+                                    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400",
+                                    desc: "Our high-performance teams integrate seamlessly with yours — driving alignment and speed."
+                                }
+                            ].map((card, index) => (
+                                <motion.div 
+                                    key={index}
+                                    className="bento-card-full"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                                    viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+                                >
+                                    <div className="bento-content-header">
+                                        <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>{card.icon} {card.title}</h4>
+                                    </div>
+                                    <img src={card.img} alt={card.title} className="bento-image-full" />
+                                    <div className="bento-content-body">
+                                        <p>{card.desc}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -117,7 +141,14 @@ export const Home = () => {
             <section className="home-section white-bg reveal">
                 <div className="container">
                     <div className="section-header-centered reveal">
-                        <h2 style={{ fontFamily: "'Rubik', sans-serif" }}>WHAT SETS HALFTONE SYSTEMS APART</h2>
+                        <h2 style={{ 
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontWeight: 800,
+                            letterSpacing: '-0.03em',
+                            lineHeight: 1.1,
+                            color: '#0b1f40'
+                        }}>WHAT SETS HALFTONE SYSTEMS APART</h2>
                         <p className="header-subtitle">Four pillars of excellence that make us the partner industry leaders trust.</p>
                     </div>
 
@@ -170,7 +201,14 @@ export const Home = () => {
             <section className="home-section light-bg reveal">
                 <div className="container">
                     <div className="section-header-centered reveal">
-                        <h2 style={{ fontFamily: "'Rubik', sans-serif" }}>END-TO-END DIGITAL SOLUTIONS</h2>
+                        <h2 style={{ 
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontWeight: 800,
+                            letterSpacing: '-0.03em',
+                            lineHeight: 1.1,
+                            color: '#0b1f40'
+                        }}>END-TO-END DIGITAL SOLUTIONS</h2>
                         <p className="header-subtitle">Every capability you need — under one roof, powered by one team.</p>
                     </div>
 
@@ -295,7 +333,14 @@ export const Home = () => {
             <section className="home-cta reveal">
                 <div className="container">
                     <div className="cta-box bg-dark-blue reveal">
-                        <h2 className="text-white" style={{ fontFamily: "'Rubik', sans-serif" }}>Ready to Lead Your Industry?</h2>
+                        <h2 className="text-white" style={{ 
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontWeight: 800,
+                            letterSpacing: '-0.03em',
+                            lineHeight: 1.1,
+                            color: '#ffffff'
+                        }}>Ready to Lead Your Industry?</h2>
                         <p className="text-white">Transform your vision into reality with technology solutions that don't just meet today's needs — they anticipate tomorrow's opportunities.</p>
 
                         <div className="cta-benefits reveal reveal-stagger-2">
