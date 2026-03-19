@@ -148,9 +148,36 @@ export const SuccessStories = () => {
     return (
         <section id="success-stories" className="success-stories-section">
             <div className="ss-container">
-                <div className="ss-header-block">
-                    <h4 className="ss-section-title">─── SUCCESS STORIES</h4>
-                    <h3 className="ss-section-subtitle">Trusted by Industry Leaders Worldwide</h3>
+                <div className="ss-header-block" style={{
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '4rem'
+                }}>
+                    <div style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        marginBottom: '1rem',
+                    }}>
+                        <span style={{
+                            fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.1em',
+                            textTransform: 'uppercase', color: 'var(--c-primary)',
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                        }}>
+                            ─── SUCCESS STORIES
+                        </span>
+                    </div>
+
+                    {/* headline */}
+                    <h2 style={{
+                            fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                            fontWeight: 800,
+                            marginTop: 0,
+                            marginBottom: '1.5rem',
+                            lineHeight: 1.2,
+                            color: '#111827',
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                    }}>
+                        Trusted by Industry Leaders<br />
+                        <span style={{ color: 'var(--c-primary)' }}>Worldwide</span>
+                    </h2>
+
                     <p className="ss-vision-desc">From Silicon Valley sports giants to Indian government councils, from European biotech firms to American universities — our success stories span industries, continents, and ambitions.</p>
                 </div>
 

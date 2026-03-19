@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { LayoutGrid, List } from 'lucide-react';
 
 /* ══════════════════════════════════════
    INTERSECTION REVEAL HOOK
@@ -127,7 +128,8 @@ function Blob({ w, h, top, left, right, bottom, bg, dur, delay }) {
 /* ══════════════════════════════════════
    JOB CARD — WhoWeAre glassmorphism style
 ══════════════════════════════════════ */
-function JobCard({ job, index, parentVisible }) {
+// Reusable Job Card Component
+function JobCard({ job, index, parentVisible, viewMode }) {
     const [hov, setHov] = useState(false);
     const [btnHov, setBtnHov] = useState(false);
 
@@ -152,48 +154,35 @@ function JobCard({ job, index, parentVisible }) {
                     : 'translateY(38px)',
                 opacity: parentVisible ? 1 : 0,
                 transitionDelay: parentVisible ? `${index * 65}ms` : '0ms',
-                boxShadow: hov
-                    ? `0 16px 48px rgba(37,99,235,0.15), 0 4px 16px rgba(37,99,235,0.10), 0 0 0 1px ${T.primaryBorderHov}`
-                    : '0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.04)',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+                display: 'flex',
+                flexDirection: viewMode === 'list' ? 'row' : 'column',
+                alignItems: viewMode === 'list' ? 'center' : 'stretch',
             }}
         >
-            {/* top shimmer accent */}
-            <div style={{
-                position: 'absolute', top: 0, left: 0, right: 0, height: '2px',
-                background: hov
-                    ? `linear-gradient(90deg, transparent, ${T.primary}, transparent)`
-                    : 'linear-gradient(90deg, transparent, rgba(37,99,235,0.25), transparent)',
-                transition: 'background 0.3s ease',
-            }} />
-
-            {/* subtle inner glow on hover */}
-            {hov && (
-                <div style={{
-                    position: 'absolute', top: '-40px', right: '-40px',
-                    width: '160px', height: '160px', borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(37,99,235,0.10) 0%, transparent 70%)',
-                    pointerEvents: 'none',
-                }} />
-            )}
-
+            {/* Remove top shimmer accent per user request */}
+            
+            {/* Remove subtle inner glow on hover per user request */}
             {/* card header — bg #f9fafb like WhoWeAre pillar header */}
             <div style={{
-                padding: '1.5rem 1.5rem 1.25rem',
-                background: hov ? T.primaryLight : T.bgAlt,
-                borderBottom: `1px solid ${hov ? T.primaryBorder : T.border}`,
+                padding: viewMode === 'list' ? '1.5rem 1rem 1.5rem 1.5rem' : '1.5rem 1.5rem 1.25rem',
+                background: T.bgAlt,
+                borderRight: viewMode === 'list' ? `1px solid ${T.border}` : 'none',
+                borderBottom: viewMode === 'list' ? 'none' : `1px solid ${T.border}`,
                 transition: 'background 0.3s ease, border-color 0.3s ease',
                 display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '12px',
+                width: viewMode === 'list' ? '30%' : '100%',
+                flexShrink: 0,
             }}>
                 {/* icon + tag row */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                     <div style={{
                         width: '44px', height: '44px', borderRadius: '10px', flexShrink: 0,
-                        background: hov ? 'rgba(37,99,235,0.12)' : 'rgba(37,99,235,0.07)',
-                        border: `1px solid ${hov ? T.primaryBorder : 'rgba(37,99,235,0.15)'}`,
+                        background: 'transparent',
+                        border: 'none',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         color: T.primary,
-                        boxShadow: hov ? '0 0 14px rgba(37,99,235,0.20)' : 'none',
-                        transition: 'all 0.3s ease',
+                        boxShadow: 'none',
                     }}>
                         {job.icon}
                     </div>
@@ -203,8 +192,8 @@ function JobCard({ job, index, parentVisible }) {
                         fontFamily: "'Inter', system-ui, sans-serif",
                         letterSpacing: '0.08em', textTransform: 'uppercase',
                         color: T.primary,
-                        background: hov ? 'rgba(37,99,235,0.10)' : 'rgba(37,99,235,0.06)',
-                        border: `1px solid ${hov ? T.primaryBorder : 'rgba(37,99,235,0.18)'}`,
+                        background: 'rgba(37,99,235,0.06)',
+                        border: `1px solid rgba(37,99,235,0.18)`,
                         borderRadius: '100px', padding: '4px 11px',
                         transition: 'all 0.3s ease',
                         maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
@@ -218,7 +207,7 @@ function JobCard({ job, index, parentVisible }) {
                     margin: 0, fontSize: '1rem', fontWeight: 700,
                     lineHeight: 1.3, letterSpacing: '-0.01em',
                     fontFamily: "'Inter', system-ui, sans-serif",
-                    color: hov ? T.primary : T.textDark,
+                    color: T.textDark,
                     transition: 'color 0.3s ease',
                 }}>
                     {job.title}
@@ -226,19 +215,33 @@ function JobCard({ job, index, parentVisible }) {
             </div>
 
             {/* card body */}
-            <div style={{ padding: '1.25rem 1.5rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ 
+                padding: '1.25rem 1.5rem 1.5rem', 
+                display: 'flex', 
+                flexDirection: viewMode === 'list' ? 'row' : 'column', 
+                alignItems: viewMode === 'list' ? 'center' : 'stretch',
+                justifyContent: 'space-between',
+                gap: '24px',
+                width: '100%' 
+            }}>
                 {/* description */}
                 <p style={{
                     margin: 0,
                     fontSize: '0.9rem', lineHeight: 1.68,
                     color: T.textBody,
                     fontFamily: "'Inter', system-ui, sans-serif",
+                    flex: 1,
                 }}>
                     {job.desc}
                 </p>
 
                 {/* bottom row */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '20px',
+                    flexShrink: 0 
+                }}>
                     <button
                         onMouseEnter={() => setBtnHov(true)}
                         onMouseLeave={() => setBtnHov(false)}
@@ -247,11 +250,9 @@ function JobCard({ job, index, parentVisible }) {
                             padding: '8px 18px', borderRadius: '8px', border: 'none',
                             cursor: 'pointer', fontSize: '12px', fontWeight: 700,
                             fontFamily: "'Inter', system-ui, sans-serif", letterSpacing: '0.01em',
-                            background: btnHov || hov ? T.primary : T.primaryHover,
+                            background: btnHov ? T.primary : T.primaryHover,
                             color: '#ffffff',
-                            boxShadow: btnHov || hov
-                                ? '0 4px 14px rgba(37,99,235,0.40)'
-                                : '0 2px 8px rgba(37,99,235,0.22)',
+                            boxShadow: 'none',
                             transition: 'all 0.25s ease',
                             transform: btnHov ? 'scale(1.04)' : 'scale(1)',
                         }}
@@ -261,15 +262,14 @@ function JobCard({ job, index, parentVisible }) {
 
                     <div style={{
                         display: 'flex', alignItems: 'center', gap: '4px',
-                        color: hov ? T.primary : T.textMuted,
+                        color: T.textMuted,
                         fontSize: '11.5px', fontWeight: 600,
                         fontFamily: "'Inter', system-ui, sans-serif",
-                        transition: 'color 0.3s ease',
                     }}>
                         Details
                         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2"
                             strokeLinecap="round" strokeLinejoin="round"
-                            style={{ width: 10, height: 10, transform: hov ? 'translateX(3px)' : 'translateX(0)', transition: 'transform 0.3s ease' }}>
+                            style={{ width: 10, height: 10 }}>
                             <path d="M3 8h10M9 4l4 4-4 4" />
                         </svg>
                     </div>
@@ -288,6 +288,7 @@ export const CareersPage = () => {
     const [gridRef, gridVisible] = useReveal(0.04);
     const [bandRef, bandVisible] = useReveal(0.1);
     const [bandHov, setBandHov] = useState(false);
+    const [viewMode, setViewMode] = useState('grid');
 
     const [particles] = useState(() =>
         Array.from({ length: 18 }, (_, i) => ({
@@ -319,11 +320,7 @@ export const CareersPage = () => {
                     boxSizing: 'border-box',
                 }}
             >
-                {/* floating gradient blobs — blue */}
-                <Blob w="700px" h="700px" top="-15%" left="-12%" bg={T.blob1} dur="28s" delay="0s" />
-                <Blob w="600px" h="600px" top="20%" right="-10%" bg={T.blob2} dur="34s" delay="-12s" />
-                <Blob w="480px" h="480px" bottom="-6%" left="25%" bg={T.blob3} dur="26s" delay="-19s" />
-                <Blob w="320px" h="320px" top="48%" left="8%" bg={T.blob4} dur="22s" delay="-6s" />
+                {/* floating gradient blobs — REMOVED per user request */}
 
                 {/* dot grid — same as WhoWeAre */}
                 <div style={{
@@ -367,37 +364,31 @@ export const CareersPage = () => {
                 }}>
 
                     {/* eyebrow — matches WhoWeAre section title style */}
-                    <div style={{
-                        display: 'inline-flex', alignItems: 'center', gap: '8px',
-                        marginBottom: '36px',
-                        transform: heroVisible ? 'translateY(0)' : 'translateY(24px)',
-                        opacity: heroVisible ? 1 : 0,
-                        transition: 'transform 0.65s ease-out 0s, opacity 0.65s ease-out 0s',
-                    }}>
-                        <span style={{
-                            fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.1em',
-                            textTransform: 'uppercase', color: T.primary,
+                        <h4 style={{
+                            color: 'var(--c-primary)',
+                            fontSize: '0.9rem',
+                            fontWeight: 700,
+                            letterSpacing: '0.1em',
+                            marginTop: 0,
+                            marginBottom: '1rem',
                             fontFamily: "'Inter', system-ui, sans-serif",
+                            textTransform: 'uppercase'
                         }}>
                             ─── WE'RE HIRING
-                        </span>
-                        <span style={{
-                            width: '6px', height: '6px', borderRadius: '50%',
-                            background: T.primary, display: 'inline-block',
-                            animation: 'pulseDot 2.4s ease-in-out infinite',
-                        }} />
-                    </div>
+                        </h4>
 
-                    {/* headline — matches wa-headline sizing */}
+                    {/* headline — increased size per user request */}
                     <h1 style={{
-                        margin: 0, paddingBottom: '4px',
-                        fontSize: 'clamp(2.5rem, 7vw, 4.5rem)',
-                        fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1,
-                        color: T.textDark,
-                        fontFamily: "'Inter', system-ui, sans-serif",
-                        transform: heroVisible ? 'translateY(0)' : 'translateY(40px)',
-                        opacity: heroVisible ? 1 : 0,
-                        transition: 'transform 0.8s ease-out 0.08s, opacity 0.8s ease-out 0.08s',
+                            fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                            fontWeight: 800,
+                            marginTop: 0,
+                            marginBottom: '1.5rem',
+                            lineHeight: 1.2,
+                            color: '#111827',
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                            transform: heroVisible ? 'translateY(0)' : 'translateY(40px)',
+                            opacity: heroVisible ? 1 : 0,
+                            transition: 'transform 0.8s ease-out 0.08s, opacity 0.8s ease-out 0.08s',
                     }}>
                         Build Your Future<br />
                         <span style={{ color: T.primary }}>With Us.</span>
@@ -413,11 +404,10 @@ export const CareersPage = () => {
                         transition: 'transform 0.7s ease-out 0.30s, opacity 0.7s ease-out 0.30s',
                     }} />
 
-                    {/* description */}
                     <p style={{
-                        margin: 0, maxWidth: '580px',
-                        fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-                        color: T.textBody, lineHeight: 1.7,
+                        margin: '0 auto', maxWidth: '800px',
+                        fontSize: '1.15rem',
+                        color: '#4b5563', lineHeight: 1.6,
                         fontFamily: "'Inter', system-ui, sans-serif",
                         transform: heroVisible ? 'translateY(0)' : 'translateY(40px)',
                         opacity: heroVisible ? 1 : 0,
@@ -427,61 +417,8 @@ export const CareersPage = () => {
                         problems, build world-class products, and create technology that genuinely makes an impact.
                     </p>
 
-                    {/* CTAs */}
-                    <div style={{
-                        display: 'flex', gap: '14px', marginTop: '48px', flexWrap: 'wrap', justifyContent: 'center',
-                        transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
-                        opacity: heroVisible ? 1 : 0,
-                        transition: 'transform 0.75s ease-out 0.42s, opacity 0.75s ease-out 0.42s',
-                    }}>
-                        <HeroPrimaryBtn onClick={() => document.getElementById('jobs')?.scrollIntoView({ behavior: 'smooth' })}>
-                            View Open Roles ↓
-                        </HeroPrimaryBtn>
-                        <HeroGhostBtn>Life at Halftone →</HeroGhostBtn>
-                    </div>
+                    {/* CTAs REMOVED per user request */}
 
-                    {/* trust metrics — matches wa-metrics-grid style */}
-                    <div style={{
-                        display: 'flex', gap: '0', marginTop: '72px',
-                        background: '#ffffff',
-                        border: `1px solid ${T.border}`,
-                        borderRadius: '16px',
-                        boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
-                        overflow: 'hidden',
-                        flexWrap: 'wrap',
-                        transform: heroVisible ? 'translateY(0)' : 'translateY(20px)',
-                        opacity: heroVisible ? 1 : 0,
-                        transition: 'transform 0.7s ease-out 0.56s, opacity 0.7s ease-out 0.56s',
-                    }}>
-                        {[['12+', 'OPEN ROLES'], ['5+', 'COUNTRIES'], ['100%', 'REMOTE']].map(([val, label], i, arr) => (
-                            <div key={label} style={{
-                                padding: '1.5rem 2.5rem', textAlign: 'center',
-                                borderRight: i < arr.length - 1 ? `1px solid ${T.border}` : 'none',
-                            }}>
-                                <div style={{
-                                    fontSize: '1.8rem', fontWeight: 800, color: T.primary,
-                                    fontFamily: "'Inter', system-ui, sans-serif",
-                                    lineHeight: 1,
-                                }}>{val}</div>
-                                <div style={{
-                                    fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.08em',
-                                    color: T.textMuted, marginTop: '6px',
-                                    fontFamily: "'Inter', system-ui, sans-serif",
-                                }}>{label}</div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* scroll hint */}
-                    <div style={{
-                        marginTop: '72px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px',
-                        transform: heroVisible ? 'translateY(0)' : 'translateY(20px)',
-                        opacity: heroVisible ? 0.5 : 0,
-                        transition: 'transform 0.7s ease-out 0.7s, opacity 0.7s ease-out 0.7s',
-                    }}>
-                        <span style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: T.textMuted }}>Scroll</span>
-                        <div style={{ width: '1px', height: '40px', background: `linear-gradient(180deg, ${T.primary}, transparent)`, animation: 'scrollPulse 2s ease-in-out infinite' }} />
-                    </div>
                 </div>
             </section>
 
@@ -498,10 +435,7 @@ export const CareersPage = () => {
                     boxSizing: 'border-box',
                 }}
             >
-                {/* background blobs */}
-                <Blob w="550px" h="550px" top="-8%" left="-8%" bg={T.blob1} dur="30s" delay="-5s" />
-                <Blob w="480px" h="480px" top="30%" right="-6%" bg={T.blob2} dur="36s" delay="-15s" />
-                <Blob w="380px" h="380px" bottom="5%" left="35%" bg={T.blob3} dur="26s" delay="-22s" />
+                {/* background blobs — REMOVED per user request */}
 
                 {/* subtle dot grid */}
                 <div style={{
@@ -549,8 +483,8 @@ export const CareersPage = () => {
                         </h2>
 
                         <p style={{
-                            margin: '0 0 2.5rem', maxWidth: '520px',
-                            fontSize: '1.05rem', color: T.textBody,
+                            margin: '0 0 2.5rem', maxWidth: '800px',
+                            fontSize: '1.15rem', color: T.textBody,
                             lineHeight: 1.65, fontFamily: "'Inter', system-ui, sans-serif",
                             transform: labelVisible ? 'translateY(0)' : 'translateY(30px)',
                             opacity: labelVisible ? 1 : 0,
@@ -558,6 +492,55 @@ export const CareersPage = () => {
                         }}>
                             Explore every open role and find where your skills can make the biggest impact.
                         </p>
+
+                        <div style={{
+                            display: 'inline-flex', 
+                            background: '#f1f5f9',
+                            padding: '4px',
+                            borderRadius: '100px',
+                            border: `1px solid ${T.border}`,
+                            marginBottom: '32px',
+                            transform: labelVisible ? 'translateY(0)' : 'translateY(30px)',
+                            opacity: labelVisible ? 1 : 0,
+                            transition: 'all 0.75s ease-out 0.25s',
+                        }}>
+                            <button
+                                onClick={() => setViewMode('grid')}
+                                style={{
+                                    display: 'flex', alignItems: 'center', gap: '8px',
+                                    padding: '8px 20px', 
+                                    borderRadius: '100px', 
+                                    border: 'none',
+                                    background: viewMode === 'grid' ? '#ffffff' : 'transparent',
+                                    color: viewMode === 'grid' ? T.primary : T.textBody,
+                                    boxShadow: viewMode === 'grid' ? '0 2px 4px rgba(0,0,0,0.05)' : 'none',
+                                    cursor: 'pointer', 
+                                    transition: 'all 0.2s ease',
+                                    fontSize: '0.85rem',
+                                    fontWeight: 600,
+                                }}
+                            >
+                                <LayoutGrid size={16} /> Grid
+                            </button>
+                            <button
+                                onClick={() => setViewMode('list')}
+                                style={{
+                                    display: 'flex', alignItems: 'center', gap: '8px',
+                                    padding: '8px 20px', 
+                                    borderRadius: '100px', 
+                                    border: 'none',
+                                    background: viewMode === 'list' ? '#ffffff' : 'transparent',
+                                    color: viewMode === 'list' ? T.primary : T.textBody,
+                                    boxShadow: viewMode === 'list' ? '0 2px 4px rgba(0,0,0,0.05)' : 'none',
+                                    cursor: 'pointer', 
+                                    transition: 'all 0.2s ease',
+                                    fontSize: '0.85rem',
+                                    fontWeight: 600,
+                                }}
+                            >
+                                <List size={16} /> List
+                            </button>
+                        </div>
 
                         {/* rule divider — matches wa-divider */}
                         <div style={{
@@ -569,13 +552,18 @@ export const CareersPage = () => {
                         }} />
                     </div>
 
-                    {/* ── Jobs grid — 3 columns desktop ── */}
+                    {/* ── Jobs grid ── */}
                     <div
                         ref={gridRef}
-                        className="careers-jobs-grid"
+                        style={{
+                            display: viewMode === 'grid' ? 'grid' : 'flex',
+                            gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fill, minmax(320px, 1fr))' : '1fr',
+                            flexDirection: viewMode === 'list' ? 'column' : 'row',
+                            gap: '20px',
+                        }}
                     >
                         {JOBS.map((job, i) => (
-                            <JobCard key={job.title} job={job} index={i} parentVisible={gridVisible} />
+                            <JobCard key={job.title} job={job} index={i} parentVisible={gridVisible} viewMode={viewMode} />
                         ))}
                     </div>
 
@@ -634,9 +622,7 @@ export const CareersPage = () => {
                                 fontFamily: "'Inter', system-ui, sans-serif", letterSpacing: '0.01em', flexShrink: 0,
                                 background: bandHov ? T.primaryHover : T.primary,
                                 color: '#fff',
-                                boxShadow: bandHov
-                                    ? '0 8px 24px rgba(37,99,235,0.40)'
-                                    : '0 4px 14px rgba(37,99,235,0.25)',
+                                boxShadow: 'none',
                                 transform: bandHov ? 'translateY(-2px)' : 'translateY(0)',
                                 transition: 'all 0.25s ease',
                             }}
@@ -709,9 +695,7 @@ function HeroPrimaryBtn({ children, onClick }) {
                 fontFamily: "'Inter', system-ui, sans-serif", letterSpacing: '0.01em',
                 background: hov ? '#1D4ED8' : '#2563EB',
                 color: '#fff',
-                boxShadow: hov
-                    ? '0 8px 24px rgba(37,99,235,0.45)'
-                    : '0 4px 14px rgba(37,99,235,0.28)',
+                boxShadow: 'none',
                 transform: hov ? 'translateY(-2px)' : 'translateY(0)',
                 transition: 'all 0.25s ease',
             }}>

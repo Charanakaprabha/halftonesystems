@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, Phone } from 'lucide-react';
+import { ChevronDown, Menu, X, Phone, Check } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
@@ -133,22 +133,20 @@ export const Navbar = () => {
                         {navLinks.map((link, idx) => (
                             <React.Fragment key={link.name}>
                                 {idx > 0 && <span className="nav-divider" />}
-                                <div className="nav-item">
+                                <div className={`nav-item ${link.dropdown && link.dropdown.length > 0 ? 'has-dropdown' : ''}`}>
                                     <Link to={link.href} className="nav-link">
                                         {link.name}
                                         {link.dropdown && link.dropdown.length > 0 && <ChevronDown size={13} className="dropdown-icon" />}
                                     </Link>
                                     {link.dropdown && link.dropdown.length > 0 && (
-                                        <div className={`dropdown-menu ${link.name === 'Home' ? 'grid-3col' :
-                                            link.name === 'Industries' ? 'grid-2col' :
-                                                link.name === 'Products' ? 'grid-2col' : ''
-                                            }`}>
+                                        <div className="dropdown-menu">
                                             {link.dropdown.map((item) => (
                                                 <a
                                                     key={item.name}
                                                     href={item.href}
                                                     className="dropdown-item"
                                                 >
+                                                    <span className="hover-tick"><Check size={14} strokeWidth={3} /></span>
                                                     {item.name}
                                                 </a>
                                             ))}

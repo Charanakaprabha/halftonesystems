@@ -1,45 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { HeroLogo3D } from './HeroLogo3D';
 
 import './Hero.css';
 
-const useTypewriter = (text, speed = 100, delay = 1000) => {
-    const [displayText, setDisplayText] = useState('');
-    const [isComplete, setIsComplete] = useState(false);
-
-    useEffect(() => {
-        let timeout;
-        let currentIndex = 0;
-
-        const type = () => {
-            if (currentIndex < text.length) {
-                setDisplayText(text.slice(0, currentIndex + 1));
-                currentIndex++;
-                timeout = setTimeout(type, speed);
-            } else {
-                setIsComplete(true);
-            }
-        };
-
-        timeout = setTimeout(type, delay);
-        return () => clearTimeout(timeout);
-    }, [text, speed, delay]);
-
-    return { displayText, isComplete };
-};
-
 export const Hero = () => {
-    const { displayText: typingText, isComplete } = useTypewriter('Transformation.', 120, 1500);
-
     return (
-        <section className="hero">
+        <section className="hero" style={{ background: '#ffffff' }}>
+            {/* Background removed per user request */}
+            <div className="hero-overlay" style={{ background: '#ffffff' }}></div>
             <div className="hero-overlay"></div>
             <div className="container hero-container">
                 <div className="hero-grid">
                     <div className="hero-content">
                         <h1 className="hero-title">
-                            Growth. <span className="typewriter-text">{typingText}<span className={`cursor ${isComplete ? 'blink' : ''}`}>|</span></span><br />
+                            Growth.<br />
+                            Transformation.<br />
                             <span className="highlight">Opportunity.</span>
                         </h1>
                         <p className="hero-subtitle">
@@ -59,7 +35,35 @@ export const Hero = () => {
                     <div className="hero-3d-logo">
                         <HeroLogo3D />
                     </div>
+                </div>
 
+                {/* Scroll hint centered at bottom */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '10px',
+                    animation: 'slideInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards',
+                    opacity: 0,
+                    zIndex: 10
+                }}>
+                    <span style={{ 
+                        fontSize: '10px', 
+                        letterSpacing: '0.2em', 
+                        textTransform: 'uppercase', 
+                        color: 'rgba(11, 31, 64, 0.6)',
+                        fontFamily: "'Inter', sans-serif"
+                    }}>Scroll</span>
+                    <div style={{ 
+                        width: '1px', 
+                        height: '40px', 
+                        background: `linear-gradient(180deg, #3b82f6, transparent)`, 
+                        animation: 'scrollPulse 2s ease-in-out infinite' 
+                    }} />
                 </div>
             </div>
         </section>

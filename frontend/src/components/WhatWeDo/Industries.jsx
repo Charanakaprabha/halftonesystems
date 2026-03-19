@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
     Car, HeartPulse, Pill, Microscope, Stethoscope,
     ShoppingBag, Plane, GraduationCap, Briefcase, Clapperboard,
     CheckCircle2, TrendingUp
 } from 'lucide-react';
 import './Industries.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const IndustryCard = ({ icon: Icon, number, name, tagline, description, capabilities, outcomes, image }) => {
     const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -281,60 +285,105 @@ export const Industries = () => {
         }
     ];
 
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const sectionRef = useRef(null);
+    const containerRef = useRef(null);
+    const cardsRef = useRef([]);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            const cards = cardsRef.current;
+            if (!cards.length) return;
+
+            // Setup initial states
+            gsap.set(cards, { 
+                rotateX: 90, 
+                opacity: 0, 
+                z: -250,
+                transformOrigin: "center center -250px" 
+            });
+            gsap.set(cards[0], { rotateX: 0, opacity: 1, z: 0 });
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top top",
+                    end: `+=${industries.length * 120}%`,
+                    pin: true,
+                    scrub: 2,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                }
+            });
+
+            cards.forEach((card, i) => {
+                if (i === cards.length - 1) return;
+
+                const nextCard = cards[i + 1];
+
+                // Current card out
+                tl.to(card, {
+                    rotateX: -90,
+                    opacity: 0,
+                    z: -250,
+                    duration: 1,
+                    ease: "power2.inOut"
+                }, i);
+
+                // Next card in
+                tl.to(nextCard, {
+                    rotateX: 0,
+                    opacity: 1,
+                    z: 0,
+                    duration: 1,
+                    ease: "power2.inOut"
+                }, i);
+            });
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
 
     return (
-        <section id="industries" className="industries section-padding">
-            <div className="container">
-                <div className="section-header text-center">
-                    <p className="section-subtitle-small">
-                        — Sector-Specific Expertise. Enterprise-Grade Results. —
-                    </p>
-                    <h2 className="section-title section-title-dark">INDUSTRIES WE SERVE</h2>
-                    <div className="ind-top-nav">
+        <section id="industries" className="industries-3d-section">
+            <div className="ind-3d-container" ref={sectionRef}>
+                <div className="ind-scene" style={{ perspective: '2000px' }}>
+                    <div className="ind-cube-wrapper" ref={containerRef} style={{ transformStyle: 'preserve-3d', position: 'relative', height: '600px' }}>
                         {industries.map((ind, i) => (
-                            <React.Fragment key={`nav-${i}`}>
-                                <button
-                                    className={`ind-nav-btn ${i === selectedIndex ? 'active' : ''}`}
-                                    onClick={() => setSelectedIndex(i)}
-                                >
-                                    {ind.name}
-                                </button>
-                                {i < industries.length - 1 && (
-                                    <span className="ind-nav-separator">|</span>
-                                )}
-                            </React.Fragment>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="industries-slider-container">
-                    <div
-                        className="industries-slider-track"
-                        style={{ transform: `translate3d(-${selectedIndex * 100}%, 0, 0)` }}
-                    >
-                        {industries.map((ind, i) => (
-                            <div className="industries-slide" key={`slide-${i}`}>
+                            <div 
+                                className="ind-3d-card-wrapper" 
+                                key={`slide-${i}`}
+                                ref={el => cardsRef.current[i] = el}
+                                style={{ 
+                                    position: 'absolute', 
+                                    top: 0, 
+                                    left: 0, 
+                                    width: '100%', 
+                                    height: '100%',
+                                    backfaceVisibility: 'hidden',
+                                    transformStyle: 'preserve-3d'
+                                }}
+                            >
                                 <IndustryCard {...ind} />
                             </div>
                         ))}
                     </div>
                 </div>
+            </div>
 
-                <div className="section-footer text-center">
-                    <h3 className="footer-heading">Your Industry. Our Expertise. Extraordinary Results.</h3>
-                    <p className="footer-text">
-                        No matter which sector you operate in, Halftone Systems brings the domain depth, technological excellence, and strategic partnership you need to lead your industry in the digital age.
-                    </p>
-                    <div className="footer-links">
-                        <span>✦ Free Industry Consultation</span>
-                        <span className="divider">|</span>
-                        <span>Tailored Technology Roadmap</span>
-                        <span className="divider">|</span>
-                        <span>Measurable ROI from Day One ✦</span>
-                    </div>
-                    <a href="#" className="btn btn-primary mt-4">Contact Halftone Systems</a>
+            <div className="section-footer text-center">
+                <h3 className="footer-heading">Your Industry. Our Expertise. Extraordinary Results.</h3>
+                <p className="footer-text" style={{ fontSize: '1.1rem', maxWidth: '800px', margin: '0 auto 1.5rem' }}>
+                    No matter which sector you operate in, Halftone Systems brings the domain depth, technological excellence, and strategic partnership you need to lead your industry in the digital age.
+                </p>
+                <div className="footer-links">
+                    <span>✦ Free Industry Consultation</span>
+                    <span className="divider">|</span>
+                    <span>Tailored Technology Roadmap</span>
+                    <span className="divider">|</span>
+                    <span>Measurable ROI from Day One ✦</span>
                 </div>
+                <a href="#" className="btn btn-primary mt-4">Contact Halftone Systems</a>
             </div>
         </section >
     );

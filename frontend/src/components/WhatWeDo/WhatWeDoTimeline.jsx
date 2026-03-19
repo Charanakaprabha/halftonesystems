@@ -6,7 +6,7 @@ export const WhatWeDoTimeline = ({ children }) => {
     const timelineRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: timelineRef,
-        offset: ["start center", "end center"],
+        offset: ["start 80%", "end 20%"],
     });
 
     return (

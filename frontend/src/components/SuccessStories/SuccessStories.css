@@ -27,6 +27,7 @@
     letter-spacing: 0.1em;
     margin-top: 0;
     margin-bottom: 1rem;
+    text-transform: uppercase;
 }
 
 .ss-section-subtitle {
