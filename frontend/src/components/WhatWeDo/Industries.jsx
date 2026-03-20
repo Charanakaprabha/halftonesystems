@@ -1,57 +1,134 @@
-import React, { useState, useLayoutEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
     Car, HeartPulse, Pill, Microscope, Stethoscope,
     ShoppingBag, Plane, GraduationCap, Briefcase, Clapperboard,
-    CheckCircle2, TrendingUp
+    CheckCircle2, TrendingUp, Landmark, Cpu, ChevronLeft, ChevronRight, X
 } from 'lucide-react';
 import './Industries.css';
 
-gsap.registerPlugin(ScrollTrigger);
+const fadeUpVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
+};
 
-const IndustryCard = ({ icon: Icon, number, name, tagline, description, capabilities, outcomes, image }) => {
-    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+const IndustryGridCard = ({ ind, onClick }) => {
+    return (
+        <motion.div
+            layoutId={`card-${ind.number}`}
+            className="ind-grid-card"
+            onClick={onClick}
+            whileHover="hover"
+            initial="rest"
+            animate="rest"
+            variants={{
+                rest: { y: 0, boxShadow: "0 10px 25px rgba(0,0,0,0.15)", borderColor: "rgba(255,255,255,0.1)" },
+                hover: { y: -6, boxShadow: "0 20px 40px rgba(0,0,0,0.3)", borderColor: "rgba(59,130,246,0.5)", transition: { duration: 0.3, ease: "easeOut" } }
+            }}
+        >
+            <motion.div
+                layoutId={`image-${ind.number}`}
+                className="ind-grid-bg"
+                style={{ backgroundImage: `url(${ind.image})` }}
+                variants={{
+                    rest: { scale: 1 },
+                    hover: { scale: 1.08, transition: { duration: 0.6, ease: "easeOut" } }
+                }}
+            />
+            <div className="ind-grid-overlay"></div>
+
+            <div className="ind-header grid-header">
+                <div className="ind-top">
+                    <ind.icon size={32} className="ind-icon" />
+                </div>
+                <h3 className="ind-name">{ind.name}</h3>
+            </div>
+
+            <motion.div
+                className="ind-hover-content"
+                variants={{
+                    rest: { y: "100%", opacity: 0 },
+                    hover: { y: 0, opacity: 1, transition: { duration: 0.4, ease: "easeOut" } }
+                }}
+            >
+                <p className="ind-tagline">{ind.tagline}</p>
+                <div className="ind-expand-hint">CLICK TO EXPLORE</div>
+            </motion.div>
+        </motion.div>
+    );
+};
+
+const CategoryRow = ({ title, items, onSelect }) => {
+    const rowRef = useRef(null);
+
+    const scroll = (direction) => {
+        if (rowRef.current) {
+            const scrollAmount = direction === 'left' ? -480 : 480;
+            rowRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    };
 
     return (
-        <div id={slug} className="ind-card" style={{ '--bg-image': `url(${image})` }}>
-            <div className="ind-header">
-                <div className="ind-top">
-                    <span className="ind-number">{number}</span>
-                    <Icon size={32} className="ind-icon" />
-                </div>
-                <h3 className="ind-name">{name}</h3>
-                <p className="ind-tagline">{tagline}</p>
-            </div>
-
-            <div className="ind-content">
-                <p className="ind-description">{description}</p>
-
-                <div className="ind-details-grid">
-                    <div className="ind-section">
-                        <h4 className="ind-section-title"><CheckCircle2 size={18} className="text-primary" /> Our Capabilities</h4>
-                        <ul className="ind-list">
-                            {capabilities.map((cap, i) => (
-                                <li key={i}>{cap}</li>
-                            ))}
-                        </ul>
+        <motion.div
+            className="ind-category-section"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+                visible: { transition: { staggerChildren: 0.15 } },
+                hidden: {}
+            }}
+        >
+            <motion.h2
+                className="ind-category-title"
+                variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                }}
+            >
+                {title}
+            </motion.h2>
+            <div className="ind-row-wrapper">
+                <button className="scroll-arrow left" onClick={() => scroll('left')} aria-label="Scroll left">
+                    <ChevronLeft size={36} />
+                </button>
+                <div className="ind-row-container" ref={rowRef}>
+                    <div className="ind-row-content">
+                        {items.map((ind, i) => (
+                            <motion.div
+                                className="ind-card-wrapper"
+                                key={i}
+                                variants={{
+                                    hidden: { opacity: 0, y: 60 },
+                                    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                                }}
+                            >
+                                <IndustryGridCard ind={ind} onClick={() => onSelect(ind)} />
+                            </motion.div>
+                        ))}
                     </div>
-
-                    <div className="ind-section">
-                        <h4 className="ind-section-title"><TrendingUp size={18} className="text-success" /> Business Outcomes</h4>
-                        <ul className="ind-list outcomes">
-                            {outcomes.map((out, i) => (
-                                <li key={i}>{out}</li>
-                            ))}
-                        </ul>
-                    </div>
                 </div>
+                <button className="scroll-arrow right" onClick={() => scroll('right')} aria-label="Scroll right">
+                    <ChevronRight size={36} />
+                </button>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
 export const Industries = () => {
+    const [expandedIndustry, setExpandedIndustry] = useState(null);
+
+    // Prevent body scroll when overlay is open
+    useEffect(() => {
+        if (expandedIndustry) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [expandedIndustry]);
+
     const industries = [
         {
             icon: Car,
@@ -59,7 +136,7 @@ export const Industries = () => {
             name: "AUTOMOTIVE",
             tagline: "Driving the Future of Mobility & Manufacturing",
             image: "https://images.unsplash.com/photo-1562426509-5044a121aa49?auto=format&fit=crop&q=80",
-            description: "The automotive industry is undergoing its most dramatic transformation in a century — from connected vehicles and electric powertrains to smart factories and autonomous systems. Halftone Systems engineers the digital backbone that powers this revolution.",
+            description: "The automotive industry is undergoing its most dramatic transformation in a century. Halftone Systems engineers the digital backbone that powers this revolution.",
             capabilities: [
                 "Connected Vehicle & IoT Platforms",
                 "Smart Manufacturing & Industry 4.0",
@@ -82,7 +159,7 @@ export const Industries = () => {
             name: "HEALTHCARE",
             tagline: "Transforming Patient Care Through Intelligent Technology",
             image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
-            description: "Healthcare demands precision, compliance, and compassion — all at scale. Halftone Systems delivers secure, HIPAA-compliant digital platforms that empower clinicians, streamline operations, and place patients at the center of every experience.",
+            description: "Healthcare demands precision, compliance, and compassion. Halftone Systems delivers secure, HIPAA-compliant digital platforms that empower clinicians.",
             capabilities: [
                 "Electronic Health Records (EHR/EMR)",
                 "Telemedicine & Remote Care Platforms",
@@ -105,7 +182,7 @@ export const Industries = () => {
             name: "PHARMACEUTICAL",
             tagline: "Accelerating Drug Discovery & Regulatory Excellence",
             image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80",
-            description: "In an industry where speed and compliance save lives, Halftone Systems delivers intelligent technology that accelerates drug development pipelines, ensures airtight regulatory adherence, and transforms how pharmaceutical companies operate globally.",
+            description: "In an industry where speed saves lives, Halftone Systems delivers intelligent technology that accelerates drug pipelines and transforms how pharma companies operate.",
             capabilities: [
                 "Clinical Trial Management Systems",
                 "Regulatory Compliance & Reporting",
@@ -128,7 +205,7 @@ export const Industries = () => {
             name: "LIFE SCIENCES",
             tagline: "Powering Breakthroughs from Lab to Market",
             image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80",
-            description: "Life sciences companies operate at the intersection of innovation and regulation. Halftone Systems provides the digital infrastructure — from genomics data management to bioinformatics platforms — enabling scientists to focus on advancing human health.",
+            description: "Life sciences companies operate at the intersection of innovation and regulation. Halftone Systems provides the digital infrastructure to advance human health.",
             capabilities: [
                 "Genomics & Bioinformatics Platforms",
                 "Research Data Management Systems",
@@ -151,7 +228,7 @@ export const Industries = () => {
             name: "MEDICAL",
             tagline: "Engineering Precision Solutions for Medical Excellence",
             image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80",
-            description: "From medical device manufacturers to specialty clinics, Halftone Systems builds digital ecosystems that ensure precision, safety, and seamless patient outcomes across the full medical technology continuum.",
+            description: "Halftone Systems builds digital ecosystems that ensure precision, safety, and seamless patient outcomes across the full medical technology continuum.",
             capabilities: [
                 "Medical Device Software (FDA/CE Certified)",
                 "Medical Imaging & Diagnostics AI",
@@ -174,7 +251,7 @@ export const Industries = () => {
             name: "RETAIL",
             tagline: "Reimagining Shopping Experiences for the Digital Age",
             image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80",
-            description: "Today's retail winners are built on intelligent digital foundations — omnichannel excellence, AI-driven personalization, and frictionless customer journeys. Halftone Systems equips retailers with the technology to compete, captivate, and grow.",
+            description: "Today's retail winners are built on intelligent digital foundations. Halftone Systems equips retailers with the technology to compete, captivate, and grow.",
             capabilities: [
                 "Omnichannel Commerce Platforms",
                 "AI-Powered Personalization Engines",
@@ -197,7 +274,7 @@ export const Industries = () => {
             name: "TRAVEL & TOURISM",
             tagline: "Crafting Seamless Journeys in the Experience Economy",
             image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80",
-            description: "Travel is the world's most experience-driven industry. Halftone Systems helps airlines, hotels, tour operators, and travel agencies harness AI, mobile, and analytics to create unforgettable journeys that inspire lasting loyalty.",
+            description: "Halftone Systems helps airlines, hotels, tour operators, and travel agencies harness AI, mobile, and analytics to create journeys that inspire loyalty.",
             capabilities: [
                 "Travel Booking & Reservation Platforms",
                 "AI-Powered Trip Personalization",
@@ -220,7 +297,7 @@ export const Industries = () => {
             name: "EDUCATION & RESEARCH",
             tagline: "Empowering Learners & Advancing Knowledge at Scale",
             image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80",
-            description: "Education is the foundation of all progress. Halftone Systems delivers intelligent learning platforms, research management tools, and institutional technology that empowers educators, engages learners, and drives academic excellence worldwide.",
+            description: "Halftone Systems delivers intelligent learning platforms and institutional technology that empowers educators, engages learners, and drives academic excellence worldwide.",
             capabilities: [
                 "Learning Management Systems (LMS)",
                 "AI-Powered Adaptive Learning Engines",
@@ -243,7 +320,7 @@ export const Industries = () => {
             name: "SERVICES INDUSTRY",
             tagline: "Elevating Service Delivery Through Smart Automation",
             image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80",
-            description: "Whether professional services, financial services, or managed services — Halftone Systems equips service organizations with the digital tools to work smarter, deliver faster, and build lasting client relationships that drive sustained growth.",
+            description: "Halftone Systems equips service organizations with the digital tools to work smarter, deliver faster, and build relationships that drive sustained growth.",
             capabilities: [
                 "Professional Services Automation (PSA)",
                 "CRM & Client Relationship Platforms",
@@ -266,7 +343,7 @@ export const Industries = () => {
             name: "MEDIA & ENTERTAINMENT",
             tagline: "Powering Content, Engagement & Digital Experience",
             image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80",
-            description: "The media and entertainment landscape demands relentless innovation — from streaming platforms and content monetization to audience analytics and immersive experiences. Halftone Systems engineers the digital infrastructure that keeps creators and audiences connected.",
+            description: "The media landscape demands relentless innovation. Halftone Systems engineers the digital infrastructure that keeps creators and audiences constantly connected.",
             capabilities: [
                 "OTT & Streaming Platform Development",
                 "Content Management & Distribution Systems",
@@ -282,94 +359,215 @@ export const Industries = () => {
                 "Reduced content delivery costs",
                 "Stronger audience loyalty & retention"
             ]
+        },
+        {
+            icon: Landmark,
+            number: "11",
+            name: "FINANCE & BANKING",
+            tagline: "Engineering Secure & Scalable Financial Ecosystems",
+            image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80",
+            description: "In a world of digital-first banking and decentralized finance, Halftone Systems builds robust, compliant, and innovative financial platforms that drive growth.",
+            capabilities: [
+                "Core Banking Modernization",
+                "Digital Payments & Wallets",
+                "Algorithmic Trading Platforms",
+                "Risk & Fraud Management AI",
+                "Open Banking APIs",
+                "Wealth Management Systems"
+            ],
+            outcomes: [
+                "Zero-downtime financial operations",
+                "Enhanced fraud detection accuracy",
+                "Seamless cross-border payments",
+                "Regulatory compliance at scale",
+                "Accelerated digital lending"
+            ]
+        },
+        {
+            icon: Cpu,
+            number: "12",
+            name: "TECHNOLOGY & SOFTWARE",
+            tagline: "Building the Foundations of Tomorrow's Digital Products",
+            image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
+            description: "We partner with leading tech companies and ISVs to architect, develop, and scale software products that define markets and disrupt traditions.",
+            capabilities: [
+                "SaaS Product Development",
+                "Cloud-Native Architecture",
+                "DevOps & SRE Transformation",
+                "API Design & Integration",
+                "Microservices Migration",
+                "AI Model Deployment"
+            ],
+            outcomes: [
+                "Faster time-to-market for products",
+                "Highly scalable cloud infrastructure",
+                "Reduced technical debt",
+                "Improved developer productivity",
+                "99.99% system availability"
+            ]
         }
     ];
 
-    const sectionRef = useRef(null);
-    const containerRef = useRef(null);
-    const cardsRef = useRef([]);
-
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            const cards = cardsRef.current;
-            if (!cards.length) return;
-
-            // Setup initial states
-            gsap.set(cards, { 
-                rotateX: 90, 
-                opacity: 0, 
-                z: -250,
-                transformOrigin: "center center -250px" 
-            });
-            gsap.set(cards[0], { rotateX: 0, opacity: 1, z: 0 });
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top top",
-                    end: `+=${industries.length * 120}%`,
-                    pin: true,
-                    scrub: 2,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true,
-                }
-            });
-
-            cards.forEach((card, i) => {
-                if (i === cards.length - 1) return;
-
-                const nextCard = cards[i + 1];
-
-                // Current card out
-                tl.to(card, {
-                    rotateX: -90,
-                    opacity: 0,
-                    z: -250,
-                    duration: 1,
-                    ease: "power2.inOut"
-                }, i);
-
-                // Next card in
-                tl.to(nextCard, {
-                    rotateX: 0,
-                    opacity: 1,
-                    z: 0,
-                    duration: 1,
-                    ease: "power2.inOut"
-                }, i);
-            });
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
-
+    const categories = [
+        {
+            title: "Healthcare & Life Sciences",
+            items: [industries[1], industries[2], industries[3], industries[4]]
+        },
+        {
+            title: "Commerce & Mobility",
+            items: [industries[0], industries[5], industries[6], industries[10]]
+        },
+        {
+            title: "Knowledge & Innovation",
+            items: [industries[7], industries[8], industries[9], industries[11]]
+        }
+    ];
 
     return (
-        <section id="industries" className="industries-3d-section">
-            <div className="ind-3d-container" ref={sectionRef}>
-                <div className="ind-scene" style={{ perspective: '2000px' }}>
-                    <div className="ind-cube-wrapper" ref={containerRef} style={{ transformStyle: 'preserve-3d', position: 'relative', height: '600px' }}>
-                        {industries.map((ind, i) => (
-                            <div 
-                                className="ind-3d-card-wrapper" 
-                                key={`slide-${i}`}
-                                ref={el => cardsRef.current[i] = el}
-                                style={{ 
-                                    position: 'absolute', 
-                                    top: 0, 
-                                    left: 0, 
-                                    width: '100%', 
-                                    height: '100%',
-                                    backfaceVisibility: 'hidden',
-                                    transformStyle: 'preserve-3d'
-                                }}
-                            >
-                                <IndustryCard {...ind} />
+        <section id="industries" className="industries-netflix-section">
+
+            {/* Grid Container (Fades/blurs out when expanded) */}
+            <motion.div
+                className="ind-netflix-container"
+                animate={{
+                    opacity: expandedIndustry ? 0.3 : 1,
+                    filter: expandedIndustry ? 'blur(10px) grayscale(50%)' : 'blur(0px) grayscale(0%)',
+                    scale: expandedIndustry ? 0.95 : 1
+                }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                style={{ pointerEvents: expandedIndustry ? 'none' : 'auto' }}
+            >
+                {categories.map((cat, idx) => (
+                    <CategoryRow
+                        key={idx}
+                        title={cat.title}
+                        items={cat.items}
+                        onSelect={setExpandedIndustry}
+                    />
+                ))}
+            </motion.div>
+
+            {/* Split View Overlay */}
+            <AnimatePresence>
+                {expandedIndustry && (
+                    <div className="split-view-overlay">
+                        {/* Left Sidebar */}
+                        <motion.div
+                            className="split-sidebar"
+                            initial={{ x: '-100%', opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: '-100%', opacity: 0 }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                        >
+                            <h3 className="sidebar-title">Explore Industries</h3>
+                            <div className="sidebar-list">
+                                {industries.map(ind => (
+                                    <button
+                                        key={ind.number}
+                                        className={`sidebar-item ${expandedIndustry.number === ind.number ? 'active' : ''}`}
+                                        onClick={() => setExpandedIndustry(ind)}
+                                    >
+                                        <ind.icon size={22} className="sidebar-icon" />
+                                        <span>{ind.name}</span>
+                                    </button>
+                                ))}
                             </div>
-                        ))}
+                        </motion.div>
+
+                        {/* Right Detail Panel */}
+                        <div className="split-detail-container">
+                            <motion.div
+                                layoutId={`card-${expandedIndustry.number}`}
+                                className="detail-panel-card"
+                            >
+                                <button className="close-btn" onClick={() => setExpandedIndustry(null)}>
+                                    <X size={24} />
+                                </button>
+
+                                {/* Left Side: Image Column */}
+                                <div key={`img-${expandedIndustry.number}`} className="detail-image-column" style={{ '--bg-image': `url(${expandedIndustry.image})` }}>
+                                    <div className="detail-image-overlay"></div>
+                                    <div className="detail-hero-content">
+                                        <motion.div
+                                            className="ind-top-meta"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.3, duration: 0.4 }}
+                                        >
+                                            <expandedIndustry.icon size={32} className="ind-icon" />
+                                        </motion.div>
+
+                                        <div className="name-reveal-wrapper">
+                                            <motion.div
+                                                className="reveal-line"
+                                                initial={{ scaleX: 0 }}
+                                                animate={{ scaleX: 1 }}
+                                                transition={{ delay: 0.4, duration: 0.4, ease: "easeOut" }}
+                                            />
+                                            <div className="name-overflow-hidden">
+                                                <motion.h2
+                                                    className="ind-name large"
+                                                    initial={{ y: "100%" }}
+                                                    animate={{ y: 0 }}
+                                                    transition={{ delay: 0.45, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                                >
+                                                    {expandedIndustry.name}
+                                                </motion.h2>
+                                            </div>
+                                        </div>
+
+                                        <motion.p
+                                            className="ind-tagline large"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.6, duration: 0.4 }}
+                                        >
+                                            {expandedIndustry.tagline}
+                                        </motion.p>
+                                    </div>
+                                </div>
+
+                                {/* Right Side: Text Column */}
+                                <motion.div
+                                    key={`text-${expandedIndustry.number}`}
+                                    className="detail-text-column"
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="hidden"
+                                    variants={{
+                                        visible: { transition: { staggerChildren: 0.06, delayChildren: 0.7 } },
+                                        hidden: { transition: { staggerChildren: 0.02, staggerDirection: -1 } }
+                                    }}
+                                >
+                                    <motion.p className="detail-desc" variants={fadeUpVariant}>
+                                        {expandedIndustry.description}
+                                    </motion.p>
+
+                                    <motion.div className="detail-section" variants={fadeUpVariant}>
+                                        <h4 className="detail-section-title"><CheckCircle2 size={18} className="text-primary" /> Our Capabilities</h4>
+                                        <ul className="detail-list list-primary">
+                                            {expandedIndustry.capabilities.map((cap, i) => (
+                                                <motion.li key={i} variants={fadeUpVariant}>{cap}</motion.li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+
+                                    {expandedIndustry.outcomes && expandedIndustry.outcomes.length > 0 && (
+                                        <motion.div className="detail-section mt-4" variants={fadeUpVariant}>
+                                            <h4 className="detail-section-title"><TrendingUp size={18} className="text-success" /> Business Outcomes</h4>
+                                            <ul className="detail-list list-success outcomes">
+                                                {expandedIndustry.outcomes.map((out, i) => (
+                                                    <motion.li key={i} variants={fadeUpVariant}>{out}</motion.li>
+                                                ))}
+                                            </ul>
+                                        </motion.div>
+                                    )}
+                                </motion.div>
+                            </motion.div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                )}
+            </AnimatePresence>
 
             <div className="section-footer text-center">
                 <h3 className="footer-heading">Your Industry. Our Expertise. Extraordinary Results.</h3>
@@ -383,7 +581,7 @@ export const Industries = () => {
                     <span className="divider">|</span>
                     <span>Measurable ROI from Day One ✦</span>
                 </div>
-                <a href="#" className="btn btn-primary mt-4">Contact Halftone Systems</a>
+                <button className="btn btn-primary mt-4">Contact Halftone Systems</button>
             </div>
         </section >
     );

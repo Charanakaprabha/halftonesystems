@@ -257,8 +257,8 @@
     color: var(--c-primary, #6366f1);
 }
 
-.nav-item:hover > .nav-link .hover-tick,
-.dropdown-item:hover > .hover-tick {
+.nav-item:hover>.nav-link .hover-tick,
+.dropdown-item:hover>.hover-tick {
     width: 14px;
     opacity: 1;
     margin-right: 4px;
