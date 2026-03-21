@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Target, Award, Zap, Brain, Handshake, BarChart, Globe, Smartphone, Building, Lightbulb, RefreshCw, Cloud, Settings, Activity, Bot, Microscope, Trophy } from 'lucide-react';
 import { Hero } from '../components/Hero';
@@ -354,7 +355,7 @@ export const Home = () => {
                         <p className="text-light-blue cta-subtext reveal reveal-stagger-3">
                             Join the ranks of forward-thinking organizations who have chosen Halftone Systems as their trusted digital transformation partner.
                         </p>
-                        <h3 className="text-white cta-contact reveal reveal-stagger-4">Contact us today • www.halftonesystems.com</h3>
+                        <Link to="/contact" className="text-white cta-contact reveal reveal-stagger-4">Contact us today • www.halftonesystems.com</Link>
                     </div>
                 </div>
             </section>
