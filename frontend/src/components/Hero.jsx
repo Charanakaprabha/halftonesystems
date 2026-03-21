@@ -51,18 +51,18 @@ export const Hero = () => {
                     opacity: 0,
                     zIndex: 10
                 }}>
-                    <span style={{ 
-                        fontSize: '10px', 
-                        letterSpacing: '0.2em', 
-                        textTransform: 'uppercase', 
+                    <span style={{
+                        fontSize: '10px',
+                        letterSpacing: '0.2em',
+                        textTransform: 'uppercase',
                         color: 'rgba(11, 31, 64, 0.6)',
                         fontFamily: "'Inter', sans-serif"
                     }}>Scroll</span>
-                    <div style={{ 
-                        width: '1px', 
-                        height: '40px', 
-                        background: `linear-gradient(180deg, #3b82f6, transparent)`, 
-                        animation: 'scrollPulse 2s ease-in-out infinite' 
+                    <div style={{
+                        width: '1px',
+                        height: '40px',
+                        background: `linear-gradient(180deg, #3b82f6, transparent)`,
+                        animation: 'scrollPulse 2s ease-in-out infinite'
                     }} />
                 </div>
             </div>
