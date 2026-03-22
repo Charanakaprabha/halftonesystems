@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './CTA.css';
 
 export const CTA = () => {
@@ -18,7 +19,7 @@ export const CTA = () => {
                     <span className="divider">|</span>
                     <span>Fast Implementation — Go Live in 30 Days ✦</span>
                 </div>
-                <button className="btn btn-primary cta-btn">Contact Us Today</button>
+                <Link to="/contact" className="btn btn-primary cta-btn">Contact Us Today</Link>
                 <p className="cta-subtext">Discover why industry leaders choose Halftone Systems.</p>
             </div>
         </section>
