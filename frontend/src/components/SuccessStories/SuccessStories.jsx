@@ -1,0 +1,227 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import {
+    ShoppingCart,
+    Smartphone,
+    Ambulance,
+    GraduationCap,
+    TestTube2,
+    Network,
+    Building2,
+    Cpu,
+    Wheat,
+    Zap,
+    Landmark,
+    Globe2
+} from 'lucide-react';
+import './SuccessStories.css';
+
+export const SuccessStories = () => {
+    // 1. Container Stagger Animation
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    // 2. Individual Item Fade-in-up Animation
+    const itemVariants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 70,
+                damping: 15,
+                mass: 1
+            }
+        }
+    };
+
+
+
+    const stories = [
+        {
+            icon: <ShoppingCart size={28} className="ss-icon" />,
+            title: "DICK'S SPORTING GOODS",
+            desc: "Delivered high-performance technology services for Dick's Sporting Goods — supporting digital commerce operations, system reliability, and technology excellence at enterprise scale.",
+            tag: "Retail & E-commerce",
+            colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
+            image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <Smartphone size={28} className="ss-icon" />,
+            title: "OHM",
+            desc: "End-to-end delivery of iOS and Android mobile applications paired with a comprehensive Fleet Management system — giving OHM real-time visibility and operational control.",
+            tag: "Mobility & Fleet Tech",
+            colSpan: "col-span-1",
+            image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <Ambulance size={28} className="ss-icon" />,
+            title: "BHARAT CARE AMBULANCE SERVICE",
+            desc: "Architected and deployed a full iOS and Android mobile application with integrated fleet management — dramatically improving emergency response coordination.",
+            tag: "Healthcare & Emergency Tech",
+            colSpan: "col-span-1",
+            image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <GraduationCap size={28} className="ss-icon" />,
+            title: "CREIGHTON UNIVERSITY",
+            desc: "Delivered strategic technology services to Creighton University — supporting their academic digital ecosystem, systems integration, and institutional technology goals.",
+            tag: "Education & EdTech",
+            colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
+            image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <TestTube2 size={28} className="ss-icon" />,
+            title: "VIRCHOW BIOTECH PRIVATE LIMITED",
+            desc: "Provided specialised technology services to Virchow Biotech — enabling them to optimise operations, enhance compliance workflows, and accelerate digital transformation.",
+            tag: "Healthcare & Pharma",
+            colSpan: "col-span-1 md:col-span-2 lg:col-span-1",
+            image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <Network size={28} className="ss-icon" />,
+            title: "RAGHAVA LIFE SCIENCES",
+            desc: "Designed and deployed a robust enterprise networking architecture — ensuring secure, high-availability connectivity across critical laboratory environments.",
+            tag: "Life Sciences & Networking",
+            colSpan: "col-span-1",
+            image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <Building2 size={28} className="ss-icon" />,
+            title: "TFMC",
+            desc: "Delivered comprehensive technology services to the Telangana Facility Management Council — supporting their digital operations and governance technology needs.",
+            tag: "Government & Public Sector",
+            colSpan: "col-span-1",
+            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <Cpu size={28} className="ss-icon" />,
+            title: "PROMEA®",
+            desc: "Provided end-to-end technology services to Promea — helping them build scalable digital infrastructure and accelerate their path from vision to high-growth operation.",
+            tag: "Technology Services",
+            colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
+            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <Wheat size={28} className="ss-icon" />,
+            title: "MITHUNA FOODS",
+            desc: "Supported Mithuna Foods with technology services enabling smarter supply chain management, digital commerce capabilities, and operational efficiency.",
+            tag: "Food & Agri Trade",
+            colSpan: "col-span-1",
+            image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <Zap size={28} className="ss-icon" />,
+            title: "WPP ENERGY",
+            desc: "Partnered with WPP Energy on their technology journey — supporting their mission to deliver innovative, sustainable energy production solutions at a global scale.",
+            tag: "Energy & Utilities",
+            colSpan: "col-span-1",
+            image: "https://images.unsplash.com/photo-1466611653911-9c617eb0d39e?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <Landmark size={28} className="ss-icon" />,
+            title: "ROYAL ORBIT HOLDING GROUP",
+            desc: "Delivered technology services to Royal Orbit Holding Group — enabling cross-portfolio digital integration and strategic technology advisory.",
+            tag: "Finance & Holdings",
+            colSpan: "col-span-1 md:col-span-2 lg:col-span-1",
+            image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+            icon: <Globe2 size={28} className="ss-icon" />,
+            title: "PX NORDIC · DARIAN · CHEMIE-TECH",
+            desc: "Extended our global footprint to Nordic, Middle Eastern, and European markets — providing specialised technology services across IT, trading, and specialty chemicals.",
+            tag: "Global Technology Services",
+            colSpan: "col-span-1 md:col-span-3 lg:col-span-3",
+            image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+        },
+    ];
+
+    return (
+        <section id="success-stories" className="success-stories-section">
+            <div className="ss-container">
+                <div className="ss-header-block" style={{
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '4rem'
+                }}>
+                    <div style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        marginBottom: '1rem',
+                    }}>
+                        <span style={{
+                            fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.1em',
+                            textTransform: 'uppercase', color: 'var(--c-primary)',
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                        }}>
+                            ─── SUCCESS STORIES
+                        </span>
+                    </div>
+
+                    {/* headline */}
+                    <h2 style={{
+                            fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                            fontWeight: 800,
+                            marginTop: 0,
+                            marginBottom: '1.5rem',
+                            lineHeight: 1.2,
+                            color: '#111827',
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                    }}>
+                        Trusted by Industry Leaders<br />
+                        <span style={{ color: 'var(--c-primary)' }}>Worldwide</span>
+                    </h2>
+
+                    <p className="ss-vision-desc">From Silicon Valley sports giants to Indian government councils, from European biotech firms to American universities — our success stories span industries, continents, and ambitions.</p>
+                </div>
+
+                <motion.div
+                    className="ss-bento-grid"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                >
+                    {stories.map((story, idx) => (
+                        <motion.div
+                            key={idx}
+                            className={`ss-bento-item ${story.colSpan}`}
+                            variants={itemVariants}
+                        >
+                            <motion.div
+                                className="ss-glass-card"
+                            >
+                                <img src={story.image} alt={story.title} className="ss-bg-image" />
+                                <div className="ss-card-base-overlay"></div>
+                                <div className="ss-card-overlay"></div>
+                                <div className="ss-card-content">
+                                    <div className="ss-card-header">
+                                        <div className="ss-icon-wrapper">
+                                            {story.icon}
+                                        </div>
+                                        <h5 className="ss-card-title">{story.title}</h5>
+                                    </div>
+
+                                    <p className="ss-card-desc">{story.desc}</p>
+
+                                    <div className="ss-card-footer">
+                                        <div className="ss-glowing-pill">
+                                            <div className="ss-pill-dot"></div>
+                                            {story.tag}
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    );
+};

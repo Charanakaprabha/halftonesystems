@@ -1,0 +1,32 @@
+.intro {
+    background: linear-gradient(rgba(11, 31, 64, 0.85), rgba(11, 31, 64, 0.85)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat fixed;
+    padding-bottom: 2rem;
+}
+
+/* WHAT WE DO — plain light color (no gradient) */
+.intro .section-title {
+    color: #FFFFFF;
+    -webkit-text-fill-color: #FFFFFF;
+    margin-bottom: 1.5rem;
+    background: none;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+}
+
+.intro-heading {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #fff, #e9d5ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.intro-text {
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}

@@ -1,0 +1,81 @@
+﻿
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\BB8Model.jsx
+   9:20  error  'materials' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                     no-unused-vars
+  13:11  error  'headRef' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  38:13  error  Error: This value cannot be modified
+
+Modifying a value returned from a hook is not allowed. Consider moving the modification into the hook where the value is constructed.
+
+  36 |
+  37 |         if (head) {
+> 38 |             head.rotation.y = THREE.MathUtils.lerp(head.rotation.y, x * 0.5, 0.1)
+     |             ^^^^^^^^^^^^^ `nodes` cannot be modified
+  39 |             head.rotation.x = THREE.MathUtils.lerp(head.rotation.x, -y * 0.3, 0.1)
+  40 |         }
+  41 |     })  react-hooks/immutability
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\Contact.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\Footer.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\Logo3D.jsx
+  6:1  error  'thr' is not defined  no-undef
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\Navbar.jsx
+  33:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  31 |     // Also close mobile menu on route change
+  32 |     useEffect(() => {
+> 33 |         setIsMobileMenuOpen(false);
+     |         ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  34 |         window.scrollTo(0, 0);
+  35 |     }, [location]);
+  36 |  react-hooks/set-state-in-effect
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\SectionSeparator.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\Services.jsx
+  5:30  error  'Icon' is defined but never used  no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\SuccessStories\SuccessStories.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\WhatWeDo\Industries.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\WhatWeDo\SpecializedServices.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  6:27  error  'Icon' is defined but never used                                               no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\WhatWeDo\TechSuite.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  6:27  error  'Icon' is defined but never used                                               no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\WhatWeDo\WhatWeDoTimeline.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\WhatWeDo\WhyChoose.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  6:29  error  'Icon' is defined but never used                                               no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\components\WhoWeAre\WhoWeAre.jsx
+   2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                  no-unused-vars
+  28:11  error  'floatVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\pages\CareersPage.jsx
+  19:8  warning  React Hook useEffect has a missing dependency: 'threshold'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\chara\OneDrive\Documents\Halftone-systems\frontend\src\pages\Home.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+Γ£û 22 problems (21 errors, 1 warning)
+
