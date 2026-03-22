@@ -16,13 +16,20 @@
 
 .hero {
     position: relative;
-    background-color: #ffffff;
     overflow: hidden;
     display: flex;
-    padding-top: var(--header-height, 60px);
-    padding-bottom: 2rem;
-    min-height: 90vh;
-    color: #0b1f40;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--header-height));
+    margin-top: var(--header-height);
+    padding-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-bottom: 2rem;
+        min-height: calc(85vh - var(--header-height));
+    }
 }
 
 .hero-container {
@@ -31,51 +38,33 @@
     width: 100%;
 }
 
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    align-items: center;
-    text-align: left;
-    gap: 2rem;
-}
-
-.hero-content {
-    max-width: 100%;
-    margin-left: 0;
-}
-
-
-
 .hero-title {
-    font-size: 4rem;
-    line-height: 1.1;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
     opacity: 0;
-    animation: slideIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    color: #0b1f40;
-}
-
-.hero-title .highlight {
-    color: var(--c-primary);
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-subtitle {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
-    max-width: 800px;
     opacity: 0;
-    animation: slideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-    color: #4b5563;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
 }
 
 .hero-actions {
     display: flex;
-    gap: 1rem;
-    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
     opacity: 0;
-    animation: slideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-btn {
@@ -128,7 +117,9 @@
 
     .hero-actions {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+        width: 100%;
     }
 
     .hero-btn {
@@ -153,3 +144,12 @@
     align-items: center;
     justify-content: center;
 }
+
+.hero-btn:hover .hero-btn-arrow {
+    animation: arrowSideMove 0.6s ease-in-out infinite;
+}
+
+@keyframes arrowSideMove {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
+}

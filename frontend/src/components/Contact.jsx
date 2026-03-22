@@ -71,10 +71,10 @@ const ContactForm = () => {
 
 export const Contact = () => {
     const locations = [
-        { country: "India", flag: "🇮🇳", label: "Headquarters" },
-        { country: "Germany", flag: "🇩🇪", label: "Europe" },
-        { country: "USA", flag: "🇺🇸", label: "Americas" },
-        { country: "UK", flag: "🇬🇧", label: "Europe" }
+        { country: "India", label: "Headquarters" },
+        { country: "Germany", label: "Europe" },
+        { country: "USA", label: "Americas" },
+        { country: "UK", label: "Europe" }
     ];
 
     const fadeUpVariants = {
@@ -100,7 +100,7 @@ export const Contact = () => {
                     viewport={{ once: true, amount: 0.1 }}
                     variants={fadeUpVariants}
                 >
-                    <p className="section-subtitle-small">● WE'RE READY TO CONNECT ●</p>
+                    <p className="section-subtitle-small">WE'RE READY TO CONNECT</p>
                     <h2 className="section-title section-title-dark">Let's Start a Conversation.</h2>
                     <p className="contact-intro">
                         Whether you have a bold vision, a complex challenge, or simply want to explore what's possible — our team is here, ready to listen and ready to deliver.
@@ -115,7 +115,7 @@ export const Contact = () => {
                     viewport={{ once: true, amount: 0.1 }}
                 >
                     <motion.div className="contact-info" variants={fadeUpVariants}>
-                        <h3 className="info-heading">─── CONTACT INFORMATION</h3>
+                        <h3 className="info-heading">CONTACT INFORMATION</h3>
                         <h2 className="info-title">Reach Out to Us</h2>
 
                         <div className="info-block glass-card">
@@ -142,7 +142,7 @@ export const Contact = () => {
                     </motion.div>
 
                     <motion.div className="contact-form-wrapper glass-card" variants={fadeUpVariants}>
-                        <h3 className="info-heading">─── SEND A MESSAGE</h3>
+                        <h3 className="info-heading">SEND A MESSAGE</h3>
                         <ContactForm />
                     </motion.div>
                 </motion.div>
@@ -155,7 +155,7 @@ export const Contact = () => {
                     variants={containerVariants}
                 >
                     <motion.div variants={fadeUpVariants}>
-                        <h3 className="info-heading">─── GLOBAL PRESENCE</h3>
+                        <h3 className="info-heading">GLOBAL PRESENCE</h3>
                         <h2 className="section-title section-title-dark text-center" style={{ fontSize: '2.5rem' }}>A Global Reach, A Local Touch</h2>
                         <p className="presence-desc">Serving clients across four countries with the precision of a trusted partner and the power of an international firm.</p>
                     </motion.div>
@@ -163,7 +163,6 @@ export const Contact = () => {
                     <div className="locations-grid">
                         {locations.map((loc, i) => (
                             <motion.div key={i} className="location-card glass-card" variants={fadeUpVariants}>
-                                <span className="flag">{loc.flag}</span>
                                 <h4>{loc.country}</h4>
                                 <p>{loc.label}</p>
                             </motion.div>

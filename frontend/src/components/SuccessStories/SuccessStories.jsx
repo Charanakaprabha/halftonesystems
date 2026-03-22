@@ -146,7 +146,7 @@ export const SuccessStories = () => {
     ];
 
     return (
-        <section id="success-stories" className="success-stories-section">
+        <section id="success-stories" className="success-stories-section hero-format-standard">
             <div className="ss-container">
                 <div className="ss-header-block" style={{
                     display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '4rem'
@@ -160,7 +160,7 @@ export const SuccessStories = () => {
                             textTransform: 'uppercase', color: 'var(--c-primary)',
                             fontFamily: "'Inter', system-ui, sans-serif",
                         }}>
-                            ─── SUCCESS STORIES
+                            SUCCESS STORIES
                         </span>
                     </div>
 

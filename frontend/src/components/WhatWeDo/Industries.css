@@ -1,6 +1,7 @@
 /* Industries V2 CSS */
 
 .industries-v2-section {
+    position: relative;
     background-color: #FFFFFF;
     font-family: inherit;
     overflow-x: hidden;
@@ -96,31 +97,21 @@
 .ind-seamless-row {
     position: relative;
     display: flex;
-    min-height: 520px;
+    flex-direction: row;
+    min-height: 380px;
     width: 100%;
-    align-items: center;
     margin: 0;
     padding: 0;
 }
 
+.ind-seamless-row.reverse {
+    flex-direction: row-reverse;
+}
+
 .ind-img-panel {
-    width: 60%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-}
-
-.ind-img-panel.left {
-    left: 0;
-    mask-image: linear-gradient(to right, black 55%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 55%, transparent 100%);
-}
-
-.ind-img-panel.right {
-    right: 0;
-    mask-image: linear-gradient(to left, black 55%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to left, black 55%, transparent 100%);
+    width: 50%;
+    position: relative;
+    display: flex;
 }
 
 .ind-img-panel img {
@@ -132,22 +123,14 @@
 
 /* Content Block */
 .ind-text-panel {
-    width: 45%;
+    width: 50%;
     position: relative;
     z-index: 2;
-    padding: 40px 48px;
+    padding: 30px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: transparent;
-}
-
-.ind-text-panel.right {
-    margin-left: auto;
-}
-
-.ind-text-panel.left {
-    margin-right: auto;
 }
 
 .ind-text-inner {
@@ -238,7 +221,7 @@
 }
 
 .ind-detail-list li::before {
-    content: "•";
+    content: "-";
     color: #1A6BFF;
     position: absolute;
     left: 0;
@@ -301,6 +284,16 @@
     .ind-seamless-row {
         flex-direction: column !important;
         min-height: auto;
+    }
+    
+    .ind-lists-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .ind-detail-section {
+        flex: 1 1 100%;
+        width: 100%;
     }
     
     .marquee-content {

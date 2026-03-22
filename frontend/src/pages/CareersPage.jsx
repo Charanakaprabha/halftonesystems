@@ -137,24 +137,26 @@ function JobCard({ job, index, parentVisible, viewMode }) {
         <div
             onMouseEnter={() => setHov(true)}
             onMouseLeave={() => setHov(false)}
+            className="card-shine-top"
             style={{
                 position: 'relative',
                 background: hov
-                    ? 'rgba(255,255,255,0.85)'
+                    ? 'rgba(255,255,255,0.95)'
                     : 'rgba(255,255,255,0.70)',
                 backdropFilter: 'blur(18px)',
                 WebkitBackdropFilter: 'blur(18px)',
                 border: `1px solid ${hov ? T.primaryBorderHov : T.border}`,
                 borderRadius: '16px',
                 overflow: 'hidden',
-                cursor: 'default',
-                transition: 'all 0.38s cubic-bezier(0.22,1,0.36,1)',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease-out',
                 transform: parentVisible
-                    ? hov ? 'translateY(-6px)' : 'translateY(0)'
+                    ? hov ? 'translateY(-4px)' : 'translateY(0)'
                     : 'translateY(38px)',
                 opacity: parentVisible ? 1 : 0,
-                transitionDelay: parentVisible ? `${index * 65}ms` : '0ms',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+                boxShadow: hov 
+                    ? '0 12px 24px rgba(0,0,0,0.08)' 
+                    : '0 2px 12px rgba(0,0,0,0.04)',
                 display: 'flex',
                 flexDirection: viewMode === 'list' ? 'row' : 'column',
                 alignItems: viewMode === 'list' ? 'center' : 'stretch',
@@ -311,12 +313,13 @@ export const CareersPage = () => {
       ════════════════════════════════ */}
             <section
                 ref={heroRef}
+                className="hero-format-standard"
                 style={{
-                    position: 'relative', width: '100%', minHeight: '100vh',
+                    position: 'relative', width: '100%', minHeight: '80vh',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     background: '#ffffff',
                     overflow: 'hidden',
-                    padding: '130px 24px 110px',
+                    padding: '0 24px 100px',
                     boxSizing: 'border-box',
                 }}
             >
@@ -364,17 +367,15 @@ export const CareersPage = () => {
                 }}>
 
                     {/* eyebrow — matches WhoWeAre section title style */}
-                        <h4 style={{
+                        <h4 className="eyebrow-format-standard" style={{
                             color: 'var(--c-primary)',
                             fontSize: '0.9rem',
                             fontWeight: 700,
                             letterSpacing: '0.1em',
-                            marginTop: 0,
-                            marginBottom: '1rem',
                             fontFamily: "'Inter', system-ui, sans-serif",
                             textTransform: 'uppercase'
                         }}>
-                            ─── WE'RE HIRING
+                            WE'RE HIRING
                         </h4>
 
                     {/* headline — increased size per user request */}
@@ -394,15 +395,6 @@ export const CareersPage = () => {
                         <span style={{ color: T.primary }}>With Us.</span>
                     </h1>
 
-                    {/* divider — gradient line */}
-                    <div style={{
-                        width: '60px', height: '2px', margin: '32px auto',
-                        background: `linear-gradient(90deg, transparent, ${T.primary}, transparent)`,
-                        borderRadius: '2px',
-                        transform: heroVisible ? 'scaleX(1)' : 'scaleX(0)',
-                        opacity: heroVisible ? 1 : 0,
-                        transition: 'transform 0.7s ease-out 0.30s, opacity 0.7s ease-out 0.30s',
-                    }} />
 
                     <p style={{
                         margin: '0 auto', maxWidth: '800px',
@@ -466,7 +458,7 @@ export const CareersPage = () => {
                             opacity: labelVisible ? 1 : 0,
                             transition: 'all 0.65s ease-out 0s',
                         }}>
-                            ─── OPEN POSITIONS
+                            OPEN POSITIONS
                         </p>
 
                         <h2 style={{
@@ -666,15 +658,33 @@ export const CareersPage = () => {
           50%       { opacity: 0.85; transform: scaleY(1.1); }
         }
 
-        /* Responsive grid — 2 col tablet, 1 col mobile */
+         /* Responsive grid — 2 col tablet, 1 col mobile */
         @media (max-width: 1024px) {
           .careers-jobs-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+          .hero-format-standard {
+            min-height: auto !important;
+            padding: 120px 20px 60px !important;
+          }
           .careers-jobs-grid {
             grid-template-columns: 1fr;
+          }
+          #jobs {
+            padding: 60px 20px 80px !important;
+          }
+          .ss-vision-desc, .wa-description {
+            font-size: 1rem !important;
+          }
+        }
+        @media (max-width: 480px) {
+          h1 {
+            font-size: 2.5rem !important;
+          }
+          .wa-headline {
+            font-size: 2.2rem !important;
           }
         }
       `}</style>

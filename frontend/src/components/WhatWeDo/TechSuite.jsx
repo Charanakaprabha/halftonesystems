@@ -26,7 +26,7 @@ const TechItem = ({ icon: Icon, title, description, features }) => {
                 <ul className="tech-features">
                     {features.map((feature, idx) => (
                         <li key={idx} className="tech-feature-item">
-                            <span className="check-icon">✔</span> {feature}
+                            <span className="check-icon">-</span> {feature}
                         </li>
                     ))}
                 </ul>

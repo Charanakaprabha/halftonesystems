@@ -130,31 +130,35 @@ export const Navbar = () => {
             <div className="navbar-bottom">
                 <div className="container">
                     <div className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}>
-                        {navLinks.map((link, idx) => (
-                            <React.Fragment key={link.name}>
-                                {idx > 0 && <span className="nav-divider" />}
-                                <div className={`nav-item ${link.dropdown && link.dropdown.length > 0 ? 'has-dropdown' : ''}`}>
-                                    <Link to={link.href} className="nav-link">
-                                        {link.name}
-                                        {link.dropdown && link.dropdown.length > 0 && <ChevronDown size={13} className="dropdown-icon" />}
-                                    </Link>
-                                    {link.dropdown && link.dropdown.length > 0 && (
-                                        <div className="dropdown-menu">
-                                            {link.dropdown.map((item) => (
-                                                <a
-                                                    key={item.name}
-                                                    href={item.href}
-                                                    className="dropdown-item"
-                                                >
-                                                    <span className="hover-tick"><Check size={14} strokeWidth={3} /></span>
-                                                    {item.name}
-                                                </a>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            </React.Fragment>
-                        ))}
+                        {navLinks.map((link, idx) => {
+                            const isActive = location.pathname === link.href ||
+                                (link.href !== '/' && location.pathname.startsWith(link.href));
+                            return (
+                                <React.Fragment key={link.name}>
+                                    {idx > 0 && <span className="nav-divider" />}
+                                    <div className={`nav-item ${link.dropdown && link.dropdown.length > 0 ? 'has-dropdown' : ''} ${isActive ? 'active' : ''}`}>
+                                        <Link to={link.href} className="nav-link">
+                                            {link.name}
+                                            {link.dropdown && link.dropdown.length > 0 && <ChevronDown size={13} className="dropdown-icon" />}
+                                        </Link>
+                                        {link.dropdown && link.dropdown.length > 0 && (
+                                            <div className="dropdown-menu">
+                                                {link.dropdown.map((item) => (
+                                                    <a
+                                                        key={item.name}
+                                                        href={item.href}
+                                                        className="dropdown-item"
+                                                    >
+                                                        <span className="hover-tick"><Check size={14} strokeWidth={3} /></span>
+                                                        {item.name}
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </React.Fragment>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

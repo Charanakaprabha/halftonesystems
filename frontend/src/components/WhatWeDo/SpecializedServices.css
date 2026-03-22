@@ -98,7 +98,7 @@
 }
 
 .spec-features li::before {
-    content: "•";
+    content: "-";
     color: var(--c-primary);
     position: absolute;
     left: 0;
