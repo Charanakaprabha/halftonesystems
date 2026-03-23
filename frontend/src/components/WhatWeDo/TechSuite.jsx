@@ -165,8 +165,8 @@ export const TechSuite = () => {
             </motion.div>
             <div className="container">
                 <div className="section-header text-center">
-                    <h3 className="section-title section-title-dark" style={{ fontSize: '2.5rem' }}>OUR TECHNOLOGY SUITE</h3>
-                    <p className="section-subtitle">From enterprise platforms to cutting-edge AI — we cover every dimension of your digital journey.</p>
+                    <h3 className="section-title" style={{ fontSize: '2.5rem', color: '#ffffff' }}>OUR TECHNOLOGY SUITE</h3>
+                    <p className="section-subtitle" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>From enterprise platforms to cutting-edge AI — we cover every dimension of your digital journey.</p>
                 </div>
                 <div className="tech-grid">
                     {technologies.map((tech, i) => <TechItem key={i} {...tech} />)}

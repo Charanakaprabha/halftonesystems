@@ -39,6 +39,14 @@
   --hero-padding-top: 165px; /* Standard 23px gap */
   --eyebrow-margin: 23px;
   --section-gap: 100px;
+
+  /* Legacy Color Support (for What We Do components) */
+  --color-primary: var(--c-primary);
+  --color-secondary: var(--c-accent);
+  --color-bg: #0b1f40;
+  --color-bg-alt: #112a52;
+  --color-text: #ffffff;
+  --color-text-muted: #94a3b8;
 }
 
 @media (max-width: 768px) {
@@ -161,6 +169,20 @@ img {
 .bg-dark {
   background-color: var(--c-dark);
   color: var(--c-text-inverse);
+}
+
+.bg-dark-alt {
+  background-color: var(--color-bg-alt, #0b1f40);
+  color: #ffffff;
+}
+
+.bg-dark-alt .section-title,
+.bg-dark-alt .section-title-dark {
+  color: #ffffff !important;
+}
+
+.bg-dark-alt .section-subtitle {
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
 .text-primary {

@@ -73,7 +73,7 @@ export const SpecializedServices = () => {
             </motion.div>
             <div className="container">
                 <div className="section-header text-center reveal">
-                    <h3 className="section-title section-title-dark" style={{ fontSize: '2.5rem' }}>SPECIALIZED SERVICES</h3>
+                    <h3 className="section-title" style={{ fontSize: '2.5rem' }}>SPECIALIZED SERVICES</h3>
                     <p className="section-subtitle">Expert advisory, talent, and product development — your complete technology partner.</p>
                 </div>
                 <div className="spec-grid reveal-group">

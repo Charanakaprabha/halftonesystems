@@ -59,7 +59,7 @@ export const WhyChoose = () => {
             </motion.div>
             <div className="container">
                 <div className="section-header text-center">
-                    <h3 className="section-title section-title-dark" style={{ fontSize: '2.5rem' }}>WHY CHOOSE HALFTONE SYSTEMS?</h3>
+                    <h3 className="section-title" style={{ fontSize: '2.5rem' }}>WHY CHOOSE HALFTONE SYSTEMS?</h3>
                     <p className="section-subtitle">Six reasons why industry leaders trust us to power their digital transformation.</p>
                 </div>
                 <div className="reasons-grid">

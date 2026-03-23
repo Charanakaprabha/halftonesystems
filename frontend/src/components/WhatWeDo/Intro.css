@@ -1,31 +1,36 @@
 .intro {
     background: #ffffff;
-    padding: 6rem 1rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid rgba(37, 99, 235, 0.3); /* Blue colored line under hero section */
 }
 
-/* WHAT WE DO — dark title on white background */
-.intro .section-title {
-    color: var(--c-primary);
-    -webkit-text-fill-color: var(--c-primary);
-    margin-bottom: 1.5rem;
-    background: none;
-    background-clip: unset;
-    -webkit-background-clip: unset;
+.intro-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: #0b1f40;
+    letter-spacing: -0.02em;
+    font-family: 'Inter', system-ui, sans-serif;
 }
 
-.intro-heading {
-    font-size: clamp(2rem, 3vw, 3rem);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: #111827;
-    background: none;
-    -webkit-text-fill-color: #111827;
+.intro-title .text-black {
+    color: #000000;
 }
 
-.intro-text {
-    font-size: 1.15rem;
+.intro-subtitle {
+    font-size: clamp(1rem, 3vw, 1.15rem);
     max-width: 800px;
     margin: 0 auto;
     color: #4b5563;
     line-height: 1.6;
+}
+
+/* Response to user request: eyebrow font parity */
+.intro .eyebrow-format-standard {
+    color: var(--c-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
