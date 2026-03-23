@@ -8,7 +8,7 @@ export const Intro = () => {
                 <p className="eyebrow-format-standard">
                     OUR CAPABILITIES
                 </p>
-                <h1 className="intro-title">
+                <h1 className="universal-hero-title intro-title">
                     <span className="text-black">WHAT</span> <span className="text-primary">WE DO</span>
                 </h1>
                 <p className="intro-subtitle">

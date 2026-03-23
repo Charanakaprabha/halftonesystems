@@ -69,10 +69,8 @@ export const IndustriesHero = () => {
                     INDUSTRIES WE SERVE
                 </h4>
 
-                <h1 style={{
-                    fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                    fontWeight: 800,
-                    marginTop: 0,
+                <h1 className="universal-hero-title" style={{
+                    marginTop: '2rem',
                     marginBottom: '1.5rem',
                     lineHeight: 1.2,
                     color: '#111827',

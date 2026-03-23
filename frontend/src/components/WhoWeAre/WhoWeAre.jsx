@@ -77,7 +77,7 @@ export const WhoWeAre = () => {
                     }}>
                         WHO WE ARE
                     </p>
-                    <h2 className="wa-headline">We Don't Just Build Technology.<br /><span className="wa-accent">We Build Futures.</span></h2>
+                    <h1 className="universal-hero-title wa-headline" style={{ color: '#111827' }}>We Don't Just Build Technology.<br /><span className="wa-accent">We Build Futures.</span></h1>
                     <p className="wa-description">
                         Halftone Systems is a global technology powerhouse — engineering transformative digital solutions that turn ambitious visions into measurable competitive advantages.
                     </p>

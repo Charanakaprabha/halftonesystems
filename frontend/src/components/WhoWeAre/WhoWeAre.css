@@ -1,12 +1,11 @@
 .who-we-are-section {
-    position: relative;
+    position: relative !important;
     background-color: #FFFFFF;
     color: #1a1a1a;
     padding: 0 0 100px;
     overflow: hidden;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     z-index: 1;
-    /* Ensure section sits correctly in stack */
 }
 
 /* Three.js Background Container */
@@ -72,7 +71,7 @@
 }
 
 .wa-section-subtitle {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
     font-weight: 800;
     margin-top: 0;
     margin-bottom: 3rem;
@@ -97,7 +96,7 @@
 }
 
 .wa-headline {
-    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-size: clamp(2rem, 5vw, 4.5rem);
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
@@ -133,7 +132,7 @@
 }
 
 .wa-metric-value {
-    font-size: 3rem;
+    font-size: clamp(2rem, 8vw, 3.5rem);
     font-weight: 800;
     color: var(--c-primary);
     margin: 0 0 0.5rem 0;
@@ -257,7 +256,6 @@
 /* Timeline */
 .wa-timeline {
     position: relative;
-    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -364,7 +362,7 @@
 }
 
 .wa-pillar-id {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
     font-weight: 900;
     color: #e5e7eb;
     line-height: 1;
@@ -492,5 +490,20 @@
 
     .wa-stories-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .wa-section-subtitle {
+        font-size: 1.5rem;
+    }
+    .wa-metric-value {
+        font-size: 2.2rem;
+    }
+    .wa-founder-name {
+        font-size: 1.25rem;
+    }
+    .wa-pillar-header, .wa-pillar-content {
+        padding: 1.25rem;
     }
 }

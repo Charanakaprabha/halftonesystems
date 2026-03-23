@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: flex-end;
   font-family: var(--font-main);
+  pointer-events: none; /* Prevent the container from blocking clicks elsewhere */
 }
 
 .chatbot-fab {
@@ -23,6 +24,7 @@
   box-shadow: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  pointer-events: auto; /* Re-enable clicks for the button */
 }
 
 .chatbot-fab:hover {
@@ -83,7 +85,7 @@
   height: 8px;
   background: #10B981;
   border-radius: 50%;
-  box-shadow: 0 0 10px #10B981;
+  box-shadow: none; /* Removed box shadow as requested */
 }
 
 .chat-messages {

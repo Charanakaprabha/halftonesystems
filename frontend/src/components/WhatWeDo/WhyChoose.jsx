@@ -48,7 +48,7 @@ export const WhyChoose = () => {
     ];
 
     return (
-        <section className="why-choose section-padding bg-dark-alt" style={{ position: 'relative' }}>
+        <section className="why-choose section-padding" style={{ position: 'relative', backgroundColor: '#ffffff' }}>
             <motion.div
                 className="wwd-step-circle"
                 initial={{ backgroundColor: '#ffffff', color: 'var(--c-primary)' }}
@@ -59,7 +59,14 @@ export const WhyChoose = () => {
             </motion.div>
             <div className="container">
                 <div className="section-header text-center">
-                    <h3 className="section-title" style={{ fontSize: '2.5rem' }}>WHY CHOOSE HALFTONE SYSTEMS?</h3>
+                    <h2 style={{ 
+                        fontFamily: "'Inter', system-ui, sans-serif",
+                        fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
+                        fontWeight: 800,
+                        letterSpacing: '-0.03em',
+                        lineHeight: 1.1,
+                        color: '#0b1f40'
+                    }}>WHY CHOOSE HALFTONE SYSTEMS?</h2>
                     <p className="section-subtitle">Six reasons why industry leaders trust us to power their digital transformation.</p>
                 </div>
                 <div className="reasons-grid">

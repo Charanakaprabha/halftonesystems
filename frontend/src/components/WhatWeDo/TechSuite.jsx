@@ -154,7 +154,7 @@ export const TechSuite = () => {
     ];
 
     return (
-        <section id="tech-suite" className="tech-suite section-padding" style={{ position: 'relative' }}>
+        <section id="tech-suite" className="tech-suite section-padding" style={{ position: 'relative', backgroundColor: '#ffffff' }}>
             <motion.div
                 className="wwd-step-circle"
                 initial={{ backgroundColor: '#ffffff', color: 'var(--c-primary)' }}
@@ -165,8 +165,15 @@ export const TechSuite = () => {
             </motion.div>
             <div className="container">
                 <div className="section-header text-center">
-                    <h3 className="section-title" style={{ fontSize: '2.5rem', color: '#ffffff' }}>OUR TECHNOLOGY SUITE</h3>
-                    <p className="section-subtitle" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>From enterprise platforms to cutting-edge AI — we cover every dimension of your digital journey.</p>
+                    <h2 style={{ 
+                        fontFamily: "'Inter', system-ui, sans-serif",
+                        fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
+                        fontWeight: 800,
+                        letterSpacing: '-0.03em',
+                        lineHeight: 1.1,
+                        color: '#0b1f40'
+                    }}>OUR TECHNOLOGY SUITE</h2>
+                    <p className="section-subtitle">From enterprise platforms to cutting-edge AI — we cover every dimension of your digital journey.</p>
                 </div>
                 <div className="tech-grid">
                     {technologies.map((tech, i) => <TechItem key={i} {...tech} />)}

@@ -7,8 +7,21 @@ export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
     const [lastScrollY, setLastScrollY] = useState(0);
     const location = useLocation();
+
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+            setIsHidden(false); // Make sure it's visible when open
+        } else {
+            document.body.style.overflow = '';
+            setOpenMobileDropdown(null);
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [isMobileMenuOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -136,11 +149,13 @@ export const Navbar = () => {
                             return (
                                 <React.Fragment key={link.name}>
                                     {idx > 0 && <span className="nav-divider" />}
-                                    <div className={`nav-item ${link.dropdown && link.dropdown.length > 0 ? 'has-dropdown' : ''} ${isActive ? 'active' : ''}`}>
-                                        <Link to={link.href} className="nav-link">
-                                            {link.name}
-                                            {link.dropdown && link.dropdown.length > 0 && <ChevronDown size={13} className="dropdown-icon" />}
-                                        </Link>
+                                    <div className={`nav-item ${isActive ? 'active' : ''}`}>
+                                        <div style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
+                                            <Link to={link.href} className="nav-link" style={{ flexGrow: 1 }} onClick={() => setIsMobileMenuOpen(false)}>
+                                                {link.name}
+                                            </Link>
+                                        </div>
+                                        {/* Dropdown for DESKTOP only */}
                                         {link.dropdown && link.dropdown.length > 0 && (
                                             <div className="dropdown-menu">
                                                 {link.dropdown.map((item) => (

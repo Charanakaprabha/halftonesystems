@@ -101,7 +101,7 @@ export const Contact = () => {
                     variants={fadeUpVariants}
                 >
                     <p className="section-subtitle-small">WE'RE READY TO CONNECT</p>
-                    <h2 className="section-title section-title-dark">Let's Start a Conversation.</h2>
+                    <h1 className="universal-hero-title" style={{ color: '#111827' }}>Let's Start a Conversation.</h1>
                     <p className="contact-intro">
                         Whether you have a bold vision, a complex challenge, or simply want to explore what's possible — our team is here, ready to listen and ready to deliver.
                     </p>

@@ -10,6 +10,18 @@
     margin-top: 3rem;
 }
 
+@media (max-width: 480px) {
+    .spec-grid {
+        grid-template-columns: 1fr;
+    }
+    .spec-card-content {
+        padding: 1.5rem;
+    }
+    .spec-card-top {
+        padding: 0 1rem;
+    }
+}
+
 .spec-card {
     background: var(--c-primary);
     border: none;

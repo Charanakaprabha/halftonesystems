@@ -62,3 +62,18 @@
         padding-left: 100px;
     }
 }
+
+@media (max-width: 768px) {
+    .wwd-timeline-content .container {
+        padding-left: 0px !important; /* Remove timeline padding on mobile */
+    }
+    .wwd-timeline-track-container {
+        display: none !important; /* Hide track on mobile as requested */
+    }
+    .wwd-step-circle {
+        display: none !important; /* Hide step circles on mobile */
+    }
+    .wwd-timeline-wrapper {
+        padding: 0 !important;
+    }
+}

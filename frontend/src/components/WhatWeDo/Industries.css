@@ -111,10 +111,12 @@
 .ind-img-panel {
     width: 50%;
     position: relative;
-    display: flex;
 }
 
 .ind-img-panel img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -149,7 +151,7 @@
 }
 
 .ind-title {
-    font-size: 26px;
+    font-size: clamp(1.25rem, 4vw, 1.625rem);
     font-weight: 800;
     color: #0A0A0A;
     text-transform: uppercase;
@@ -299,4 +301,14 @@
     .marquee-content {
         font-size: 14px;
     }
+}
+
+@media (max-width: 480px) {
+    .ind-img-panel {
+        height: 220px;
+    }
+    .ind-text-panel {
+        padding: 30px 20px;
+    }
+    /* Removed empty ruleset */
 }

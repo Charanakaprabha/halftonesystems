@@ -5,7 +5,7 @@ import heroBg from '../assets/hero-bg.png';
 export const Hero = () => {
     return (
         <section className="hero" style={{ 
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(/src/assets/HS%20Photos/HomePage1.jpg)`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${heroBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed'
@@ -25,11 +25,10 @@ export const Hero = () => {
                         }}>
                             PREMIER TECHNOLOGY PARTNER
                         </h4>
-                        <h1 className="hero-title" style={{ 
+                        <h1 className="hero-title universal-hero-title" style={{ 
                             color: '#ffffff', 
-                            fontSize: 'clamp(3rem, 8vw, 5rem)',
                             lineHeight: 1,
-                            marginTop: '1.5rem',
+                            marginTop: '2.5rem', /* Increased padding on top of title as requested */
                             marginBottom: '2rem'
                         }}>
                             Growth.<br />
@@ -39,7 +38,6 @@ export const Hero = () => {
                         <p className="hero-subtitle" style={{ 
                             color: 'rgba(255, 255, 255, 0.95)', 
                             margin: '0 0 3rem 0',
-                            fontSize: '1.25rem',
                             maxWidth: '750px',
                             lineHeight: 1.5
                         }}>

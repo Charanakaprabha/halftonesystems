@@ -61,6 +61,34 @@
     margin-left: 0;
 }
 
+@media (max-width: 768px) {
+    .logo-img {
+        height: 36px;
+    }
+    .hs-logo {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    .name-img {
+        max-width: 200px;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 380px) {
+    .logo-img {
+        height: 28px;
+    }
+    .hs-logo {
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+    .name-img {
+        max-width: 140px;
+        object-fit: contain;
+    }
+}
+
 /* Logo hover effect removed per requirements */
 
 .brand-text {
@@ -355,31 +383,41 @@
 
 @media (max-width: 1024px) {
     .navbar-bottom {
-        display: none;
+        display: block; /* Support mobile menu within this container */
+        background: #ffffff;
     }
 
     .mobile-toggle {
         display: flex;
         align-items: center;
+        background: transparent;
+        border: none;
+        cursor: pointer;
     }
 
     .contact-btn {
         display: none;
     }
 
-    /* Mobile fullscreen nav */
-    .nav-links-mobile {
-        display: flex;
+    /* Mobile nav links container */
+    .navbar-links {
+        display: none; /* Hidden by default on mobile */
         flex-direction: column;
         position: absolute;
-        top: var(--header-height);
+        top: 100%;
         left: 0;
         width: 100%;
         background-color: #ffffff;
-        padding: 2rem;
-        gap: 1.5rem;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem 0;
+        height: auto;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         z-index: 1000;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Shown when toggle is active */
+    .navbar-links.active {
+        display: flex;
     }
 
     .nav-divider {
@@ -389,59 +427,33 @@
     .nav-item {
         width: 100%;
         height: auto;
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+        margin: 0;
         border-bottom: 1px solid #f3f4f6;
-        padding: 0.75rem 0;
     }
 
-    .nav-item:hover::after {
-        display: none;
+    .nav-item:hover {
+        background: rgba(37, 99, 235, 0.05);
     }
 
     .nav-link {
-        padding: 0;
+        padding: 1rem 1.5rem;
         font-size: 1rem;
-    }
-
-    .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        border-top: none;
-        border-bottom: none;
-        border-left: 2px solid var(--c-primary);
-        margin-top: 0.5rem;
-        padding-left: 0.5rem;
-        padding-right: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        background: transparent;
-        display: flex;
-        flex-direction: column;
-        gap: 0;
         width: 100%;
+        color: #111827;
+        justify-content: space-between;
+        display: flex; /* keep flex for the label + chevron */
     }
 
-    .dropdown-menu.grid-3col,
-    .dropdown-menu.grid-2col {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        padding-left: 0.5rem;
-        padding-right: 0;
-        padding-top: 0;
-        padding-bottom: 0;
+    .nav-item:hover .nav-link {
+        color: #2563EB;
+        background: rgba(37, 99, 235, 0.04);
     }
 
-    .dropdown-item {
-        color: #6b7280;
-        padding: 0.6rem 0.8rem;
-        font-size: 0.95rem;
-        opacity: 1;
-        transform: none;
-        justify-content: flex-start;
+    /* Hide dropdowns entirely on mobile per requirement */
+    .dropdown-menu {
+        display: none !important;
     }
-}
+}

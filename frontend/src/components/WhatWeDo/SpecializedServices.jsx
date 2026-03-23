@@ -62,7 +62,7 @@ export const SpecializedServices = () => {
     ];
 
     return (
-        <section id="specialized-services" className="specialized section-padding bg-dark-alt" style={{ position: 'relative' }}>
+        <section id="specialized-services" className="specialized section-padding" style={{ position: 'relative', backgroundColor: '#ffffff' }}>
             <motion.div
                 className="wwd-step-circle"
                 initial={{ backgroundColor: '#ffffff', color: 'var(--c-primary)' }}
@@ -73,7 +73,14 @@ export const SpecializedServices = () => {
             </motion.div>
             <div className="container">
                 <div className="section-header text-center reveal">
-                    <h3 className="section-title" style={{ fontSize: '2.5rem' }}>SPECIALIZED SERVICES</h3>
+                    <h2 style={{ 
+                        fontFamily: "'Inter', system-ui, sans-serif",
+                        fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
+                        fontWeight: 800,
+                        letterSpacing: '-0.03em',
+                        lineHeight: 1.1,
+                        color: '#0b1f40'
+                    }}>SPECIALIZED SERVICES</h2>
                     <p className="section-subtitle">Expert advisory, talent, and product development — your complete technology partner.</p>
                 </div>
                 <div className="spec-grid reveal-group">

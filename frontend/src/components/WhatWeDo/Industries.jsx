@@ -13,7 +13,7 @@ const industries = [
         number: "01",
         name: "AUTOMOTIVE",
         tagline: "Driving the Future of Mobility & Manufacturing",
-        image: "/src/assets/HS Photos/HomePage5.jpg",
+        image: "https://images.unsplash.com/photo-1562426509-5044a121aa49?auto=format&fit=crop&q=80",
         description: "The automotive industry is undergoing its most dramatic transformation in a century. Halftone Systems engineers the digital backbone that powers this revolution.",
         capabilities: [
             "Connected Vehicle & IoT Platforms",
@@ -36,7 +36,7 @@ const industries = [
         number: "02",
         name: "HEALTHCARE",
         tagline: "Transforming Patient Care Through Intelligent Technology",
-        image: "/src/assets/HS Photos/1.jpg",
+        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
         description: "Healthcare demands precision, compliance, and compassion. Halftone Systems delivers secure, HIPAA-compliant digital platforms that empower clinicians.",
         capabilities: [
             "Electronic Health Records (EHR/EMR)",
@@ -59,7 +59,7 @@ const industries = [
         number: "03",
         name: "PHARMACEUTICAL",
         tagline: "Accelerating Drug Discovery & Regulatory Excellence",
-        image: "/src/assets/HS Photos/2.jpg",
+        image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80",
         description: "In an industry where speed saves lives, Halftone Systems delivers intelligent technology that accelerates drug pipelines and transforms how pharma companies operate.",
         capabilities: [
             "Clinical Trial Management Systems",
@@ -82,7 +82,7 @@ const industries = [
         number: "04",
         name: "LIFE SCIENCES",
         tagline: "Powering Breakthroughs from Lab to Market",
-        image: "/src/assets/HS Photos/3.jpg",
+        image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80",
         description: "Life sciences companies operate at the intersection of innovation and regulation. Halftone Systems provides the digital infrastructure to advance human health.",
         capabilities: [
             "Genomics & Bioinformatics Platforms",
@@ -105,7 +105,7 @@ const industries = [
         number: "05",
         name: "MEDICAL",
         tagline: "Engineering Precision Solutions for Medical Excellence",
-        image: "/src/assets/HS Photos/4.jpg",
+        image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80",
         description: "Halftone Systems builds digital ecosystems that ensure precision, safety, and seamless patient outcomes across the full medical technology continuum.",
         capabilities: [
             "Medical Device Software (FDA/CE Certified)",
@@ -128,7 +128,7 @@ const industries = [
         number: "06",
         name: "RETAIL",
         tagline: "Reimagining Shopping Experiences for the Digital Age",
-        image: "/src/assets/HS Photos/HomePage4.jpg",
+        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
         description: "Today's retail winners are built on intelligent digital foundations. Halftone Systems equips retailers with the technology to compete, captivate, and grow.",
         capabilities: [
             "Omnichannel Commerce Platforms",
@@ -151,7 +151,7 @@ const industries = [
         number: "07",
         name: "TRAVEL & TOURISM",
         tagline: "Crafting Seamless Journeys in the Experience Economy",
-        image: "/src/assets/HS Photos/HomePage6.jpg",
+        image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80",
         description: "Halftone Systems helps airlines, hotels, tour operators, and travel agencies harness AI, mobile, and analytics to create journeys that inspire loyalty.",
         capabilities: [
             "Travel Booking & Reservation Platforms",
@@ -174,7 +174,7 @@ const industries = [
         number: "08",
         name: "EDUCATION & RESEARCH",
         tagline: "Empowering Learners & Advancing Knowledge at Scale",
-        image: "/src/assets/HS Photos/HomePage3.jpg",
+        image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80",
         description: "Halftone Systems delivers intelligent learning platforms and institutional technology that empowers educators, engages learners, and drives academic excellence worldwide.",
         capabilities: [
             "Learning Management Systems (LMS)",
@@ -197,7 +197,7 @@ const industries = [
         number: "09",
         name: "SERVICES INDUSTRY",
         tagline: "Elevating Service Delivery Through Smart Automation",
-        image: "/src/assets/HS Photos/Consulting Services.webp",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80",
         description: "Halftone Systems equips service organizations with the digital tools to work smarter, deliver faster, and build relationships that drive sustained growth.",
         capabilities: [
             "Professional Services Automation (PSA)",
@@ -220,7 +220,7 @@ const industries = [
         number: "10",
         name: "MEDIA & ENTERTAINMENT",
         tagline: "Powering Content, Engagement & Digital Experience",
-        image: "/src/assets/HS Photos/E1.jpg",
+        image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80",
         description: "The media landscape demands relentless innovation. Halftone Systems engineers the digital infrastructure that keeps creators and audiences constantly connected.",
         capabilities: [
             "OTT & Streaming Platform Development",
@@ -243,7 +243,7 @@ const industries = [
         number: "11",
         name: "FINANCE & BANKING",
         tagline: "Engineering Secure & Scalable Financial Ecosystems",
-        image: "/src/assets/HS Photos/11.jpg",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80",
         description: "In a world of digital-first banking and decentralized finance, Halftone Systems builds robust, compliant, and innovative financial platforms that drive growth.",
         capabilities: [
             "Core Banking Modernization",
@@ -266,7 +266,7 @@ const industries = [
         number: "12",
         name: "TECHNOLOGY & SOFTWARE",
         tagline: "Building the Foundations of Tomorrow's Digital Products",
-        image: "/src/assets/HS Photos/Java.jpg",
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
         description: "We partner with leading tech companies and ISVs to architect, develop, and scale software products that define markets and disrupt traditions.",
         capabilities: [
             "SaaS Product Development",
@@ -389,7 +389,14 @@ export const Industries = () => {
             </div>
 
             <div className="section-footer text-center">
-                <h3 className="footer-heading">Your Industry. Our Expertise. Extraordinary Results.</h3>
+                <h3 className="footer-heading" style={{ 
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                    fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
+                    fontWeight: 900,
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.1,
+                    color: '#0A0A0A'
+                }}>Your Industry. Our Expertise. Extraordinary Results.</h3>
                 <p className="footer-text" style={{ fontSize: '1.1rem', maxWidth: '800px', margin: '0 auto 1.5rem' }}>
                     No matter which sector you operate in, Halftone Systems brings the domain depth, technological excellence, and strategic partnership you need to lead your industry in the digital age.
                 </p>

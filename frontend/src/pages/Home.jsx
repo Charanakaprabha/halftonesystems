@@ -39,7 +39,7 @@ export const Home = () => {
                     <div className="section-header-centered reveal">
                         <h2 style={{ 
                             fontFamily: "'Inter', system-ui, sans-serif",
-                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             letterSpacing: '-0.03em',
                             lineHeight: 1.1,
@@ -109,7 +109,7 @@ export const Home = () => {
                     <div className="section-header-centered reveal">
                         <h2 style={{ 
                             fontFamily: "'Inter', system-ui, sans-serif",
-                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             letterSpacing: '-0.03em',
                             lineHeight: 1.1,
@@ -169,7 +169,7 @@ export const Home = () => {
                     <div className="section-header-centered reveal">
                         <h2 style={{ 
                             fontFamily: "'Inter', system-ui, sans-serif",
-                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             letterSpacing: '-0.03em',
                             lineHeight: 1.1,
@@ -301,7 +301,7 @@ export const Home = () => {
                     <div className="cta-box bg-dark-blue reveal">
                         <h2 className="text-white" style={{ 
                             fontFamily: "'Inter', system-ui, sans-serif",
-                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             letterSpacing: '-0.03em',
                             lineHeight: 1.1,
