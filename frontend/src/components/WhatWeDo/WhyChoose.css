@@ -67,5 +67,6 @@
     .reason-card {
         padding: 2.5rem 1.5rem !important;
         max-width: 450px !important;
+        margin: 0 auto !important;
     }
 }

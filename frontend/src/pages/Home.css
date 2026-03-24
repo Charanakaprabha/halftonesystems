@@ -481,8 +481,11 @@
 }
 
 .cta-contact {
-    font-size: 1.5rem;
+    display: block;
+    font-size: clamp(1rem, 4.5vw, 1.5rem);
     font-weight: 700;
+    word-break: break-word;
+    margin-top: 1rem;
 }
 
 /* Responsive Overrides */
@@ -555,6 +558,10 @@
     }
 
     .spacer {
+        display: none;
+    }
+
+    .home-stats-bar {
         display: none;
     }
 }

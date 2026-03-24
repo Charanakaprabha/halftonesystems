@@ -70,7 +70,7 @@ export const IndustriesHero = () => {
                 </h4>
 
                 <h1 className="universal-hero-title" style={{
-                    marginTop: '2rem',
+                    marginTop: 0,
                     marginBottom: '1.5rem',
                     lineHeight: 1.2,
                     color: '#111827',

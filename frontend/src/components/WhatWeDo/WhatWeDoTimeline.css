@@ -52,26 +52,23 @@
     transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
-/* Ensure content doesn't overlap the timeline on desktop and mobile */
-.wwd-timeline-content .container {
-    padding-left: 90px;
-}
-
-@media (max-width: 1240px) {
+/* Ensure content doesn't overlap the timeline on desktop */
+@media (min-width: 993px) {
     .wwd-timeline-content .container {
-        padding-left: 100px;
+        padding-left: 90px;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .wwd-timeline-content .container {
-        padding-left: 0px !important; /* Remove timeline padding on mobile */
+        padding-left: 0px !important;
+        padding-right: 0px !important;
     }
     .wwd-timeline-track-container {
-        display: none !important; /* Hide track on mobile as requested */
+        display: none !important;
     }
     .wwd-step-circle {
-        display: none !important; /* Hide step circles on mobile */
+        display: none !important;
     }
     .wwd-timeline-wrapper {
         padding: 0 !important;
