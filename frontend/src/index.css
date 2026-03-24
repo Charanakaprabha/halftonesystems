@@ -36,8 +36,8 @@
   --header-height: 142px;
   
   /* Hero Standardization */
-  --hero-padding-top: 165px; /* Standard 23px gap */
-  --eyebrow-margin: 23px;
+  --hero-padding-top: 165px; 
+  --hero-eyebrow-margin: 23px;
   --section-gap: 100px;
 
   /* Legacy Color Support (for What We Do components) */
@@ -216,11 +216,29 @@ h3 { font-size: clamp(1.25rem, 4vw, 2.5rem); line-height: 1.3; }
 }
 
 @media (max-width: 480px) {
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
     .universal-hero-title {
         font-size: 2rem !important;
         max-width: 100% !important;
         width: 100% !important;
+        margin-top: 0 !important;
     }
+    .eyebrow-format-standard {
+        margin-bottom: 0.25rem !important;
+    }
+    .hero-format-standard {
+        padding-top: 120px !important;
+    }
+}
+
+::selection {
+    background-color: rgba(37, 99, 235, 0.2);
+    color: inherit;
 }
 
 .section-title {
@@ -243,10 +261,10 @@ h3 { font-size: clamp(1.25rem, 4vw, 2.5rem); line-height: 1.3; }
 
 /* ─── Scroll Reveal ─────────────────────────────── */
 .reveal {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.visible {

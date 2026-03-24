@@ -48,7 +48,7 @@ export const WhyChoose = () => {
     ];
 
     return (
-        <section className="why-choose section-padding" style={{ position: 'relative', backgroundColor: '#ffffff' }}>
+        <section id="why-choose" className="why-choose section-padding" style={{ position: 'relative', backgroundColor: '#ffffff' }}>
             <motion.div
                 className="wwd-step-circle"
                 initial={{ backgroundColor: '#ffffff', color: 'var(--c-primary)' }}
@@ -70,7 +70,11 @@ export const WhyChoose = () => {
                     <p className="section-subtitle">Six reasons why industry leaders trust us to power their digital transformation.</p>
                 </div>
                 <div className="reasons-grid">
-                    {reasons.map((r, i) => <ReasonCard key={i} {...r} />)}
+                    {reasons.map((r, i) => (
+                        <div key={i} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                            <ReasonCard {...r} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

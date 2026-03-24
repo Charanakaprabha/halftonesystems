@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Target, Award, Zap, Brain, Handshake, BarChart, Globe, Smartphone, Building, Lightbulb, RefreshCw, Cloud, Settings, Activity, Bot, Microscope, Trophy } from 'lucide-react';
 import { Hero } from '../components/Hero';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Home.css';
 
 export const Home = () => {
+    useScrollReveal();
     return (
         <div className="home-page-new">
             <Hero />

@@ -66,7 +66,7 @@ export const IndustriesHero = () => {
                     fontFamily: "'Inter', system-ui, sans-serif",
                     textTransform: 'uppercase'
                 }}>
-                    INDUSTRIES WE SERVE
+                    Industries We Serve
                 </h4>
 
                 <h1 className="universal-hero-title" style={{

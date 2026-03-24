@@ -84,7 +84,11 @@ export const SpecializedServices = () => {
                     <p className="section-subtitle">Expert advisory, talent, and product development — your complete technology partner.</p>
                 </div>
                 <div className="spec-grid reveal-group">
-                    {services.map((s, i) => <SpecCard key={i} {...s} />)}
+                    {services.map((s, i) => (
+                        <div key={i} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                            <SpecCard {...s} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

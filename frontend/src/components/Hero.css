@@ -135,15 +135,16 @@
 
     .hero-btn {
         width: 100%;
+        min-height: 56px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
     }
+}
 
-    .hero-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-3d-logo {
-        display: none;
-    }
+.hero-btn {
+    min-width: 240px; /* Force uniform size on desktop */
+    justify-content: center;
 }
 
 /* ─── 3D Logo container (right side) ─── */

@@ -75,7 +75,7 @@ export const WhoWeAre = () => {
                         textTransform: 'uppercase',
                         fontFamily: "'Inter', system-ui, sans-serif",
                     }}>
-                        WHO WE ARE
+                        Who We Are
                     </p>
                     <h1 className="universal-hero-title wa-headline" style={{ color: '#111827' }}>We Don't Just Build Technology.<br /><span className="wa-accent">We Build Futures.</span></h1>
                     <p className="wa-description">

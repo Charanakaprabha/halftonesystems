@@ -44,17 +44,10 @@ export const Hero = () => {
                             We partner with global leaders to drive digital dominance through innovative technology services and talent solutions.
                         </p>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '20px', flexWrap: 'wrap' }}>
-                            <button className="btn btn-primary hero-btn" style={{ padding: '18px 40px', fontSize: '1.05rem', display: 'inline-flex', alignItems: 'center' }}>
+                            <button className="btn btn-primary hero-btn">
                                 Explore Our Services <ArrowRight size={18} className="hero-btn-arrow" style={{ marginLeft: '8px' }} />
                             </button>
-                            <button className="btn btn-outline hero-btn" style={{ 
-                                borderColor: 'rgba(255, 255, 255, 0.55)', 
-                                color: '#ffffff',
-                                padding: '18px 40px', 
-                                fontSize: '1.05rem',
-                                background: 'rgba(255,255,255,0.07)',
-                                display: 'inline-flex', alignItems: 'center'
-                            }}>
+                            <button className="btn btn-outline hero-btn">
                                 View Success Stories
                             </button>
                         </div>

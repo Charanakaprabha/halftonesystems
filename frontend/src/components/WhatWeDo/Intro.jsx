@@ -9,7 +9,7 @@ export const Intro = () => {
                     OUR CAPABILITIES
                 </p>
                 <h1 className="universal-hero-title intro-title">
-                    <span className="text-black">WHAT</span> <span className="text-primary">WE DO</span>
+                    <span className="text-black">What</span> <span className="text-primary">We Do</span>
                 </h1>
                 <p className="intro-subtitle">
                     We provide a comprehensive suite of technology services designed to empower your business. From strategy to execution, we are your partner in digital excellence.

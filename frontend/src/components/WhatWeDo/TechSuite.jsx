@@ -176,7 +176,11 @@ export const TechSuite = () => {
                     <p className="section-subtitle">From enterprise platforms to cutting-edge AI — we cover every dimension of your digital journey.</p>
                 </div>
                 <div className="tech-grid">
-                    {technologies.map((tech, i) => <TechItem key={i} {...tech} />)}
+                    {technologies.map((tech, i) => (
+                        <div key={i} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                            <TechItem {...tech} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
