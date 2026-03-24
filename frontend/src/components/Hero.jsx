@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import heroBg from '../assets/hero-bg.png';
+import heroBg from '../assets/hero-main.png';
 
 export const Hero = () => {
     return (

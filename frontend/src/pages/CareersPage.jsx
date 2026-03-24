@@ -77,7 +77,7 @@ const JOBS = [
     {
         id: 'ebs-hr',
         company: 'Halftone Systems',
-        title: 'Oracle EBS HR Specialist',
+        title: 'Oracle EBS HR',
         tag: 'ERP',
         location: 'Hyderabad',
         type: 'Full-time',
@@ -131,7 +131,7 @@ const JOBS = [
     {
         id: 'full-stack',
         company: 'Halftone Systems',
-        title: 'Full-Stack Developer',
+        title: 'Full-Stack Developer (Node.js + React Native)',
         tag: 'Node.js · React',
         location: 'Remote',
         type: 'Full-time',
@@ -156,9 +156,59 @@ const JOBS = [
         ]
     },
     {
+        id: 'ios-dev',
+        company: 'Halftone Systems',
+        title: 'iOS Developer (Swift)',
+        tag: 'Mobile',
+        location: 'Remote',
+        type: 'Full-time',
+        salary: '$100k - $140k',
+        posted: '1d ago',
+        about: 'Join our mobile team to build high-performance iOS applications. You will work on feature development, architectural improvements, and UI/UX implementation using modern Swift frameworks.',
+        responsibilities: [
+            'Develop new features using Swift and SwiftUI/UIKit.',
+            'Write clean, maintainable, and well-tested code.',
+            'Collaborate with backend engineers to integrate APIs.',
+            'Optimize app performance and responsiveness.',
+            'Participate in code reviews and architectural discussions.'
+        ],
+        requirements: [
+            '3+ years of professional iOS development experience.',
+            'Proficiency in Swift and modern iOS architectural patterns (MVVM, Clean).',
+            'Experience with RESTful APIs and modern networking libraries.',
+            'Familiarity with CI/CD pipelines for mobile apps.',
+            'Strong understanding of Apple design guidelines.'
+        ]
+    },
+    {
+        id: 'android-dev',
+        company: 'Halftone Systems',
+        title: 'Android Developer (Kotlin)',
+        tag: 'Mobile',
+        location: 'Remote',
+        type: 'Full-time',
+        salary: '$100k - $140k',
+        posted: '1d ago',
+        about: 'We are looking for an Android Developer to build and scale our native mobile applications. You will be responsible for creating seamless user experiences using Kotlin and the latest Android Jetpack libraries.',
+        responsibilities: [
+            'Build high-performance Android apps using Kotlin.',
+            'Implement complex UI components with Jetpack Compose.',
+            'Integrate Third-party libraries and APIs.',
+            'Ensure app quality through unit testing and debugging.',
+            'Stay updated with the latest Android development trends.'
+        ],
+        requirements: [
+            '3+ years of experience in Android development.',
+            'Deep knowledge of Kotlin and Android SDK.',
+            'Experience with Coroutines, Flow, and Dagger/Hilt.',
+            'Solid understanding of Material Design principles.',
+            'Strong problem-solving and collaboration skills.'
+        ]
+    },
+    {
         id: 'ui-ux',
         company: 'Halftone Systems',
-        title: 'UI / UX Designer',
+        title: 'UI/UX Designer',
         tag: 'Design',
         location: 'Remote / Bangalore',
         type: 'Full-time',
@@ -207,6 +257,106 @@ const JOBS = [
             'Experience with API testing (Postman, SoapUI).',
             'Strong analytical and problem-solving skills.',
             'Knowledge of bug tracking systems like Jira.'
+        ]
+    },
+    {
+        id: 'devops-backend',
+        company: 'Halftone Systems',
+        title: 'DevOps / Backend Developer',
+        tag: 'Engineering',
+        location: 'Remote',
+        type: 'Full-time',
+        salary: '$110k - $160k',
+        posted: '5d ago',
+        about: 'Bridge the gap between development and operations. You will build scalable backend services while ensuring seamless deployment and infrastructure stability across our cloud environments.',
+        responsibilities: [
+            'Build and maintain robust backend services using Go or Node.js.',
+            'Design and manage CI/CD pipelines (GitHub Actions/GitLab).',
+            'Scale infrastructure using Kubernetes and Terraform.',
+            'Monitor system performance and implement security best practices.',
+            'Optimize database performance and cloud resource usage.'
+        ],
+        requirements: [
+            '4+ years of experience in Backend and DevOps roles.',
+            'Strong proficiency in Cloud platforms (AWS/GCP/Azure).',
+            'Experience with Docker, Kubernetes, and IaC tools.',
+            'Excellent understanding of Linux systems and networking.',
+            'Proficiency in at least one backend language (Go, Python, Node.js).'
+        ]
+    },
+    {
+        id: 'digital-marketing',
+        company: 'Halftone Systems',
+        title: 'Digital Marketing Executive',
+        tag: 'Marketing',
+        location: 'Bangalore',
+        type: 'Full-time',
+        salary: '$60k - $90k',
+        posted: '1w ago',
+        about: 'Join our marketing team to drive brand awareness and lead generation. You will be responsible for managing digital campaigns, SEO, and social media presence to grow our community.',
+        responsibilities: [
+            'Develop and execute multi-channel digital marketing campaigns.',
+            'Manage SEO/SEM strategies to increase website traffic.',
+            'Create engaging content for social media and blogs.',
+            'Analyze campaign performance using data analytics tools.',
+            'Partner with design and sales teams to align on goals.'
+        ],
+        requirements: [
+            '2+ years of experience in digital marketing.',
+            'Strong understanding of SEO, PPC, and Content Marketing.',
+            'Proficiency with Google Analytics and Ads platforms.',
+            'Creative thinker with excellent writing and communication skills.',
+            'Experience in the B2B tech industry is a plus.'
+        ]
+    },
+    {
+        id: 'clinical-auditor',
+        company: 'Halftone Systems',
+        title: 'Clinical Quality Auditor (Nurse background)',
+        tag: 'Healthcare',
+        location: 'Hybrid / Bangalore',
+        type: 'Full-time',
+        salary: '$80k - $110k',
+        posted: '3d ago',
+        about: 'Apply your clinical expertise to ensure the highest standards of quality and compliance in our healthcare technology solutions. You will audit clinical workflows and contribute to patient safety initiatives.',
+        responsibilities: [
+            'Conduct clinical quality audits across healthcare platforms.',
+            'Ensure compliance with clinical protocols and healthcare regulations.',
+            'Identify areas for clinical workflow improvement.',
+            'Collaborate with tech teams to enhance clinical safety features.',
+            'Provide clinical insights for product development.'
+        ],
+        requirements: [
+            'Registered Nurse (RN) background with valid certification.',
+            '3+ years of clinical practice plus auditing experience.',
+            'Deep understanding of healthcare quality standards (JCI, NABH).',
+            'Strong attention to detail and analytical skills.',
+            'Familiarity with EHR/EMR systems is highly desirable.'
+        ]
+    },
+    {
+        id: 'senior-backend',
+        company: 'Halftone Systems',
+        title: 'Senior Backend Developer',
+        tag: 'Engineering',
+        location: 'Remote',
+        type: 'Full-time',
+        salary: '$130k - $180k',
+        posted: '2d ago',
+        about: 'We are looking for a Senior Backend Developer to architect and build our next generation of enterprise-scale services. You will lead technical decisions and mentor junior engineers in high-stakes projects.',
+        responsibilities: [
+            'Architect and implement scalable, secure backend systems.',
+            'Lead the design of complex APIs and microservices.',
+            'Ensure code quality through rigorous testing and reviews.',
+            'Solve complex performance and concurrency challenges.',
+            'Mentor and guide junior developers on best practices.'
+        ],
+        requirements: [
+            '7+ years of professional backend development experience.',
+            'Expert knowledge of Node.js, Python, or Java.',
+            'Deep experience with distributed systems and microservices.',
+            'Strong understanding of database design and optimization.',
+            'Proven track record of delivering enterprise-level software.'
         ]
     }
 ];

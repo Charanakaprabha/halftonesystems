@@ -49,6 +49,14 @@ const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isMaximized, setIsMaximized] = useState(false);
 
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     // 1. State to hold the chat history
     const [messages, setMessages] = useState(() => {
         const savedMessages = localStorage.getItem('chat_history');
@@ -148,7 +156,7 @@ const Chatbot = () => {
                         <h3>HTS IntelliAssist</h3>
                     </div>
                     <div className="header-actions">
-                        {isMaximized && (
+                        {isMaximized && !isMobile && (
                             <>
                                 <button className="icon-btn" onClick={handleClearHistory}>
                                      <RotateCcw size={20} />
@@ -156,13 +164,23 @@ const Chatbot = () => {
                             </>
                         )}
                         {isOpen && (
-                            <button
-                                className={isMaximized ? "icon-btn" : "maximize-btn"}
-                                onClick={() => setIsMaximized(!isMaximized)}
-                                title={isMaximized ? "Restore" : "Maximize"}
-                            >
-                                {isMaximized ? <Minimize2 size={isMaximized ? 24 : 18} /> : <Maximize2 size={18} />}
-                            </button>
+                            isMobile ? (
+                                <button
+                                    className="icon-btn close-btn"
+                                    onClick={() => setIsOpen(false)}
+                                    title="Close Chat"
+                                >
+                                    <X size={24} />
+                                </button>
+                            ) : (
+                                <button
+                                    className={isMaximized ? "icon-btn" : "maximize-btn"}
+                                    onClick={() => setIsMaximized(!isMaximized)}
+                                    title={isMaximized ? "Restore" : "Maximize"}
+                                >
+                                    {isMaximized ? <Minimize2 size={isMaximized ? 24 : 18} /> : <Maximize2 size={18} />}
+                                </button>
+                            )
                         )}
                     </div>
                 </div>

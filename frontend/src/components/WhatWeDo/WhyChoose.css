@@ -23,7 +23,7 @@
     align-items: center;
     text-align: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 360px; /* Reduced from 400px */
     margin: 0 auto; /* CRITICAL: Center in grid cell */
 }
 
@@ -66,7 +66,7 @@
     }
     .reason-card {
         padding: 2.5rem 1.5rem !important;
-        max-width: 450px !important;
+        max-width: 90% !important; /* Allow body padding */
         margin: 0 auto !important;
     }
 }

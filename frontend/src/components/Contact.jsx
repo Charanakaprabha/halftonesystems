@@ -9,7 +9,7 @@ const ContactForm = () => {
             <h3 className="form-title">Tell Us About Your Project</h3>
             <p className="form-subtitle">Fill in this form and one of our specialists will be in touch within one business day.</p>
 
-            <div className="form-grid">
+            <div className="form-grid-dense">
                 <div className="form-group">
                     <label>FIRST NAME *</label>
                     <input type="text" placeholder="Enter your first name" required />
@@ -18,9 +18,6 @@ const ContactForm = () => {
                     <label>LAST NAME *</label>
                     <input type="text" placeholder="Enter your last name" required />
                 </div>
-            </div>
-
-            <div className="form-grid">
                 <div className="form-group">
                     <label>BUSINESS EMAIL *</label>
                     <input type="email" placeholder="your@company.com" required />
@@ -72,9 +69,7 @@ const ContactForm = () => {
 export const Contact = () => {
     const locations = [
         { country: "India", label: "Headquarters" },
-        { country: "Germany", label: "Europe" },
-        { country: "USA", label: "Americas" },
-        { country: "UK", label: "Europe" }
+        { country: "USA", label: "Americas" }
     ];
 
     const fadeUpVariants = {
@@ -114,11 +109,16 @@ export const Contact = () => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.1 }}
                 >
+                    <motion.div className="contact-form-wrapper glass-card huge-box" variants={fadeUpVariants}>
+                        <h3 className="info-heading">SEND A MESSAGE</h3>
+                        <ContactForm />
+                    </motion.div>
+
                     <motion.div className="contact-info" variants={fadeUpVariants}>
                         <h3 className="info-heading">CONTACT INFORMATION</h3>
                         <h2 className="info-title">Reach Out to Us</h2>
 
-                        <div className="info-block glass-card">
+                        <div className="info-block glass-card partitioned-block">
                             <div className="info-icon"><Mail size={24} /></div>
                             <div>
                                 <h4>EMAIL US</h4>
@@ -127,7 +127,7 @@ export const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="info-block glass-card">
+                        <div className="info-block glass-card partitioned-block">
                             <div className="info-icon"><MapPin size={24} /></div>
                             <div>
                                 <h4>OFFICE HEADQUARTERS</h4>
@@ -139,11 +139,6 @@ export const Contact = () => {
                                 <p className="info-note">Located in the heart of Hyderabad's premier business district — Banjara Hills.</p>
                             </div>
                         </div>
-                    </motion.div>
-
-                    <motion.div className="contact-form-wrapper glass-card" variants={fadeUpVariants}>
-                        <h3 className="info-heading">SEND A MESSAGE</h3>
-                        <ContactForm />
                     </motion.div>
                 </motion.div>
 

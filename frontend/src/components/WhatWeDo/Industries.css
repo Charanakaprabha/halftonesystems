@@ -123,6 +123,16 @@
     border-radius: 0; /* Perfect rectangles per spec */
 }
 
+.ind-img-panel.left img {
+    mask-image: linear-gradient(to right, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 70%, transparent 100%);
+}
+
+.ind-img-panel.right img {
+    mask-image: linear-gradient(to left, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);
+}
+
 /* Content Block */
 .ind-text-panel {
     width: 50%;

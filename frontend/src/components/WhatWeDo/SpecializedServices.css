@@ -24,7 +24,7 @@
     flex-direction: column;
     position: relative;
     width: 100%;
-    max-width: 450px;
+    max-width: 400px; /* Reduced from 450px */
     margin: 0 auto; /* CRITICAL: Center in grid cell */
 }
 
@@ -114,7 +114,7 @@
         justify-content: center !important;
     }
     .spec-card {
-        max-width: 450px;
+        max-width: 90% !important; /* Allow body padding */
         margin: 0 auto !important;
     }
     .spec-card-content {
