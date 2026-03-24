@@ -18,16 +18,12 @@ export const IndustriesHero = () => {
     );
 
     return (
-        <section
-            style={{
-                position: 'relative', width: '100%', minHeight: '80vh',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: '#ffffff',
-                overflow: 'hidden',
-                padding: '130px 24px 80px',
-                boxSizing: 'border-box',
-            }}
-        >
+        <section className="hero-format-standard" style={{
+            position: 'relative', width: '100%', minHeight: '80vh',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: '#ffffff', overflow: 'hidden',
+            paddingTop: 0, paddingRight: '24px', paddingBottom: '80px', paddingLeft: '24px', boxSizing: 'border-box',
+        }}>
             {/* dot grid overlay */}
             <div style={{
                 position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
@@ -62,23 +58,19 @@ export const IndustriesHero = () => {
                 position: 'relative', zIndex: 3, maxWidth: '860px', width: '100%',
                 textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center',
             }}>
-                <h4 style={{
+                <h4 className="eyebrow-format-standard" style={{
                     color: 'var(--c-primary)',
-                    fontSize: '0.9rem',
+                    fontSize: '0.85rem',
                     fontWeight: 700,
-                    letterSpacing: '0.1em',
-                    marginTop: 0,
-                    marginBottom: '1rem',
+                    letterSpacing: '0.12em',
                     fontFamily: "'Inter', system-ui, sans-serif",
                     textTransform: 'uppercase'
                 }}>
-                    ─── INDUSTRIES WE SERVE
+                    Industries We Serve
                 </h4>
 
-                <h1 style={{
-                    fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                    fontWeight: 800,
-                    marginTop: 0,
+                <h1 className="universal-hero-title" style={{
+                    marginTop: '2rem',
                     marginBottom: '1.5rem',
                     lineHeight: 1.2,
                     color: '#111827',
@@ -91,12 +83,6 @@ export const IndustriesHero = () => {
                     <span style={{ color: '#2563EB' }}>Our Expertise.</span>
                 </h1>
 
-                {/* divider line */}
-                <div style={{
-                    width: '60px', height: '2px', margin: '24px auto',
-                    background: `linear-gradient(90deg, transparent, #2563EB, transparent)`,
-                    borderRadius: '2px',
-                }} />
 
                 <p style={{
                     margin: '0 auto', maxWidth: '800px',

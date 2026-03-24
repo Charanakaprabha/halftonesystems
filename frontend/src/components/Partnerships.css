@@ -110,3 +110,10 @@
         height: 60px;
     }
 }
+
+@media (max-width: 480px) {
+    .partner-logo-container {
+        width: 120px;
+        height: 50px;
+    }
+}

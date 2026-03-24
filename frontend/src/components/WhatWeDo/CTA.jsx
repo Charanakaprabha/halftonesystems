@@ -6,18 +6,26 @@ export const CTA = () => {
     return (
         <section className="cta section-padding">
             <div className="container text-center">
-                <h2 className="section-title">Ready to Transform Your Business?</h2>
+                <h2 style={{ 
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                    fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
+                    fontWeight: 800,
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1.1,
+                    color: '#0b1f40',
+                    marginBottom: '1.5rem'
+                }}>Ready to Transform Your Business?</h2>
                 <p className="cta-text">
                     Join hundreds of forward-thinking organizations who have chosen Halftone Systems as their trusted technology transformation partner. The future belongs to those who embrace innovation today.
                 </p>
                 <div className="cta-features">
-                    <span>✦ Free Consultation</span>
+                    <span>Free Consultation</span>
                     <span className="divider">|</span>
                     <span>Custom Demo</span>
                     <span className="divider">|</span>
                     <span>ROI Assessment</span>
                     <span className="divider">|</span>
-                    <span>Fast Implementation — Go Live in 30 Days ✦</span>
+                    <span>Fast Implementation — Go Live in 30 Days</span>
                 </div>
                 <Link to="/contact" className="btn btn-primary cta-btn">Contact Us Today</Link>
                 <p className="cta-subtext">Discover why industry leaders choose Halftone Systems.</p>

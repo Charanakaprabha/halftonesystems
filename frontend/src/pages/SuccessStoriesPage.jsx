@@ -4,7 +4,7 @@ import { Partnerships } from '../components/Partnerships';
 
 export const SuccessStoriesPage = () => {
     return (
-        <div className="page-wrapper" style={{ paddingTop: '80px' }}>
+        <div className="page-wrapper">
             <SuccessStories />
             <Partnerships />
         </div>

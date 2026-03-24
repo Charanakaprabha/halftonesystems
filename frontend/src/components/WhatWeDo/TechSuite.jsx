@@ -26,7 +26,7 @@ const TechItem = ({ icon: Icon, title, description, features }) => {
                 <ul className="tech-features">
                     {features.map((feature, idx) => (
                         <li key={idx} className="tech-feature-item">
-                            <span className="check-icon">✔</span> {feature}
+                            <span className="check-icon">-</span> {feature}
                         </li>
                     ))}
                 </ul>
@@ -154,7 +154,7 @@ export const TechSuite = () => {
     ];
 
     return (
-        <section id="tech-suite" className="tech-suite section-padding" style={{ position: 'relative' }}>
+        <section id="tech-suite" className="tech-suite section-padding" style={{ position: 'relative', backgroundColor: '#ffffff' }}>
             <motion.div
                 className="wwd-step-circle"
                 initial={{ backgroundColor: '#ffffff', color: 'var(--c-primary)' }}
@@ -165,11 +165,22 @@ export const TechSuite = () => {
             </motion.div>
             <div className="container">
                 <div className="section-header text-center">
-                    <h3 className="section-title section-title-dark" style={{ fontSize: '2.5rem' }}>OUR TECHNOLOGY SUITE</h3>
+                    <h2 style={{ 
+                        fontFamily: "'Inter', system-ui, sans-serif",
+                        fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
+                        fontWeight: 800,
+                        letterSpacing: '-0.03em',
+                        lineHeight: 1.1,
+                        color: '#0b1f40'
+                    }}>OUR TECHNOLOGY SUITE</h2>
                     <p className="section-subtitle">From enterprise platforms to cutting-edge AI — we cover every dimension of your digital journey.</p>
                 </div>
                 <div className="tech-grid">
-                    {technologies.map((tech, i) => <TechItem key={i} {...tech} />)}
+                    {technologies.map((tech, i) => (
+                        <div key={i} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                            <TechItem {...tech} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

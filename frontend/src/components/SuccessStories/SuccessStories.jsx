@@ -17,6 +17,12 @@ import {
 import './SuccessStories.css';
 
 export const SuccessStories = () => {
+    const [heroVisible, setHeroVisible] = React.useState(false);
+    
+    React.useEffect(() => {
+        setHeroVisible(true);
+    }, []);
+
     // 1. Container Stagger Animation
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -53,7 +59,7 @@ export const SuccessStories = () => {
             desc: "Delivered high-performance technology services for Dick's Sporting Goods — supporting digital commerce operations, system reliability, and technology excellence at enterprise scale.",
             tag: "Retail & E-commerce",
             colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
-            image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/retail_ecommerce_success.png"
         },
         {
             icon: <Smartphone size={28} className="ss-icon" />,
@@ -61,7 +67,7 @@ export const SuccessStories = () => {
             desc: "End-to-end delivery of iOS and Android mobile applications paired with a comprehensive Fleet Management system — giving OHM real-time visibility and operational control.",
             tag: "Mobility & Fleet Tech",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/mobility_fleet_tech.png"
         },
         {
             icon: <Ambulance size={28} className="ss-icon" />,
@@ -69,7 +75,7 @@ export const SuccessStories = () => {
             desc: "Architected and deployed a full iOS and Android mobile application with integrated fleet management — dramatically improving emergency response coordination.",
             tag: "Healthcare & Emergency Tech",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/healthcare_emergency_tech.png"
         },
         {
             icon: <GraduationCap size={28} className="ss-icon" />,
@@ -77,7 +83,7 @@ export const SuccessStories = () => {
             desc: "Delivered strategic technology services to Creighton University — supporting their academic digital ecosystem, systems integration, and institutional technology goals.",
             tag: "Education & EdTech",
             colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
-            image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/education_edtech_success.png"
         },
         {
             icon: <TestTube2 size={28} className="ss-icon" />,
@@ -85,7 +91,7 @@ export const SuccessStories = () => {
             desc: "Provided specialised technology services to Virchow Biotech — enabling them to optimise operations, enhance compliance workflows, and accelerate digital transformation.",
             tag: "Healthcare & Pharma",
             colSpan: "col-span-1 md:col-span-2 lg:col-span-1",
-            image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/healthcare_pharma_success.png"
         },
         {
             icon: <Network size={28} className="ss-icon" />,
@@ -93,7 +99,7 @@ export const SuccessStories = () => {
             desc: "Designed and deployed a robust enterprise networking architecture — ensuring secure, high-availability connectivity across critical laboratory environments.",
             tag: "Life Sciences & Networking",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/life_sciences_networking.png"
         },
         {
             icon: <Building2 size={28} className="ss-icon" />,
@@ -101,7 +107,7 @@ export const SuccessStories = () => {
             desc: "Delivered comprehensive technology services to the Telangana Facility Management Council — supporting their digital operations and governance technology needs.",
             tag: "Government & Public Sector",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/government_public_sector.png"
         },
         {
             icon: <Cpu size={28} className="ss-icon" />,
@@ -109,7 +115,7 @@ export const SuccessStories = () => {
             desc: "Provided end-to-end technology services to Promea — helping them build scalable digital infrastructure and accelerate their path from vision to high-growth operation.",
             tag: "Technology Services",
             colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
-            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/technology_services_success.png"
         },
         {
             icon: <Wheat size={28} className="ss-icon" />,
@@ -117,7 +123,7 @@ export const SuccessStories = () => {
             desc: "Supported Mithuna Foods with technology services enabling smarter supply chain management, digital commerce capabilities, and operational efficiency.",
             tag: "Food & Agri Trade",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/food_agri_trade.png"
         },
         {
             icon: <Zap size={28} className="ss-icon" />,
@@ -125,7 +131,7 @@ export const SuccessStories = () => {
             desc: "Partnered with WPP Energy on their technology journey — supporting their mission to deliver innovative, sustainable energy production solutions at a global scale.",
             tag: "Energy & Utilities",
             colSpan: "col-span-1",
-            image: "https://images.unsplash.com/photo-1466611653911-9c617eb0d39e?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/energy_utilities_success.png"
         },
         {
             icon: <Landmark size={28} className="ss-icon" />,
@@ -133,7 +139,7 @@ export const SuccessStories = () => {
             desc: "Delivered technology services to Royal Orbit Holding Group — enabling cross-portfolio digital integration and strategic technology advisory.",
             tag: "Finance & Holdings",
             colSpan: "col-span-1 md:col-span-2 lg:col-span-1",
-            image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/finance_holdings_success.png"
         },
         {
             icon: <Globe2 size={28} className="ss-icon" />,
@@ -141,12 +147,12 @@ export const SuccessStories = () => {
             desc: "Extended our global footprint to Nordic, Middle Eastern, and European markets — providing specialised technology services across IT, trading, and specialty chemicals.",
             tag: "Global Technology Services",
             colSpan: "col-span-1 md:col-span-3 lg:col-span-3",
-            image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+            image: "/assets/success/global_tech_services.png"
         },
     ];
 
     return (
-        <section id="success-stories" className="success-stories-section">
+        <section id="success-stories" className="success-stories-section hero-format-standard">
             <div className="ss-container">
                 <div className="ss-header-block" style={{
                     display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '4rem'
@@ -160,23 +166,21 @@ export const SuccessStories = () => {
                             textTransform: 'uppercase', color: 'var(--c-primary)',
                             fontFamily: "'Inter', system-ui, sans-serif",
                         }}>
-                            ─── SUCCESS STORIES
+                            SUCCESS STORIES
                         </span>
                     </div>
 
                     {/* headline */}
-                    <h2 style={{
-                            fontSize: 'clamp(3rem, 5vw, 4.5rem)',
-                            fontWeight: 800,
+                        <h1 className="universal-hero-title" style={{
                             marginTop: 0,
                             marginBottom: '1.5rem',
-                            lineHeight: 1.2,
                             color: '#111827',
-                            fontFamily: "'Inter', system-ui, sans-serif",
-                    }}>
-                        Trusted by Industry Leaders<br />
+                            transform: heroVisible ? 'translateY(0)' : 'translateY(40px)',
+                            opacity: heroVisible ? 1 : 0,
+                            transition: 'all 0.8s'
+                        }}>Trusted by Industry Leaders<br />
                         <span style={{ color: 'var(--c-primary)' }}>Worldwide</span>
-                    </h2>
+                    </h1>
 
                     <p className="ss-vision-desc">From Silicon Valley sports giants to Indian government councils, from European biotech firms to American universities — our success stories span industries, continents, and ambitions.</p>
                 </div>

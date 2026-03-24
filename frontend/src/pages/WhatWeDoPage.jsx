@@ -6,7 +6,7 @@ import {
 
 export const WhatWeDoPage = () => {
     return (
-        <div className="what-we-do-page" style={{ paddingTop: '120px' }}>
+        <div className="what-we-do-page">
             <Intro />
             <WhatWeDoTimeline>
                 <WhyChoose />

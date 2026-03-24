@@ -33,7 +33,43 @@
 
   /* Layout */
   --container-width: 1200px;
-  --header-height: 100px;
+  --header-height: 142px;
+  
+  /* Hero Standardization */
+  --hero-padding-top: 165px; 
+  --hero-eyebrow-margin: 23px;
+  --section-gap: 100px;
+
+  /* Legacy Color Support (for What We Do components) */
+  --color-primary: var(--c-primary);
+  --color-secondary: var(--c-accent);
+  --color-bg: #0b1f40;
+  --color-bg-alt: #112a52;
+  --color-text: #ffffff;
+  --color-text-muted: #94a3b8;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 120px;
+        --hero-padding-top: 135px;
+        --section-gap: 60px;
+    }
+}
+
+/* ── Utility Classes for Hero Standardization ── */
+.hero-format-standard {
+  padding-top: var(--hero-padding-top) !important;
+}
+
+.hero-format-offset {
+  /* For heroes pushed down below the header */
+  padding-top: calc(var(--hero-padding-top) - var(--header-height, 80px)) !important;
+}
+
+.eyebrow-format-standard {
+  margin-top: 0 !important;
+  margin-bottom: var(--hero-eyebrow-margin) !important;
 }
 
 * {
@@ -42,17 +78,21 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--c-white);
   color: var(--c-text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 a {
@@ -135,6 +175,20 @@ img {
   color: var(--c-text-inverse);
 }
 
+.bg-dark-alt {
+  background-color: var(--color-bg-alt, #0b1f40);
+  color: #ffffff;
+}
+
+.bg-dark-alt .section-title,
+.bg-dark-alt .section-title-dark {
+  color: #ffffff !important;
+}
+
+.bg-dark-alt .section-subtitle {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
 .text-primary {
   color: var(--c-primary);
 }
@@ -143,16 +197,56 @@ img {
   color: #10B981;
 }
 
+h1 { font-size: clamp(2rem, 8vw, 5rem); line-height: 1.1; }
+h2 { font-size: clamp(1.75rem, 6vw, 3.5rem); line-height: 1.2; }
+h3 { font-size: clamp(1.25rem, 4vw, 2.5rem); line-height: 1.3; }
+
+/* Universal Hero Title */
+.universal-hero-title {
+    font-family: 'Inter', system-ui, sans-serif !important;
+    font-size: clamp(2.5rem, 8vw, 5rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+}
+
+@media (max-width: 768px) {
+    .universal-hero-title {
+        font-size: clamp(2rem, 6vw, 3rem) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+    .universal-hero-title {
+        font-size: 2rem !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+    .eyebrow-format-standard {
+        margin-bottom: 0.25rem !important;
+    }
+    .hero-format-standard {
+        padding-top: 120px !important;
+    }
+}
+
+::selection {
+    background-color: rgba(37, 99, 235, 0.2);
+    color: inherit;
+}
+
 .section-title {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
-  font-weight: 800;
-  text-transform: none; /* Remove uppercase if it was there */
   margin-bottom: 1.5rem;
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: #111827;
-  /* Removed gradient text fill to match standard styling */
 }
 
 .section-title-dark {
@@ -167,10 +261,10 @@ img {
 
 /* ─── Scroll Reveal ─────────────────────────────── */
 .reveal {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
@@ -239,3 +333,22 @@ img {
 .reveal-group.visible>*:nth-child(12) {
   transition-delay: 0.82s;
 }
+
+/* ─── Global Card Styling ────────────────────────── */
+.card-shine-top {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.45), transparent);
+  z-index: 10;
+  pointer-events: none;
+}

@@ -1,7 +1,7 @@
 .footer {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.95rem;
-    background-color: #0b1f40;
+    background-color: #010409; /* Richer, darker professional shade */
     /* Clean dark blue background */
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;

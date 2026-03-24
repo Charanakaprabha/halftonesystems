@@ -46,27 +46,26 @@ export const Footer = () => {
                         <ul>
                             <li><Link to="/who-we-are">About Us</Link></li>
                             <li><Link to="/careers">Careers</Link></li>
-                            <li><Link to="/success-stories">Partners</Link></li>
-                            <li><Link to="/">Newsroom</Link></li>
+                            <li><Link to="/success-stories">Success Stories</Link></li>
+                            <li><Link to="/contact">Contact</Link></li>
                         </ul>
                     </motion.div>
 
                     <motion.div className="footer-col" variants={itemVariants}>
                         <h4>Services</h4>
                         <ul>
-                            <li><Link to="/#it-consulting-strategy">Digital Strategy</Link></li>
-                            <li><Link to="/#cloud-technologies">Cloud & DevOps</Link></li>
-                            <li><Link to="/#data-science-analytics">Data & Analytics</Link></li>
-                            <li><Link to="/#cybersecurity-solutions">Cybersecurity</Link></li>
+                            <li><Link to="/what-we-do#it-consulting-strategy">IT Consulting</Link></li>
+                            <li><Link to="/what-we-do#product-development">Product Development</Link></li>
+                            <li><Link to="/what-we-do#ai-machine-learning">AI Solutions</Link></li>
+                            <li><Link to="/what-we-do#tech-suite">Technology Suite</Link></li>
                         </ul>
                     </motion.div>
 
                     <motion.div className="footer-col" variants={itemVariants}>
                         <h4>Contact</h4>
                         <ul>
-                            <li><Link to="/contact">Locations</Link></li>
-                            <li><Link to="/contact">Contact Support</Link></li>
-                            <li><Link to="/contact">Sales Inquiry</Link></li>
+                            <li><Link to="/contact">Global Offices</Link></li>
+                            <li><Link to="/contact">Business Inquiry</Link></li>
                         </ul>
                     </motion.div>
                 </motion.div>

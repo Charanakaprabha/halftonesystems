@@ -7,8 +7,21 @@ export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
     const [lastScrollY, setLastScrollY] = useState(0);
     const location = useLocation();
+
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+            setIsHidden(false); // Make sure it's visible when open
+        } else {
+            document.body.style.overflow = '';
+            setOpenMobileDropdown(null);
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [isMobileMenuOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -30,7 +43,6 @@ export const Navbar = () => {
 
     // Also close mobile menu on route change
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsMobileMenuOpen(false);
         window.scrollTo(0, 0);
     }, [location]);
@@ -131,31 +143,37 @@ export const Navbar = () => {
             <div className="navbar-bottom">
                 <div className="container">
                     <div className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}>
-                        {navLinks.map((link, idx) => (
-                            <React.Fragment key={link.name}>
-                                {idx > 0 && <span className="nav-divider" />}
-                                <div className={`nav-item ${link.dropdown && link.dropdown.length > 0 ? 'has-dropdown' : ''}`}>
-                                    <Link to={link.href} className="nav-link">
-                                        {link.name}
-                                        {link.dropdown && link.dropdown.length > 0 && <ChevronDown size={13} className="dropdown-icon" />}
-                                    </Link>
-                                    {link.dropdown && link.dropdown.length > 0 && (
-                                        <div className="dropdown-menu">
-                                            {link.dropdown.map((item) => (
-                                                <a
-                                                    key={item.name}
-                                                    href={item.href}
-                                                    className="dropdown-item"
-                                                >
-                                                    <span className="hover-tick"><Check size={14} strokeWidth={3} /></span>
-                                                    {item.name}
-                                                </a>
-                                            ))}
+                        {navLinks.map((link, idx) => {
+                            const isActive = location.pathname === link.href ||
+                                (link.href !== '/' && location.pathname.startsWith(link.href));
+                            return (
+                                <React.Fragment key={link.name}>
+                                    {idx > 0 && <span className="nav-divider" />}
+                                    <div className={`nav-item ${isActive ? 'active' : ''}`}>
+                                        <div style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
+                                            <Link to={link.href} className="nav-link" style={{ flexGrow: 1 }} onClick={() => setIsMobileMenuOpen(false)}>
+                                                {link.name}
+                                            </Link>
                                         </div>
-                                    )}
-                                </div>
-                            </React.Fragment>
-                        ))}
+                                        {/* Dropdown for DESKTOP only */}
+                                        {link.dropdown && link.dropdown.length > 0 && (
+                                            <div className="dropdown-menu">
+                                                {link.dropdown.map((item) => (
+                                                    <a
+                                                        key={item.name}
+                                                        href={item.href}
+                                                        className="dropdown-item"
+                                                    >
+                                                        <span className="hover-tick"><Check size={14} strokeWidth={3} /></span>
+                                                        {item.name}
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </React.Fragment>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

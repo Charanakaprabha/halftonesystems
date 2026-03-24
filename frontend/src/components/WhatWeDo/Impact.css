@@ -32,10 +32,14 @@
     .impact-item::after {
         display: none;
     }
+    .impact-title {
+        font-size: 1.75rem !important; /* Decreased size for mobile */
+        line-height: 1.2;
+    }
 }
 
 .impact-number {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 8vw, 3.5rem);
     font-weight: 800;
     margin-bottom: 0.5rem;
     background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);

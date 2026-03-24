@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
     Car, HeartPulse, Pill, Microscope, Stethoscope,
@@ -129,7 +128,7 @@ const industries = [
         number: "06",
         name: "RETAIL",
         tagline: "Reimagining Shopping Experiences for the Digital Age",
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
         description: "Today's retail winners are built on intelligent digital foundations. Halftone Systems equips retailers with the technology to compete, captivate, and grow.",
         capabilities: [
             "Omnichannel Commerce Platforms",
@@ -152,7 +151,7 @@ const industries = [
         number: "07",
         name: "TRAVEL & TOURISM",
         tagline: "Crafting Seamless Journeys in the Experience Economy",
-        image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80",
         description: "Halftone Systems helps airlines, hotels, tour operators, and travel agencies harness AI, mobile, and analytics to create journeys that inspire loyalty.",
         capabilities: [
             "Travel Booking & Reservation Platforms",
@@ -175,7 +174,7 @@ const industries = [
         number: "08",
         name: "EDUCATION & RESEARCH",
         tagline: "Empowering Learners & Advancing Knowledge at Scale",
-        image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80",
         description: "Halftone Systems delivers intelligent learning platforms and institutional technology that empowers educators, engages learners, and drives academic excellence worldwide.",
         capabilities: [
             "Learning Management Systems (LMS)",
@@ -244,7 +243,7 @@ const industries = [
         number: "11",
         name: "FINANCE & BANKING",
         tagline: "Engineering Secure & Scalable Financial Ecosystems",
-        image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80",
         description: "In a world of digital-first banking and decentralized finance, Halftone Systems builds robust, compliant, and innovative financial platforms that drive growth.",
         capabilities: [
             "Core Banking Modernization",
@@ -304,60 +303,25 @@ const categories = [
 
 const IndustryRow = ({ ind, index }) => {
     const isImageLeft = index % 2 === 0;
-    const shouldReduceMotion = useReducedMotion();
 
     return (
-        <motion.div 
-            className={`ind-seamless-row ${isImageLeft ? '' : 'reverse'}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-            variants={{
-                hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 70 },
-                visible: { opacity: 1, y: 0, transition: { duration: shouldReduceMotion ? 0.6 : 1.1, ease: shouldReduceMotion ? "easeOut" : [0.22, 1, 0.36, 1] } }
-            }}
-        >
+        <div className={`ind-seamless-row ${isImageLeft ? '' : 'reverse'}`}>
             <div className={`ind-img-panel ${isImageLeft ? 'left' : 'right'}`}>
                 <img src={ind.image} alt="" />
             </div>
 
             <div className={`ind-text-panel ${isImageLeft ? 'right' : 'left'}`}>
                 <div className="ind-text-inner">
-                    <motion.div 
-                        className="ind-icon-wrap"
-                        variants={{
-                            hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 24 },
-                            visible: { opacity: 1, y: 0, transition: { duration: shouldReduceMotion ? 0.6 : 0.8, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.5 } }
-                        }}
-                    >
+                    <div className="ind-icon-wrap">
                         <ind.icon size={26} />
-                    </motion.div>
-
-                    <div className="ind-title-wrap">
-                        <motion.h3 
-                            className="ind-title"
-                            variants={{
-                                hidden: { clipPath: 'inset(100% 0 -5px 0)', opacity: shouldReduceMotion ? 0 : 1 },
-                                visible: { clipPath: 'inset(0% 0 -5px 0)', opacity: 1, transition: { duration: shouldReduceMotion ? 0.6 : 0.9, ease: shouldReduceMotion ? "easeOut" : [0.16, 1, 0.3, 1], delay: shouldReduceMotion ? 0 : 0.3 } }
-                            }}
-                        >
-                            {ind.name}
-                        </motion.h3>
-                        <motion.div 
-                            className="ind-title-underline"
-                            variants={{
-                                hidden: { scaleX: 0, opacity: shouldReduceMotion ? 0 : 1 },
-                                visible: { scaleX: 1, opacity: 1, transition: { duration: 0.5, delay: shouldReduceMotion ? 0 : 0.2 } }
-                            }}
-                        />
                     </div>
 
-                    <motion.div
-                        variants={{
-                            hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 24 },
-                            visible: { opacity: 1, y: 0, transition: { duration: shouldReduceMotion ? 0.6 : 0.8, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.5 } }
-                        }}
-                    >
+                    <div className="ind-title-wrap">
+                        <h3 className="ind-title">{ind.name}</h3>
+                        <div className="ind-title-underline" />
+                    </div>
+
+                    <div>
                         <p className="ind-body">{ind.description}</p>
                         
                         <div className="ind-lists-container">
@@ -383,15 +347,14 @@ const IndustryRow = ({ ind, index }) => {
                                 </div>
                             )}
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 
 export const Industries = () => {
-    const shouldReduceMotion = useReducedMotion();
 
     return (
         <section id="industries" className="industries-v2-section">
@@ -413,30 +376,10 @@ export const Industries = () => {
             <div className="ind-v2-container">
                 {categories.map((cat, idx) => (
                     <div key={idx} id={`category-${idx}`} className="ind-category-group">
-                        <motion.div 
-                            className="category-divider"
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.5 }}
-                        >
-                            <motion.span 
-                                className="cat-label"
-                                variants={{
-                                    hidden: { clipPath: 'inset(0 100% 0 0)', opacity: shouldReduceMotion ? 0 : 1 },
-                                    visible: { clipPath: 'inset(0 0% 0 0)', opacity: 1, transition: { duration: shouldReduceMotion ? 0.6 : 0.7 } }
-                                }}
-                            >
-                                {cat.title}
-                            </motion.span>
-                            <motion.div 
-                                className="cat-line"
-                                variants={{
-                                    hidden: { scaleX: 0, opacity: shouldReduceMotion ? 0 : 1 },
-                                    visible: { scaleX: 1, opacity: 1, transition: { duration: shouldReduceMotion ? 0.6 : 0.7, delay: shouldReduceMotion ? 0 : 0.2 } }
-                                }}
-                                style={{ originX: 0 }}
-                            />
-                        </motion.div>
+                        <div className="category-divider">
+                            <span className="cat-label">{cat.title}</span>
+                            <div className="cat-line" />
+                        </div>
 
                         {cat.items.map((ind, i) => (
                             <IndustryRow key={ind.number} ind={ind} index={i} />
@@ -446,16 +389,23 @@ export const Industries = () => {
             </div>
 
             <div className="section-footer text-center">
-                <h3 className="footer-heading">Your Industry. Our Expertise. Extraordinary Results.</h3>
+                <h3 className="footer-heading" style={{ 
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                    fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
+                    fontWeight: 900,
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.1,
+                    color: '#0A0A0A'
+                }}>Your Industry. Our Expertise. Extraordinary Results.</h3>
                 <p className="footer-text" style={{ fontSize: '1.1rem', maxWidth: '800px', margin: '0 auto 1.5rem' }}>
                     No matter which sector you operate in, Halftone Systems brings the domain depth, technological excellence, and strategic partnership you need to lead your industry in the digital age.
                 </p>
                 <div className="footer-links">
-                    <span>✦ Free Industry Consultation</span>
+                    <span>Free Industry Consultation</span>
                     <span className="divider">|</span>
                     <span>Tailored Technology Roadmap</span>
                     <span className="divider">|</span>
-                    <span>Measurable ROI from Day One ✦</span>
+                    <span>Measurable ROI from Day One</span>
                 </div>
                 <Link to="/contact" className="btn btn-primary mt-4">Contact Halftone Systems</Link>
             </div>

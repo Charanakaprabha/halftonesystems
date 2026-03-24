@@ -51,7 +51,7 @@ export const WhoWeAre = () => {
 
 
     return (
-        <section id="who-we-are" className="who-we-are-section">
+        <section id="who-we-are" className="who-we-are-section hero-format-standard">
 
             {/* Background (previously Three.js) */}
             <div className="who-we-are-bg">
@@ -67,7 +67,17 @@ export const WhoWeAre = () => {
 
                 {/* Core Narrative */}
                 <motion.div className="wa-core-narrative" variants={itemVariants}>
-                    <h2 className="wa-headline">We Don't Just Build Technology.<br /><span className="wa-accent">We Build Futures.</span></h2>
+                    <p className="eyebrow-format-standard" style={{
+                        color: 'var(--c-primary)',
+                        fontSize: '0.85rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
+                        fontFamily: "'Inter', system-ui, sans-serif",
+                    }}>
+                        Who We Are
+                    </p>
+                    <h1 className="universal-hero-title wa-headline" style={{ color: '#111827' }}>We Don't Just Build Technology.<br /><span className="wa-accent">We Build Futures.</span></h1>
                     <p className="wa-description">
                         Halftone Systems is a global technology powerhouse — engineering transformative digital solutions that turn ambitious visions into measurable competitive advantages.
                     </p>
@@ -91,7 +101,7 @@ export const WhoWeAre = () => {
 
                 {/* Founder Focus */}
                 <motion.div className="wa-founder-section" variants={itemVariants}>
-                    <h4 className="wa-section-title">─── OUR HISTORY</h4>
+                    <h4 className="wa-section-title">OUR HISTORY</h4>
                     <h3 className="wa-section-subtitle">Born from a Vision to Transform the World</h3>
 
                     <div className="wa-founder-content">
@@ -121,7 +131,7 @@ export const WhoWeAre = () => {
 
                 {/* Journey Timeline */}
                 <motion.div className="wa-journey-section" variants={itemVariants}>
-                    <h4 className="wa-section-title">─── OUR JOURNEY</h4>
+                    <h4 className="wa-section-title">OUR JOURNEY</h4>
                     <h3 className="wa-section-subtitle">A Timeline of Excellence</h3>
 
                     <div className="wa-timeline" ref={timelineRef}>
@@ -163,7 +173,7 @@ export const WhoWeAre = () => {
 
                 {/* Vision & Pillars */}
                 <motion.div className="wa-vision-section" variants={itemVariants}>
-                    <h4 className="wa-section-title">─── OUR VISION</h4>
+                    <h4 className="wa-section-title">OUR VISION</h4>
                     <h3 className="wa-section-subtitle">Six Pillars of Innovation</h3>
                     <p className="wa-vision-desc">Halftone Systems delivers breakthrough solutions across six core practice areas — each engineered to give clients an enduring competitive advantage.</p>
 

@@ -3,12 +3,16 @@ import './Intro.css';
 
 export const Intro = () => {
     return (
-        <section id="intro" className="intro section-padding">
+        <section id="intro" className="intro hero-format-standard">
             <div className="container text-center">
-                <h2 className="section-title">WHAT WE DO</h2>
-                <h3 className="intro-heading">Transforming Businesses Through Intelligent Technology</h3>
-                <p className="intro-text">
-                    We don't just deliver technology — we architect digital futures. At Halftone Systems, every solution is purpose-built to propel your business ahead of the competition, create measurable impact, and stand the test of time.
+                <p className="eyebrow-format-standard">
+                    OUR CAPABILITIES
+                </p>
+                <h1 className="universal-hero-title intro-title">
+                    <span className="text-black">What</span> <span className="text-primary">We Do</span>
+                </h1>
+                <p className="intro-subtitle">
+                    We provide a comprehensive suite of technology services designed to empower your business. From strategy to execution, we are your partner in digital excellence.
                 </p>
             </div>
         </section>

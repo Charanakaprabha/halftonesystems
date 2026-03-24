@@ -3,7 +3,7 @@ import { WhoWeAre } from '../components/WhoWeAre';
 
 export const WhoWeArePage = () => {
     return (
-        <div className="page-wrapper" style={{ paddingTop: '80px' }}>
+        <div className="page-wrapper">
             <WhoWeAre />
         </div>
     );

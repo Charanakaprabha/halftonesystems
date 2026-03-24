@@ -3,47 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Target, Award, Zap, Brain, Handshake, BarChart, Globe, Smartphone, Building, Lightbulb, RefreshCw, Cloud, Settings, Activity, Bot, Microscope, Trophy } from 'lucide-react';
 import { Hero } from '../components/Hero';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Home.css';
 
 export const Home = () => {
+    useScrollReveal();
     return (
         <div className="home-page-new">
             <Hero />
-
-            {/* 1. Hero & Stats Bar */}
-            <section className="home-hero-stats reveal" style={{
-                background: '#ffffff',
-                color: '#0b1f40'
-            }}>
-                <div className="container" style={{ textAlign: 'center', padding: '6rem 1rem 4rem' }}>
-                    <p className="hero-subtitle" style={{ margin: '0 auto 1.5rem', textAlign: 'center', color: '#3b82f6' }}>— Your Premier Technology Transformation Partner —</p>
-                    <h1 className="hero-title reveal reveal-stagger-1" style={{ 
-                        color: '#0b1f40',
-                        fontFamily: "'Inter', system-ui, sans-serif",
-                        fontSize: 'clamp(2.5rem, 7vw, 4.5rem)',
-                        fontWeight: 800,
-                        letterSpacing: '-0.03em',
-                        lineHeight: 1.1
-                    }}>
-                        TRANSFORM YOUR<br />
-                        DIGITAL FUTURE<br />
-                        WITH <span className="text-blue" style={{ color: '#3b82f6' }}>HALFTONE SYSTEMS</span>
-                    </h1>
-                    <div className="hero-divider reveal reveal-stagger-2" style={{ backgroundColor: '#0b1f40' }}></div>
-                    <p className="hero-tagline reveal reveal-stagger-3" style={{ color: '#475569' }}>
-                        Where Innovation Drives Excellence — and Your Success Is Our Mission.
-                    </p>
-                    <h2 className="hero-quote text-blue reveal reveal-stagger-4">
-                        " HALFTONE SYSTEMS RUNS TECHNOLOGIES "
-                    </h2>
-                    <h3 className="hero-subquote reveal reveal-stagger-5" style={{ color: '#0b1f40' }}>
-                        BUSINESSES WITH INFORMATION TECHNOLOGY & TECHNOLOGY PRODUCTS
-                    </h3>
-                    <p className="hero-description reveal reveal-stagger-6" style={{ color: '#475569' }}>
-                        From Fortune 500 enterprises to ambitious startups, Halftone Systems crafts digital experiences that revolutionize how you do business. We don't just deliver technology — we architect competitive advantages that last.
-                    </p>
-                </div>
-            </section>
 
             <section className="home-stats-bar reveal">
                 <div className="container">
@@ -74,7 +41,7 @@ export const Home = () => {
                     <div className="section-header-centered reveal">
                         <h2 style={{ 
                             fontFamily: "'Inter', system-ui, sans-serif",
-                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             letterSpacing: '-0.03em',
                             lineHeight: 1.1,
@@ -144,7 +111,7 @@ export const Home = () => {
                     <div className="section-header-centered reveal">
                         <h2 style={{ 
                             fontFamily: "'Inter', system-ui, sans-serif",
-                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             letterSpacing: '-0.03em',
                             lineHeight: 1.1,
@@ -204,7 +171,7 @@ export const Home = () => {
                     <div className="section-header-centered reveal">
                         <h2 style={{ 
                             fontFamily: "'Inter', system-ui, sans-serif",
-                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             letterSpacing: '-0.03em',
                             lineHeight: 1.1,
@@ -336,7 +303,7 @@ export const Home = () => {
                     <div className="cta-box bg-dark-blue reveal">
                         <h2 className="text-white" style={{ 
                             fontFamily: "'Inter', system-ui, sans-serif",
-                            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                            fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             letterSpacing: '-0.03em',
                             lineHeight: 1.1,
@@ -345,17 +312,17 @@ export const Home = () => {
                         <p className="text-white">Transform your vision into reality with technology solutions that don't just meet today's needs — they anticipate tomorrow's opportunities.</p>
 
                         <div className="cta-benefits reveal reveal-stagger-2">
-                            <span className="text-yellow">✦ Free Consultation</span>
+                            <span className="text-yellow">Free Consultation</span>
                             <span className="text-yellow spacer">|</span>
                             <span className="text-yellow">Custom Technology Roadmap</span>
                             <span className="text-yellow spacer">|</span>
-                            <span className="text-yellow">Measurable ROI from Day One ✦</span>
+                            <span className="text-yellow">Measurable ROI from Day One</span>
                         </div>
 
                         <p className="text-light-blue cta-subtext reveal reveal-stagger-3">
                             Join the ranks of forward-thinking organizations who have chosen Halftone Systems as their trusted digital transformation partner.
                         </p>
-                        <Link to="/contact" className="text-white cta-contact reveal reveal-stagger-4">Contact us today • www.halftonesystems.com</Link>
+                        <Link to="/contact" className="text-white cta-contact reveal reveal-stagger-4">Contact us today | www.halftonesystems.com</Link>
                     </div>
                 </div>
             </section>
