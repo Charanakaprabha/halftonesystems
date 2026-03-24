@@ -7,7 +7,6 @@ export default defineConfig({
   assetsInclude: ['**/*.glb'],
   optimizeDeps: {
     include: [
-      '@react-three/drei',
       '@react-three/fiber',
       'three',
       'use-sync-external-store/shim/with-selector'

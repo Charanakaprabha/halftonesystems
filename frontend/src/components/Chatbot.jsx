@@ -1,9 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, Send, X, Bot, User, Maximize2, Minimize2, RotateCcw } from 'lucide-react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Environment, ContactShadows } from '@react-three/drei';
+import { Canvas, extend, useThree, useFrame } from '@react-three/fiber';
+import { OrbitControls as ThreeOrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import * as THREE from 'three';
 import BB8Model from './BB8Model';
 import './Chatbot.css';
+
+// Extend fiber with OrbitControls
+extend({ OrbitControls: ThreeOrbitControls });
+
+function OrbitControls(props) {
+    const { camera, gl: { domElement } } = useThree();
+    const controls = useRef();
+    useFrame(() => controls.current?.update());
+    return <orbitControls ref={controls} args={[camera, domElement]} {...props} />;
+}
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -87,8 +98,11 @@ const Chatbot = () => {
         setIsLoading(true);
 
         try {
+            // Get API URL from env, fallback to relative path for dev proxy
+            const apiUrl = import.meta.env.VITE_API_URL || '';
+            
             // Send the request to your local Node.js backend
-            const response = await fetch('/api/chat', {
+            const response = await fetch(`${apiUrl}/api/chat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -137,7 +151,7 @@ const Chatbot = () => {
                         {isMaximized && (
                             <>
                                 <button className="icon-btn" onClick={handleClearHistory}>
-                                    <RotateCcw size={20} />
+                                     <RotateCcw size={20} />
                                 </button>
                             </>
                         )}
@@ -160,11 +174,15 @@ const Chatbot = () => {
                                 <div className="greeting-bubble">
                                     Greetings! How can I be of service?
                                 </div>
-                                <Canvas shadows dpr={[1, 2]}>
-                                    <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={45} />
+                                <Canvas 
+                                    shadows 
+                                    dpr={[1, 2]} 
+                                    camera={{ position: [0, 0, 5], fov: 45 }}
+                                >
                                     <ambientLight intensity={1.5} />
                                     <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} castShadow />
                                     <pointLight position={[-10, -10, -10]} intensity={1} />
+                                    <directionalLight position={[0, 10, 0]} intensity={0.5} />
 
                                     <React.Suspense fallback={null}>
                                         <BB8Model position={[0, -1.5, 0]} scale={3} />

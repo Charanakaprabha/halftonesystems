@@ -1,32 +1,35 @@
-import React, { useRef, useEffect } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import React, { useRef, useEffect, useMemo } from 'react'
+import { useLoader, useFrame } from '@react-three/fiber'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as THREE from 'three'
 import modelPath from '../assets/bb8_animated.glb'
 
 export default function BB8Model(props) {
     const group = useRef()
-    const { nodes, materials, animations } = useGLTF(modelPath)
-    const { actions } = useAnimations(animations, group)
+    const gltf = useLoader(GLTFLoader, modelPath)
+    const { nodes, animations } = gltf
 
-    // References for bone/mesh rotation
-    const headRef = useRef()
+    // Reference for animations
+    const mixer = useRef()
 
     useEffect(() => {
-        if (!nodes) return;
+        if (!gltf.scene) return;
         console.log('BB8 Nodes:', nodes)
 
-        if (actions && Object.keys(actions).length > 0) {
+        if (animations && animations.length > 0) {
+            mixer.current = new THREE.AnimationMixer(gltf.scene)
             try {
-                const firstAction = actions[Object.keys(actions)[0]]
-                if (firstAction) firstAction.play()
+                const action = mixer.current.clipAction(animations[0])
+                if (action) action.play()
             } catch (e) {
                 console.warn("Animation failed to play:", e)
             }
         }
-    }, [nodes, actions, animations])
+        return () => mixer.current?.stopAllAction()
+    }, [gltf.scene, animations, nodes])
 
-    useFrame((state) => {
+    useFrame((state, delta) => {
+        if (mixer.current) mixer.current.update(delta)
         if (!group.current || !nodes) return
 
         const { x, y } = state.mouse
@@ -45,7 +48,7 @@ export default function BB8Model(props) {
     if (!nodes) return null
 
     // Most GLTs have a Scene or scene
-    const sceneObject = nodes.Scene || nodes.scene || Object.values(nodes).find(n => n.type === 'Scene') || nodes[Object.keys(nodes)[0]]
+    const sceneObject = gltf.scene
 
     return (
         <group ref={group} {...props} dispose={null}>
@@ -53,5 +56,3 @@ export default function BB8Model(props) {
         </group>
     )
 }
-
-useGLTF.preload(modelPath)
