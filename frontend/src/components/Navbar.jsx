@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, Phone, Check } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import hsLogo from '../assets/HS_LOGO.png';
+import hsName from '../assets/name.png';
 import './Navbar.css';
 
 export const Navbar = () => {
@@ -122,8 +124,8 @@ export const Navbar = () => {
                     {/* Logo / Brand */}
                     <div className="navbar-logo">
                         <Link to="/" className="logo-link" onClick={scrollToTop}>
-                            <img src="/src/assets/HS_LOGO.png" alt="Halftone Logo" className="logo-img hs-logo" />
-                            <img src="/src/assets/name.png" alt="Halftone Systems" className="logo-img name-img" />
+                            <img src={hsLogo} alt="Halftone Logo" className="logo-img hs-logo" />
+                            <img src={hsName} alt="Halftone Systems" className="logo-img name-img" />
                         </Link>
                     </div>
 
@@ -174,6 +176,11 @@ export const Navbar = () => {
                                 </React.Fragment>
                             );
                         })}
+                        
+                        {/* Mobile-only Contact Button */}
+                        <Link to="/contact" className="mobile-contact-link" onClick={() => setIsMobileMenuOpen(false)}>
+                            Contact Us
+                        </Link>
                     </div>
                 </div>
             </div>
