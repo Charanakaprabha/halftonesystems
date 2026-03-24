@@ -64,8 +64,13 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .chat-window.maximized {
@@ -484,48 +489,16 @@
   }
 }
 
-@media (max-width: 768px) {
-  .chat-window.maximized {
-    width: 100vw;
-    height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
-    bottom: 0;
-    right: 0;
-    border-radius: 0;
-    border: none;
-    margin: 0;
-  }
-
-  .maximized .chat-body {
-    padding: 0 1rem 1rem 1rem;
-    gap: 0.5rem;
-  }
-
-  .model-container {
-    flex: 0 0 35vh;
-    min-height: 200px;
-  }
-
-  .maximized .chat-content {
-    flex: 1;
-    max-width: 100%;
-  }
-
-  .header-actions .maximize-btn {
-    display: none;
-  }
-
-  .greeting-bubble {
-    display: none;
-  }
-}
-
 @media (max-width: 480px) {
   .chat-window {
     width: calc(100vw - 2rem);
     height: calc(100vh - 8rem);
     bottom: 1rem;
     right: 1rem;
+  }
+
+  .chat-window.maximized {
+    width: 95vw;
+    height: 95vh;
   }
 }

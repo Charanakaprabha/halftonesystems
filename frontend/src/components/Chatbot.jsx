@@ -36,7 +36,7 @@ class ErrorBoundary extends React.Component {
 const Chatbot = () => {
     // Toggle state
     const [isOpen, setIsOpen] = useState(false);
-    const [isMaximized, setIsMaximized] = useState(() => window.innerWidth <= 768);
+    const [isMaximized, setIsMaximized] = useState(false);
 
     // 1. State to hold the chat history
     const [messages, setMessages] = useState(() => {
@@ -65,19 +65,6 @@ const Chatbot = () => {
             scrollToBottom();
         }
     }, [messages, isOpen]);
-
-    // Effect to lock maximized view on mobile
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth <= 768) {
-                setIsMaximized(true);
-            }
-        };
-        // Run once on mount in case it was opened directly on mobile sizes
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     // Function to clear chat history
     const handleClearHistory = () => {
