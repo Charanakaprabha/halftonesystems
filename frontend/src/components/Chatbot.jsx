@@ -152,7 +152,7 @@ const Chatbot = () => {
                 <div className="chat-header">
                     <div className="header-info">
                         <div className="status-dot"></div>
-                        <Bot size={24} color="var(--c-primary)" />
+                        <img src="/assets/chatbot_avatar.png" alt="Avatar" className="header-avatar" />
                         <h3>HTS IntelliAssist</h3>
                     </div>
                     <div className="header-actions">
@@ -220,20 +220,28 @@ const Chatbot = () => {
                     <div className="chat-content">
                         <div className="chat-messages">
                             {messages.map((msg, index) => (
-                                <div key={index} className={`message message-${msg.sender === 'bot' ? 'assistant' : 'user'}`}>
-                                    <div className="message-content">{msg.text}</div>
+                                <div key={index} className={`message-wrapper ${msg.sender === 'bot' ? 'assistant-wrapper' : 'user-wrapper'}`}>
+                                    {msg.sender === 'bot' && (
+                                        <img src="/assets/chatbot_avatar.png" alt="Bot" className="message-avatar" />
+                                    )}
+                                    <div className={`message message-${msg.sender === 'bot' ? 'assistant' : 'user'}`}>
+                                        <div className="message-content">{msg.text}</div>
+                                    </div>
                                 </div>
                             ))}
                             {isLoading && (
-                                <div className="typing-indicator">
-                                    {isMaximized && (
-                                        <div className="dots">
-                                            <div className="dot"></div>
-                                            <div className="dot"></div>
-                                            <div className="dot"></div>
-                                        </div>
-                                    )}
-                                    <span>Assistant is thinking...</span>
+                                <div className="message-wrapper assistant-wrapper">
+                                    <img src="/assets/chatbot_avatar.png" alt="Bot" className="message-avatar" />
+                                    <div className="typing-indicator">
+                                        {isMaximized && (
+                                            <div className="dots">
+                                                <div className="dot"></div>
+                                                <div className="dot"></div>
+                                                <div className="dot"></div>
+                                            </div>
+                                        )}
+                                        <span>Assistant is thinking...</span>
+                                    </div>
                                 </div>
                             )}
                             <div ref={messagesEndRef} />
