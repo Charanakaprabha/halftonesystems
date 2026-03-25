@@ -10,6 +10,7 @@ import { SuccessStoriesPage } from './pages/SuccessStoriesPage';
 import { ContactPage } from './pages/ContactPage';
 import { CareersPage } from './pages/CareersPage';
 
+// Re-triggering build for Vercel
 function App() {
   return (
     <Router>
