@@ -1,89 +1,81 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Twitter, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Twitter, Linkedin, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
 export const Footer = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-    };
-
     return (
-        <footer className="footer">
+        <footer className="footer" style={{ position: 'relative' }}>
             <div className="container">
-                <motion.div
-                    className="footer-top section-padding"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                >
-                    <motion.div className="footer-col" variants={itemVariants}>
+                <div className="footer-top section-padding">
+                    <div className="footer-col">
                         <h3 className="footer-logo">HALFTONE</h3>
                         <p className="footer-desc">
                             Empowering business transformation through technology and talent.
                         </p>
                         <div className="social-icons">
-                            <a href="#" aria-label="LinkedIn"><Linkedin size={20} /></a>
-                            <a href="#" aria-label="Twitter"><Twitter size={20} /></a>
-                            <a href="#" aria-label="Facebook"><Facebook size={20} /></a>
-                            <a href="#" aria-label="Instagram"><Instagram size={20} /></a>
+                            <a href="https://www.linkedin.com/company/halftone-systems" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <Linkedin size={20} />
+                            </a>
+                            <a href="https://x.com/halftonesystem" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                                <Twitter size={20} />
+                            </a>
+                            <a href="https://www.facebook.com/halftonesystemspvtltd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <Facebook size={20} />
+                            </a>
+                            <a href="https://www.instagram.com/HalftoneSystems/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <Instagram size={20} />
+                            </a>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    <motion.div className="footer-col" variants={itemVariants}>
+                    <div className="footer-col">
                         <h4>Company</h4>
                         <ul>
-                            <li><Link to="/who-we-are">About Us</Link></li>
+                            <li><Link to="/who-we-are">Who We Are</Link></li>
                             <li><Link to="/careers">Careers</Link></li>
                             <li><Link to="/success-stories">Success Stories</Link></li>
-                            <li><Link to="/contact">Contact</Link></li>
+                            <li><Link to="/contact">Contact Us</Link></li>
                         </ul>
-                    </motion.div>
-
-                    <motion.div className="footer-col" variants={itemVariants}>
-                        <h4>Services</h4>
-                        <ul>
-                            <li><Link to="/what-we-do#it-consulting-strategy">IT Consulting</Link></li>
-                            <li><Link to="/what-we-do#product-development">Product Development</Link></li>
-                            <li><Link to="/what-we-do#ai-machine-learning">AI Solutions</Link></li>
-                            <li><Link to="/what-we-do#tech-suite">Technology Suite</Link></li>
-                        </ul>
-                    </motion.div>
-
-                    <motion.div className="footer-col" variants={itemVariants}>
-                        <h4>Contact</h4>
-                        <ul>
-                            <li><Link to="/contact">Global Offices</Link></li>
-                            <li><Link to="/contact">Business Inquiry</Link></li>
-                        </ul>
-                    </motion.div>
-                </motion.div>
-
-                <motion.div
-                    className="footer-bottom"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                >
-                    <p>&copy; 2026 Halftone Systems. All rights reserved.</p>
-                    <div className="footer-legal">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Use</a>
-                        <a href="#">Cookie Policy</a>
                     </div>
-                </motion.div>
+
+                    <div className="footer-col">
+                        <h4>What We Do</h4>
+                        <ul>
+                            <li><Link to="/what-we-do#why-choose">Why Choose Us</Link></li>
+                            <li><Link to="/what-we-do#tech-suite">Our Tech Suite</Link></li>
+                            <li><Link to="/what-we-do#specialized-services">Specialized Services</Link></li>
+                            <li><Link to="/industries">Industry Expertise</Link></li>
+                        </ul>
+                    </div>
+
+                    <div className="footer-col">
+                        <h4>Contact Information</h4>
+                        <ul className="footer-contact-info">
+                            <li style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                                <Mail size={16} style={{ color: 'var(--c-primary)', flexShrink: 0 }} />
+                                <a href="mailto:info@halftonesystems.com" style={{ textDecoration: 'none', color: 'inherit' }}>info@halftonesystems.com</a>
+                            </li>
+                            <li style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                                <Phone size={16} style={{ color: 'var(--c-primary)', flexShrink: 0 }} />
+                                <a href="tel:+919951651515" style={{ textDecoration: 'none', color: 'inherit' }}>+91 99516 51515</a>
+                            </li>
+                            <li style={{ display: 'flex', gap: '8px' }}>
+                                <MapPin size={16} style={{ color: 'var(--c-primary)', flexShrink: 0 }} />
+                                <span style={{ fontSize: '0.9rem' }}>Banjara Hills, Hyderabad, India</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="footer-bottom">
+                    <p>&copy; {new Date().getFullYear()} Halftone Systems. All rights reserved.</p>
+                    <div className="footer-legal">
+                        <Link to="/privacy-policy">Privacy Policy</Link>
+                        <Link to="/terms-of-use">Terms of Use</Link>
+                        <Link to="/cookie-policy">Cookie Policy</Link>
+                    </div>
+                </div>
             </div>
         </footer>
     );

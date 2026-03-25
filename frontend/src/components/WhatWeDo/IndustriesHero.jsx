@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const IndustriesHero = () => {
-    // Reveal animation state (similar to useReveal but simplified for this component)
-    const [heroVisible] = useState(true);
+    // Reveal animation state removed per user request
 
     const [particles] = useState(() =>
         Array.from({ length: 18 }, (_, i) => ({
@@ -20,7 +20,7 @@ export const IndustriesHero = () => {
     return (
         <section className="hero-format-standard" style={{
             position: 'relative', width: '100%', minHeight: '80vh',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
             background: '#ffffff', overflow: 'hidden',
             paddingTop: 0, paddingRight: '24px', paddingBottom: '80px', paddingLeft: '24px', boxSizing: 'border-box',
         }}>
@@ -75,9 +75,6 @@ export const IndustriesHero = () => {
                     lineHeight: 1.2,
                     color: '#111827',
                     fontFamily: "'Inter', system-ui, sans-serif",
-                    transform: heroVisible ? 'translateY(0)' : 'translateY(40px)',
-                    opacity: heroVisible ? 1 : 0,
-                    transition: 'transform 0.8s ease-out 0.08s, opacity 0.8s ease-out 0.08s',
                 }}>
                     Your Industry.<br />
                     <span style={{ color: '#2563EB' }}>Our Expertise.</span>
@@ -85,16 +82,27 @@ export const IndustriesHero = () => {
 
 
                 <p style={{
-                    margin: '0 auto', maxWidth: '800px',
+                    margin: '0 auto 2rem auto', maxWidth: '800px',
                     fontSize: '1.15rem',
                     color: '#4b5563', lineHeight: 1.6,
                     fontFamily: "'Inter', system-ui, sans-serif",
-                    transform: heroVisible ? 'translateY(0)' : 'translateY(40px)',
-                    opacity: heroVisible ? 1 : 0,
-                    transition: 'transform 0.75s ease-out 0.26s, opacity 0.75s ease-out 0.26s',
                 }}>
                     Halftone Systems provides the domain depth and technological excellence you need to lead your industry in the digital age. We architect competitive advantages that last.
                 </p>
+
+                <div style={{ marginTop: '32px' }}>
+                    <Link 
+                        to="/contact" 
+                        className="btn btn-primary" 
+                        style={{ 
+                            padding: '16px 32px', borderRadius: '12px', fontSize: '1.1rem', 
+                            display: 'inline-flex', alignItems: 'center', gap: '8px',
+                            textDecoration: 'none', color: '#fff'
+                        }}
+                    >
+                        BOOK A CONSULTATION
+                    </Link>
+                </div>
             </div>
 
             <style>{`

@@ -1,6 +1,4 @@
-import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { CurveSeparator } from './SectionSeparator';
 import './Insights.css';
 
 const insights = [
@@ -35,8 +33,6 @@ export const Insights = () => {
                     <a href="#" className="view-all-link">View All Insights &rarr;</a>
                 </div>
             </div>
-            {/* Fill matches SuccessStories background (bg-light / #f8f8f8) */}
-            <CurveSeparator fill="#f8f8f8" height="80px" />
         </section>
     );
 };

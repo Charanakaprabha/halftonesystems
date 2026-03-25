@@ -73,36 +73,35 @@ export const Navbar = () => {
             name: 'Who We Are',
             href: '/who-we-are',
             dropdown: [
-                { name: 'Our History', href: '/who-we-are' },
-                { name: 'Our Journey', href: '/who-we-are' },
-                { name: 'Six Pillars', href: '/who-we-are' }
+                { name: 'Our History', href: '/who-we-are#our-history' },
+                { name: 'Our Journey', href: '/who-we-are#our-journey' },
+                { name: 'Six Pillars', href: '/who-we-are#six-pillars' }
             ]
         },
         {
             name: 'What We Do',
             href: '/what-we-do',
             dropdown: [
-                { name: 'Why Choose Us', href: '/what-we-do' },
-                { name: 'Our Tech Suite', href: '/what-we-do' },
-                { name: 'Specialized Services', href: '/what-we-do' }
+                { name: 'Why Choose Us', href: '/what-we-do#why-choose' },
+                { name: 'Our Tech Suite', href: '/what-we-do#tech-suite' },
+                { name: 'Specialized Services', href: '/what-we-do#specialized-services' }
             ]
         },
         {
             name: 'Success Stories',
             href: '/success-stories',
             dropdown: [
-                { name: 'Case Studies', href: '/success-stories' },
-                { name: 'Client Testimonials', href: '/success-stories' },
-                { name: 'Impact Reports', href: '/success-stories' }
+                { name: 'Case Studies', href: '/success-stories#success-stories' },
+                { name: 'Global Presence', href: '/success-stories#partnerships' }
             ]
         },
         {
             name: 'Careers',
             href: '/careers',
             dropdown: [
-                { name: 'Open Positions', href: '/careers' },
-                { name: 'Our Culture', href: '/careers' },
-                { name: 'Life at Halftone', href: '/careers' }
+                { name: 'Open Positions', href: '/careers#open-positions' },
+                { name: 'Our Culture', href: '/careers#life-at-halftone' },
+                { name: 'Life at Halftone', href: '/careers#life-at-halftone' }
             ]
         },
     ];

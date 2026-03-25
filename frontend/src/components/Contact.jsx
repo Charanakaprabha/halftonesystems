@@ -90,10 +90,6 @@ export const Contact = () => {
             <div className="container">
                 <motion.div
                     className="section-header text-center"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
-                    variants={fadeUpVariants}
                 >
                     <p className="section-subtitle-small">WE'RE READY TO CONNECT</p>
                     <h1 className="universal-hero-title" style={{ color: '#111827' }}>Let's Start a Conversation.</h1>
@@ -104,17 +100,13 @@ export const Contact = () => {
 
                 <motion.div
                     className="contact-wrapper"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
                 >
-                    <motion.div className="contact-form-wrapper glass-card huge-box" variants={fadeUpVariants}>
+                    <motion.div className="contact-form-wrapper glass-card huge-box">
                         <h3 className="info-heading">SEND A MESSAGE</h3>
                         <ContactForm />
                     </motion.div>
 
-                    <motion.div className="contact-info" variants={fadeUpVariants}>
+                    <motion.div className="contact-info">
                         <h3 className="info-heading">CONTACT INFORMATION</h3>
                         <h2 className="info-title">Reach Out to Us</h2>
 
@@ -144,12 +136,8 @@ export const Contact = () => {
 
                 <motion.div
                     className="global-presence text-center"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
-                    variants={containerVariants}
                 >
-                    <motion.div variants={fadeUpVariants}>
+                    <motion.div>
                         <h3 className="info-heading">GLOBAL PRESENCE</h3>
                         <h2 className="section-title section-title-dark text-center" style={{ fontSize: '2.5rem' }}>A Global Reach, A Local Touch</h2>
                         <p className="presence-desc">Serving clients across four countries with the precision of a trusted partner and the power of an international firm.</p>
@@ -157,7 +145,7 @@ export const Contact = () => {
 
                     <div className="locations-grid">
                         {locations.map((loc, i) => (
-                            <motion.div key={i} className="location-card glass-card" variants={fadeUpVariants}>
+                            <motion.div key={i} className="location-card glass-card">
                                 <h4>{loc.country}</h4>
                                 <p>{loc.label}</p>
                             </motion.div>

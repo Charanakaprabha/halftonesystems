@@ -13,6 +13,7 @@ export default defineConfig({
     ],
   },
   server: {
+    allowedHosts: true,
     proxy: {
       '/api-gemini': {
         target: 'https://generativelanguage.googleapis.com',
@@ -22,6 +23,33 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true,
+      },
+    },
+  },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('three')) {
+              return 'vendor-three';
+            }
+            if (id.includes('@react-three')) {
+              return 'vendor-three-fiber';
+            }
+            if (id.includes('framer-motion')) {
+              return 'vendor-framer';
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-lucide';
+            }
+            if (id.includes('gsap')) {
+              return 'vendor-gsap';
+            }
+            return 'vendor';
+          }
+        },
       },
     },
   },

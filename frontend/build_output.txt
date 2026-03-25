@@ -1,0 +1,36 @@
+﻿
+> halftone-systems@0.0.0 build
+> vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 2217 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                                [39m[1m[2m     1.07 kB[22m[1m[22m[2m Γöé gzip:   0.48 kB[22m
+[2mdist/[22m[32massets/OHM-CqivwV9N.png                   [39m[1m[2m     4.42 kB[22m[1m[22m
+[2mdist/[22m[32massets/Chemie-Tech-W3qqN5iC.png           [39m[1m[2m     4.60 kB[22m[1m[22m
+[2mdist/[22m[32massets/wpp-DtCqNu1C.png                   [39m[1m[2m     4.69 kB[22m[1m[22m
+[2mdist/[22m[32massets/Mithuna-ByOKAZfu.jpeg              [39m[1m[2m     5.19 kB[22m[1m[22m
+[2mdist/[22m[32massets/WhiteCapital-BX_F8zQN.jpeg         [39m[1m[2m     6.05 kB[22m[1m[22m
+[2mdist/[22m[32massets/Creighton University-CKYJvltC.png  [39m[1m[2m     6.84 kB[22m[1m[22m
+[2mdist/[22m[32massets/Darian International-C4nQE7DK.png  [39m[1m[2m     7.90 kB[22m[1m[22m
+[2mdist/[22m[32massets/PX Nordic-C94SVaIs.png             [39m[1m[2m     8.35 kB[22m[1m[22m
+[2mdist/[22m[32massets/Virchow-DyyS8yxj.png               [39m[1m[2m    15.60 kB[22m[1m[22m
+[2mdist/[22m[32massets/name-BN_r5skp.png                  [39m[1m[2m    17.66 kB[22m[1m[22m
+[2mdist/[22m[32massets/nvisionharvest-CDbyOPpy.png        [39m[1m[2m    23.53 kB[22m[1m[22m
+[2mdist/[22m[32massets/ANGCC-ClRyRMEL.png                 [39m[1m[2m    58.92 kB[22m[1m[22m
+[2mdist/[22m[32massets/nagraj-By7hhKWN.webp               [39m[1m[2m    68.56 kB[22m[1m[22m
+[2mdist/[22m[32massets/TFMC-B1vMR8Gv.png                  [39m[1m[2m   115.36 kB[22m[1m[22m
+[2mdist/[22m[32massets/Royal Orbit-CTU6n7ra.png           [39m[1m[2m   154.08 kB[22m[1m[22m
+[2mdist/[22m[32massets/Promea-CyqHDxhb.png                [39m[1m[2m   156.06 kB[22m[1m[22m
+[2mdist/[22m[32massets/hero-main-EDxJthy3.png             [39m[1m[2m   861.46 kB[22m[1m[22m
+[2mdist/[22m[32massets/HS_LOGO-WRCTbOsd.png               [39m[1m[2m 1,833.64 kB[22m[1m[22m
+[2mdist/[22m[32massets/bb8_animated-pmntaLdS.glb          [39m[1m[2m19,885.44 kB[22m[1m[22m
+[2mdist/[22m[35massets/index-BfwkPAsJ.css                 [39m[1m[2m    55.78 kB[22m[1m[22m[2m Γöé gzip:  11.41 kB[22m
+[2mdist/[22m[36massets/vendor-lucide-no9QskF5.js          [39m[1m[2m    20.13 kB[22m[1m[22m[2m Γöé gzip:   7.39 kB[22m
+[2mdist/[22m[36massets/vendor-framer-W4Ix5Cvf.js          [39m[1m[2m    33.23 kB[22m[1m[22m[2m Γöé gzip:  11.58 kB[22m
+[2mdist/[22m[36massets/index-BSZkCEV2.js                  [39m[1m[2m   108.50 kB[22m[1m[22m[2m Γöé gzip:  30.19 kB[22m
+[2mdist/[22m[36massets/vendor-CLbYsI78.js                 [39m[1m[2m   328.95 kB[22m[1m[22m[2m Γöé gzip: 106.29 kB[22m
+[2mdist/[22m[36massets/vendor-three-BuuGajGh.js           [39m[1m[2m   932.78 kB[22m[1m[22m[2m Γöé gzip: 251.48 kB[22m
+[32mΓ£ô built in 14.43s[39m

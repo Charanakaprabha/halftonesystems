@@ -7,7 +7,6 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Home.css';
 
 export const Home = () => {
-    useScrollReveal();
     return (
         <div className="home-page-new">
             <Hero />
@@ -83,13 +82,9 @@ export const Home = () => {
                                     desc: "Our high-performance teams integrate seamlessly with yours — driving alignment and speed."
                                 }
                             ].map((card, index) => (
-                                <motion.div 
+                                <div 
                                     key={index}
                                     className="bento-card-full"
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                                    viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
                                 >
                                     <div className="bento-content-header">
                                         <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>{card.icon} {card.title}</h4>
@@ -98,7 +93,7 @@ export const Home = () => {
                                     <div className="bento-content-body">
                                         <p>{card.desc}</p>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     </div>

@@ -2,6 +2,9 @@
     position: relative !important;
     background-color: #FFFFFF;
     color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 0 0 100px;
     overflow: hidden;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -476,7 +479,7 @@
         border-bottom: 1px solid #e5e7eb;
     }
 
-    .wa-timeline::before {
+    .wa-timeline-line-bg, .wa-timeline-line-fill {
         left: 10px;
     }
 
@@ -485,7 +488,8 @@
     }
 
     .wa-timeline-dot {
-        left: 4px;
+        left: 4px; /* Centered on 10px line: 10 - (14/2) + 1 = 4px; wait, 4+7 = 11. 3+7 = 10. Let's use 3px. */
+        left: 3px;
     }
 
     .wa-stories-grid {

@@ -59,14 +59,10 @@ export const WhoWeAre = () => {
 
             <motion.div
                 className="who-we-are-container"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
             >
 
                 {/* Core Narrative */}
-                <motion.div className="wa-core-narrative" variants={itemVariants}>
+                <motion.div className="wa-core-narrative">
                     <p className="eyebrow-format-standard" style={{
                         color: 'var(--c-primary)',
                         fontSize: '0.85rem',
@@ -84,7 +80,7 @@ export const WhoWeAre = () => {
                 </motion.div>
 
                 {/* Metric Cards */}
-                <motion.div className="wa-metrics-grid" variants={itemVariants}>
+                <motion.div className="wa-metrics-grid">
                     {metrics.map((metric, idx) => (
                         <div
                             key={idx}
@@ -97,10 +93,9 @@ export const WhoWeAre = () => {
                 </motion.div>
 
                 {/* Divider */}
-                <motion.div className="wa-divider" variants={itemVariants}></motion.div>
+                <motion.div className="wa-divider"></motion.div>
 
-                {/* Founder Focus */}
-                <motion.div className="wa-founder-section" variants={itemVariants}>
+                <motion.div id="our-history" className="wa-founder-section">
                     <h4 className="wa-section-title">OUR HISTORY</h4>
                     <h3 className="wa-section-subtitle">Born from a Vision to Transform the World</h3>
 
@@ -129,8 +124,7 @@ export const WhoWeAre = () => {
                     </div>
                 </motion.div>
 
-                {/* Journey Timeline */}
-                <motion.div className="wa-journey-section" variants={itemVariants}>
+                <motion.div id="our-journey" className="wa-journey-section">
                     <h4 className="wa-section-title">OUR JOURNEY</h4>
                     <h3 className="wa-section-subtitle">A Timeline of Excellence</h3>
 
@@ -171,8 +165,7 @@ export const WhoWeAre = () => {
                     </div>
                 </motion.div>
 
-                {/* Vision & Pillars */}
-                <motion.div className="wa-vision-section" variants={itemVariants}>
+                <motion.div id="six-pillars" className="wa-vision-section">
                     <h4 className="wa-section-title">OUR VISION</h4>
                     <h3 className="wa-section-subtitle">Six Pillars of Innovation</h3>
                     <p className="wa-vision-desc">Halftone Systems delivers breakthrough solutions across six core practice areas — each engineered to give clients an enduring competitive advantage.</p>

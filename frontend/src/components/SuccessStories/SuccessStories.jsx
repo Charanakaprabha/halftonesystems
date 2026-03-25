@@ -17,11 +17,7 @@ import {
 import './SuccessStories.css';
 
 export const SuccessStories = () => {
-    const [heroVisible, setHeroVisible] = React.useState(false);
-    
-    React.useEffect(() => {
-        setHeroVisible(true);
-    }, []);
+    // Reveal animation state removed per user request
 
     // 1. Container Stagger Animation
     const containerVariants = {
@@ -175,9 +171,6 @@ export const SuccessStories = () => {
                             marginTop: 0,
                             marginBottom: '1.5rem',
                             color: '#111827',
-                            transform: heroVisible ? 'translateY(0)' : 'translateY(40px)',
-                            opacity: heroVisible ? 1 : 0,
-                            transition: 'all 0.8s'
                         }}>Trusted by Industry Leaders<br />
                         <span style={{ color: 'var(--c-primary)' }}>Worldwide</span>
                     </h1>
@@ -187,16 +180,12 @@ export const SuccessStories = () => {
 
                 <motion.div
                     className="ss-bento-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
                 >
                     {stories.map((story, idx) => (
                         <motion.div
                             key={idx}
+                            id={story.tag === 'Global Technology Services' ? 'partnerships' : undefined}
                             className={`ss-bento-item ${story.colSpan}`}
-                            variants={itemVariants}
                         >
                             <motion.div
                                 className="ss-glass-card"

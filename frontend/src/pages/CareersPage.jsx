@@ -3,23 +3,8 @@ import { LayoutGrid, List, MapPin, Briefcase, DollarSign, Clock, ChevronRight, X
 
 /* ══════════════════════════════════════
    INTERSECTION REVEAL HOOK
-   Keep current behavior
+   Removed per user request for static load
    ══════════════════════════════════════ */
-function useReveal(threshold = 0.1) {
-    const ref = useRef(null);
-    const [visible, setVisible] = useState(false);
-    useEffect(() => {
-        const el = ref.current;
-        if (!el) return;
-        const obs = new IntersectionObserver(
-            ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-            { threshold }
-        );
-        obs.observe(el);
-        return () => obs.disconnect();
-    }, []);
-    return [ref, visible];
-}
 
 /* ══════════════════════════════════════
    DESIGN TOKENS  — WhoWeAre theme (Keep)
@@ -535,8 +520,7 @@ function JobDetailView({ job, onClose }) {
    MAIN PAGE
    ══════════════════════════════════════ */
 export const CareersPage = () => {
-    const [heroRef, heroVisible] = useReveal(0.05);
-    const [bandRef, bandVisible] = useReveal(0.1);
+    // Reveal animation hooks removed per user request
     
     // Selection state for Indeed-style split view
     const [viewMode, setViewMode] = useState('list');
@@ -561,12 +545,11 @@ export const CareersPage = () => {
 
             {/* HERO — standard standardized header */}
             <section
-                ref={heroRef}
                 className="hero-format-standard"
                 style={{
                     position: 'relative', width: '100%', minHeight: '60vh',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: '#ffffff', overflow: 'hidden', padding: '0 24px 80px',
+                    display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
+                    background: '#ffffff', overflow: 'hidden', padding: 'var(--hero-padding-top) 24px 80px',
                 }}
             >
                 <div style={{
@@ -594,19 +577,31 @@ export const CareersPage = () => {
                     </h4>
                     <h1 className="universal-hero-title" style={{
                         marginTop: 0, marginBottom: '1.5rem', color: '#111827',
-                        transform: heroVisible ? 'translateY(0)' : 'translateY(40px)', opacity: heroVisible ? 1 : 0, transition: 'all 0.8s'
                     }}>
                         Build Your Future<br /><span style={{ color: T.primary }}>With Us.</span>
                     </h1>
-                    <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.6, opacity: heroVisible ? 1 : 0, transition: 'all 0.8s 0.2s' }}>
+                    <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.6 }}>
                         We are looking for talented professionals to solve meaningful problems and build world-class products.
                     </p>
+                    <div style={{ marginTop: '32px' }}>
+                        <a 
+                            href="#open-positions" 
+                            className="btn btn-primary" 
+                            style={{ 
+                                padding: '16px 32px', borderRadius: '12px', fontSize: '1.1rem', 
+                                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                                textDecoration: 'none', color: '#fff'
+                            }}
+                        >
+                            VIEW OPEN POSITIONS <ChevronRight size={20} />
+                        </a>
+                    </div>
                 </div>
             </section>
 
             {/* JOBS SECTION */}
             <section
-                id="jobs"
+                id="open-positions"
                 style={{
                     position: 'relative', width: '100%',
                     background: T.bgAlt, padding: '80px 24px 100px',
@@ -664,7 +659,6 @@ export const CareersPage = () => {
                             minHeight: '600px',
                             opacity: 1,
                             transform: 'translateY(0)',
-                            transition: 'all 0.6s ease-out'
                         }}
                     >
                         {viewMode === 'grid' ? (
@@ -744,19 +738,24 @@ export const CareersPage = () => {
                         </div>
                     )}
 
-                    {/* Bottom CTA */}
-                    <div ref={bandRef} style={{
+                    {/* Bottom CTA / Culture Section */}
+                    <div id="life-at-halftone" style={{
                         marginTop: '80px', padding: '3rem', borderRadius: '16px', background: '#fff', border: `1px solid ${T.border}`,
                         display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px',
-                        transform: bandVisible ? 'translateY(0)' : 'translateY(32px)', opacity: bandVisible ? 1 : 0, transition: 'all 0.85s'
                     }}>
                         <div>
                             <h3 style={{ fontSize: '1.4rem', fontWeight: 800, margin: '0 0 8px', color: T.textDark }}>Don't see a role that fits?</h3>
                             <p style={{ margin: 0, color: T.textBody }}>Send us your resume — we're always looking for exceptional talent.</p>
                         </div>
-                        <button onClick={() => alert('Send Resume')} style={{ padding: '12px 32px', borderRadius: '8px', background: T.primary, color: '#fff', fontWeight: 700, border: 'none', cursor: 'pointer' }}>
+                        <a 
+                            href="mailto:hr@halftonesystems.com?subject=Job Application" 
+                            style={{ 
+                                padding: '12px 32px', borderRadius: '8px', background: T.primary, color: '#fff', 
+                                fontWeight: 700, border: 'none', cursor: 'pointer', textDecoration: 'none'
+                            }}
+                        >
                             Send Your Resume →
-                        </button>
+                        </a>
                     </div>
                 </div>
             </section>
