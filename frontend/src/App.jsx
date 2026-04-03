@@ -10,25 +10,29 @@ import { SuccessStoriesPage } from './pages/SuccessStoriesPage';
 import { ContactPage } from './pages/ContactPage';
 import { CareersPage } from './pages/CareersPage';
 
+import { ThemeProvider } from './ThemeContext';
+
 // Re-triggering build for Vercel
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/what-we-do" element={<WhatWeDoPage />} />
-          <Route path="/who-we-are" element={<WhoWeArePage />} />
-          <Route path="/industries" element={<IndustriesPage />} />
-          <Route path="/success-stories" element={<SuccessStoriesPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/careers" element={<CareersPage />} />
-        </Routes>
-        <Footer />
-        <Chatbot />
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/what-we-do" element={<WhatWeDoPage />} />
+            <Route path="/who-we-are" element={<WhoWeArePage />} />
+            <Route path="/industries" element={<IndustriesPage />} />
+            <Route path="/success-stories" element={<SuccessStoriesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+          </Routes>
+          <Footer />
+          <Chatbot />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

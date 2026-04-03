@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Target, Award, Zap, Brain, Handshake, BarChart, Globe, Smartphone, Building, Lightbulb, RefreshCw, Cloud, Settings, Activity, Bot, Microscope, Trophy } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Target, Award, Zap, Brain, Handshake, BarChart, Globe, Smartphone, Building, Lightbulb, RefreshCw, Cloud, Settings, Activity, Bot, Microscope, Trophy, ArrowRight, Mail } from 'lucide-react';
 import { Hero } from '../components/Hero';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Home.css';
 
 export const Home = () => {
+    const pillarsRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: pillarsRef,
+        offset: ["start end", "end start"]
+    });
+
+    const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 0.8, 0.8, 0]);
+
     return (
         <div className="home-page-new">
             <Hero />
 
+            {/* 1. Stats Bar (Directly below Hero) */}
             <section className="home-stats-bar reveal">
                 <div className="container">
                     <div className="stats-grid">
@@ -34,17 +44,13 @@ export const Home = () => {
                 </div>
             </section>
 
-            {/* 2. Accelerate Section */}
-            <section className="home-section light-bg">
+            {/* 2. Accelerate Sticky Section */}
+            <section className="home-section light-bg accelerate-section" style={{ paddingTop: '240px' }}>
                 <div className="container">
                     <div className="section-header-centered reveal">
-                        <h2 style={{ 
-                            fontFamily: "'Inter', system-ui, sans-serif",
+                        <h2 className="section-title" style={{ 
                             fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
-                            fontWeight: 800,
-                            letterSpacing: '-0.03em',
-                            lineHeight: 1.1,
-                            color: '#0b1f40'
+                            fontWeight: 800
                         }}>ACCELERATE YOUR DIGITAL TRANSFORMATION</h2>
                         <p className="header-subtitle">The partner you need. The expertise you deserve. The results that matter.</p>
                     </div>
@@ -59,6 +65,11 @@ export const Home = () => {
                                 <hr className="box-divider-blue-light" />
                                 <p>As a premier mobile app development and IT consulting powerhouse, Halftone Systems navigates the most complex digital landscapes with confidence and precision.</p>
                                 <p>We've transformed organizations across North America and India — helping them unlock full potential through cutting-edge technology, strategic innovation, and results you can measure from day one.</p>
+                                <div style={{ marginTop: '2rem' }}>
+                                    <Link to="/contact" className="btn btn-primary" style={{ padding: '14px 28px', fontSize: '1rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                                        <Mail size={18} /> info@halftonesystems.com <ArrowRight size={18} />
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                         <div className="accelerate-right-scroll">
@@ -84,7 +95,7 @@ export const Home = () => {
                             ].map((card, index) => (
                                 <div 
                                     key={index}
-                                    className="bento-card-full"
+                                    className="bento-card-full bg-white"
                                 >
                                     <div className="bento-content-header">
                                         <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>{card.icon} {card.title}</h4>
@@ -100,9 +111,28 @@ export const Home = () => {
                 </div>
             </section>
 
-            {/* 3. Pillars Section */}
-            <section className="home-section white-bg reveal">
-                <div className="container">
+            {/* 3. Pillars Section (With Snake growth graph animation) */}
+            <section className="home-section white-bg reveal" ref={pillarsRef} style={{ position: 'relative', overflow: 'hidden' }}>
+                {/* Scroll-synced Snake Background */}
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0 }}>
+                    <svg width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                        <motion.path
+                            d="M -100 1000 L 350 450 L 550 750 L 1100 -100"
+                            fill="none"
+                            stroke="#3b82f6"
+                            strokeWidth="150"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            style={{ 
+                                pathLength,
+                                opacity,
+                                strokeOpacity: 0.8
+                            }}
+                        />
+                    </svg>
+                </div>
+
+                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                     <div className="section-header-centered reveal">
                         <h2 style={{ 
                             fontFamily: "'Inter', system-ui, sans-serif",
@@ -119,19 +149,17 @@ export const Home = () => {
                         <div className="pillar-card bg-light-blue reveal reveal-stagger-1">
                             <div className="pillar-header">
                                 <div className="card-icon"><Brain size={32} color="#3b82f6" /></div>
-                                <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>Deep Technical Expertise</h4>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400" className="home-card-image" alt="Technical Expertise" />
+                            <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>Deep Technical Expertise</h4>
                             <div className="card-content-body">
-                                <p>Our multidisciplinary teams master diverse technology stacks — ensuring the perfect, precision-engineered solution for every unique challenge.</p>
+                                <p>Our multidisciplinary teams master diverse technology stacks, ensuring the perfect solution for your unique challenge.</p>
                             </div>
                         </div>
                         <div className="pillar-card bg-light-blue reveal reveal-stagger-2">
                             <div className="pillar-header">
                                 <div className="card-icon"><Handshake size={32} color="#3b82f6" /></div>
-                                <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>Strategic Partnerships</h4>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400" className="home-card-image" alt="Strategic Partnerships" />
+                            <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>Strategic Partnerships</h4>
                             <div className="card-content-body">
                                 <p>Exclusive collaborations with global technology leaders amplify our capabilities and unlock premium resources for your projects.</p>
                             </div>
@@ -139,9 +167,8 @@ export const Home = () => {
                         <div className="pillar-card bg-light-blue reveal reveal-stagger-3">
                             <div className="pillar-header">
                                 <div className="card-icon"><BarChart size={32} color="#3b82f6" /></div>
-                                <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>Data-Driven Results</h4>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400" className="home-card-image" alt="Data-Driven Results" />
+                            <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>Data-Driven Results</h4>
                             <div className="card-content-body">
                                 <p>Every solution is built around measurable KPIs — delivering tangible ROI and undeniable business impact from day one.</p>
                             </div>
@@ -149,9 +176,8 @@ export const Home = () => {
                         <div className="pillar-card bg-light-blue reveal reveal-stagger-4">
                             <div className="pillar-header">
                                 <div className="card-icon"><Globe size={32} color="#3b82f6" /></div>
-                                <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>Global Reach, Local Excellence</h4>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400" className="home-card-image" alt="Global Reach" />
+                            <h4 style={{ fontFamily: "'Rubik', sans-serif" }}>Global Reach, Local Excellence</h4>
                             <div className="card-content-body">
                                 <p>With offices across India and North America, we fuse local market insights with international best practices.</p>
                             </div>
@@ -292,36 +318,76 @@ export const Home = () => {
                 </div>
             </section>
 
-            {/* 6. Bottom CTA */}
-            <section className="home-cta reveal">
-                <div className="container">
-                    <div className="cta-box bg-dark-blue reveal">
-                        <h2 className="text-white" style={{ 
-                            fontFamily: "'Inter', system-ui, sans-serif",
-                            fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
-                            fontWeight: 800,
-                            letterSpacing: '-0.03em',
-                            lineHeight: 1.1,
+            {/* 6. Ready to Lead Your Industry? Box (Matches Image) */}
+            <section className="home-section" style={{ padding: '6rem 1.25rem' }}>
+                <div className="container" style={{ maxWidth: '1200px' }}>
+                    <div className="cta-box-responsive" style={{ 
+                        background: 'linear-gradient(90deg, #1e40af 0%, #030712 100%)',
+                        padding: 'clamp(2.5rem, 10vw, 5rem) clamp(1rem, 5vw, 3rem)',
+                        textAlign: 'center',
+                        borderRadius: '1.25rem',
+                        color: 'white',
+                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        margin: '0 auto'
+                    }}>
+                        <h2 style={{ 
+                            fontSize: 'clamp(1.75rem, 6vw, 4rem)', 
+                            fontWeight: 800, 
+                            marginBottom: '1rem',
+                            letterSpacing: '-0.02em',
                             color: '#ffffff'
                         }}>Ready to Lead Your Industry?</h2>
-                        <p className="text-white">Transform your vision into reality with technology solutions that don't just meet today's needs — they anticipate tomorrow's opportunities.</p>
-
-                        <div className="cta-benefits reveal reveal-stagger-2">
-                            <span className="text-yellow">Free Consultation</span>
-                            <span className="text-yellow spacer">|</span>
-                            <span className="text-yellow">Custom Technology Roadmap</span>
-                            <span className="text-yellow spacer">|</span>
-                            <span className="text-yellow">Measurable ROI from Day One</span>
+                        
+                        <p style={{ 
+                            fontStyle: 'italic', 
+                            fontSize: 'clamp(1rem, 3vw, 1.25rem)', 
+                            marginBottom: '2.5rem', 
+                            maxWidth: '950px', 
+                            margin: '0 auto 3.5rem',
+                            lineHeight: 1.6,
+                            opacity: 0.95
+                        }}>
+                            Transform your vision into reality with technology solutions that don't just meet today's needs — they anticipate tomorrow's opportunities.
+                        </p>
+                        
+                        <div style={{ 
+                            color: '#60a5fa', 
+                            fontSize: 'clamp(0.85rem, 2.5vw, 1.25rem)', 
+                            fontWeight: 700, 
+                            marginBottom: '3rem', 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            gap: '12px', 
+                            flexWrap: 'wrap',
+                            letterSpacing: '0.02em'
+                        }}>
+                            <span>Free Consultation</span> 
+                            <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span> 
+                            <span>Custom Technology Roadmap</span> 
+                            <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span> 
+                            <span>Measurable ROI from Day One</span>
                         </div>
-
-                        <p className="text-light-blue cta-subtext reveal reveal-stagger-3">
+                        
+                        <p style={{ 
+                            fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', 
+                            marginBottom: '3rem', 
+                            opacity: 0.85,
+                            maxWidth: '800px',
+                            margin: '0 auto 3.5rem'
+                        }}>
                             Join the ranks of forward-thinking organizations who have chosen Halftone Systems as their trusted digital transformation partner.
                         </p>
-                        <Link to="/contact" className="text-white cta-contact reveal reveal-stagger-4">Contact us today | www.halftonesystems.com</Link>
+                        
+                        <h3 style={{ 
+                            fontSize: 'clamp(1.25rem, 4vw, 2.75rem)', 
+                            fontWeight: 800,
+                            letterSpacing: '-0.01em'
+                        }}>
+                            Contact us today | <span style={{ fontWeight: 700 }}>www.halftonesystems.com</span>
+                        </h3>
                     </div>
                 </div>
             </section>
-
         </div>
     );
 };

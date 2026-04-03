@@ -9,7 +9,7 @@ export const Footer = () => {
             <div className="container">
                 <div className="footer-top section-padding">
                     <div className="footer-col">
-                        <h3 className="footer-logo">HALFTONE</h3>
+                        <h3 className="footer-logo">HALFTONE SYSTEMS</h3>
                         <p className="footer-desc">
                             Empowering business transformation through technology and talent.
                         </p>

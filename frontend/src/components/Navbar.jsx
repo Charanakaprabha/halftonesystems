@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, Phone, Check } from 'lucide-react';
+import { ChevronDown, Menu, X, Phone, Check, Moon, Sun } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import hsLogo from '../assets/HS_LOGO.png';
 import hsName from '../assets/name.png';
+import './Navbar.css';
 import './Navbar.css';
 
 export const Navbar = () => {
@@ -100,8 +102,8 @@ export const Navbar = () => {
             href: '/careers',
             dropdown: [
                 { name: 'Open Positions', href: '/careers#open-positions' },
-                { name: 'Our Culture', href: '/careers#life-at-halftone' },
-                { name: 'Life at Halftone', href: '/careers#life-at-halftone' }
+                { name: 'Our Culture', href: '/careers#life-at-halftone-systems' },
+                { name: 'Life at Halftone Systems', href: '/careers#life-at-halftone-systems' }
             ]
         },
     ];
@@ -123,13 +125,13 @@ export const Navbar = () => {
                     {/* Logo / Brand */}
                     <div className="navbar-logo">
                         <Link to="/" className="logo-link" onClick={scrollToTop}>
-                            <img src={hsLogo} alt="Halftone Logo" className="logo-img hs-logo" />
+                            <img src={hsLogo} alt="Halftone Systems Logo" className="logo-img hs-logo" />
                             <img src={hsName} alt="Halftone Systems" className="logo-img name-img" />
                         </Link>
                     </div>
 
                     {/* Utility: Contact + Mobile toggle */}
-                    <div className="navbar-utility">
+                    <div className="navbar-utility" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                         <Link to="/contact" className="contact-btn">
                             Contact Us
                         </Link>

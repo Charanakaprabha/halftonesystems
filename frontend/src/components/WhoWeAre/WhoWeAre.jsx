@@ -97,7 +97,7 @@ export const WhoWeAre = () => {
 
                 <motion.div id="our-history" className="wa-founder-section">
                     <h4 className="wa-section-title">OUR HISTORY</h4>
-                    <h3 className="wa-section-subtitle">Born from a Vision to Transform the World</h3>
+                    <h3 className="wa-section-subtitle">Our vision is to transform the world</h3>
 
                     <div className="wa-founder-content">
                         <div className="wa-founder-text">
@@ -151,7 +151,7 @@ export const WhoWeAre = () => {
                         <div className="wa-timeline-item">
                             <div className="wa-timeline-dot"></div>
                             <div className="wa-timeline-content">
-                                <h5>HALFTONE FOUNDED</h5>
+                                <h5>HALFTONE SYSTEMS FOUNDED</h5>
                                 <p>With 19 years of international mastery, Nagaraj launches Halftone Systems — architecting a firm built to deliver Fortune 500-grade technology to organisations of every scale.</p>
                             </div>
                         </div>

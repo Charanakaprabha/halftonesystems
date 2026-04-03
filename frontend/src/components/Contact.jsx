@@ -68,8 +68,8 @@ const ContactForm = () => {
 
 export const Contact = () => {
     const locations = [
-        { country: "India", label: "Headquarters" },
-        { country: "USA", label: "Americas" }
+        { country: "India", label: "Headquarters", flag: "https://flagcdn.com/w160/in.png" },
+        { country: "USA", label: "Americas", flag: "https://flagcdn.com/w160/us.png" }
     ];
 
     const fadeUpVariants = {
@@ -145,9 +145,10 @@ export const Contact = () => {
 
                     <div className="locations-grid">
                         {locations.map((loc, i) => (
-                            <motion.div key={i} className="location-card glass-card">
-                                <h4>{loc.country}</h4>
-                                <p>{loc.label}</p>
+                            <motion.div key={i} className="location-card glass-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+                                <img src={loc.flag} alt={`${loc.country} Flag`} style={{ width: '80px', height: 'auto', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '4px', marginBottom: '1rem', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }} />
+                                <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.25rem' }}>{loc.country}</h4>
+                                <p style={{ margin: 0, color: 'var(--c-text-light)' }}>{loc.label}</p>
                             </motion.div>
                         ))}
                     </div>

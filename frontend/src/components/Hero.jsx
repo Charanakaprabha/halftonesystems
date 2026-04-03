@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
-import heroBg from '../assets/hero-main.png';
+import heroBg from '../assets/hero_bg_tech_v2_1775215071873.png';
 import './Hero.css';
 import { Link } from 'react-router-dom';
 
 export const Hero = () => {
+    const fullText = "Accelerate Your Digital Transformation";
+    const [text, setText] = useState("");
+    const [cursorVisible, setCursorVisible] = useState(true);
+
+    useEffect(() => {
+        let i = 0;
+        const interval = setInterval(() => {
+            setText(fullText.substring(0, i + 1));
+            i++;
+            if (i === fullText.length) clearInterval(interval);
+        }, 100);
+
+        const cursorInterval = setInterval(() => {
+            setCursorVisible(v => !v);
+        }, 500);
+
+        return () => {
+            clearInterval(interval);
+            clearInterval(cursorInterval);
+        };
+    }, []);
+
     return (
         <section className="hero" style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${heroBg})`,
@@ -12,30 +34,20 @@ export const Hero = () => {
             backgroundPosition: 'center'
         }}>
             <div className="container hero-container">
-                <div className="hero-grid" style={{ gridTemplateColumns: '1fr' }}>
-                    <div className="hero-content" style={{ textAlign: 'left', margin: '0', maxWidth: '1000px', paddingBottom: '40px' }}>
-                        <h4 className="eyebrow-format-standard" style={{
-                            color: '#3b82f6',
-                            fontSize: '0.85rem',
-                            fontWeight: 700,
-                            letterSpacing: '0.12em',
-                            textTransform: 'uppercase',
-                            fontFamily: "'Inter', system-ui, sans-serif",
-                        }}>
-                            PREMIER TECHNOLOGY PARTNER
-                        </h4>
-                        <h1 className="hero-title universal-hero-title" style={{
+                <div className="hero-grid">
+                    <div className="hero-content">
+
+                        <h1 className="hero-title" style={{
                             color: '#ffffff',
-                            lineHeight: 1,
-                            marginBottom: '2rem'
+                            lineHeight: 1.2,
+                            marginBottom: '1rem',
+                            minHeight: '120px'
                         }}>
-                            Growth.<br />
-                            Transformation.<br />
-                            <span className="highlight" style={{ color: '#3b82f6' }}>Opportunity.</span>
+                            {text}<span style={{ opacity: cursorVisible ? 1 : 0, color: '#3b82f6' }}>|</span>
                         </h1>
                         <p className="hero-subtitle" style={{
                             color: 'rgba(255, 255, 255, 0.95)',
-                            margin: '0 0 2rem 0',
+                            margin: '0 auto 2rem',
                             maxWidth: '750px',
                             lineHeight: 1.5
                         }}>

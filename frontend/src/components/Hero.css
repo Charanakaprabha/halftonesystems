@@ -35,14 +35,13 @@
 }
 
 .hero-title {
-    opacity: 0;
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2rem !important;
+        font-size: 1.5rem !important;
     }
 
     .hero-subtitle {
@@ -77,8 +76,14 @@
 }
 
 .hero-btn {
-    padding: 20px 40px;
-    font-size: 1.25rem;
+    padding: 14px 28px;
+    font-size: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 @keyframes slideIn {
@@ -160,7 +165,7 @@
 }
 
 .hero-btn {
-    min-width: 280px;
+    min-width: 200px;
     justify-content: center;
     white-space: nowrap;
 }

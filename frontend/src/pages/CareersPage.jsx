@@ -386,8 +386,6 @@ function JobCard({ job, isSelected, onClick, viewMode }) {
                     {job.hiringMultiple ? "Hiring multiple candidates" : "Actively hiring"}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingRight: '4px' }}>
-                    <Bookmark size={20} style={{ color: T.textMuted }} />
-                    <Share2 size={18} style={{ color: T.textMuted }} />
                 </div>
             </div>
 
@@ -406,17 +404,11 @@ function JobCard({ job, isSelected, onClick, viewMode }) {
 
             {/* Metadata Row: Inline Pills (One Row) */}
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'nowrap', overflow: 'hidden' }}>
-                <div style={{ background: T.bgAlt, padding: '6px 12px', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 600, color: T.textDark }}>
-                    {job.salary}
-                </div>
+
                 <div style={{ background: T.bgAlt, padding: '6px 12px', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 600, color: T.textDark, display: 'flex', alignItems: 'center', gap: '4px' }}>
                     <Briefcase size={14} /> {job.type}
                 </div>
-                {job.extraInfo && (
-                    <div style={{ background: T.bgAlt, padding: '6px 12px', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 600, color: T.textDark }}>
-                        {job.extraInfo}
-                    </div>
-                )}
+
             </div>
         </div>
     );
@@ -465,8 +457,6 @@ function JobDetailView({ job, onClose }) {
                         </div>
                     </div>
                     <div style={{ display: 'flex', gap: '8px' }}>
-                        <button style={{ padding: '8px', color: T.textMuted, borderRadius: '50%', background: T.bgAlt }}><Share2 size={20} /></button>
-                        <button style={{ padding: '8px', color: T.textMuted, borderRadius: '50%', background: T.bgAlt }}><Bookmark size={20} /></button>
                         {onClose && (
                             <button onClick={onClose} style={{ padding: '8px', color: T.textMuted }}>
                                 <X size={24} />
@@ -479,11 +469,7 @@ function JobDetailView({ job, onClose }) {
                     <div style={{ background: T.bgAlt, padding: '8px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 600, color: T.textDark, display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <Briefcase size={14} /> {job.type}
                     </div>
-                    {job.salary && (
-                        <div style={{ background: 'rgba(37,99,235,0.06)', padding: '8px 12px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 700, color: T.primary, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <DollarSign size={14} /> {job.salary}
-                        </div>
-                    )}
+
                 </div>
             </div>
 
@@ -583,19 +569,7 @@ export const CareersPage = () => {
                     <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.6 }}>
                         We are looking for talented professionals to solve meaningful problems and build world-class products.
                     </p>
-                    <div style={{ marginTop: '32px' }}>
-                        <a 
-                            href="#open-positions" 
-                            className="btn btn-primary" 
-                            style={{ 
-                                padding: '16px 32px', borderRadius: '12px', fontSize: '1.1rem', 
-                                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                                textDecoration: 'none', color: '#fff'
-                            }}
-                        >
-                            VIEW OPEN POSITIONS <ChevronRight size={20} />
-                        </a>
-                    </div>
+
                 </div>
             </section>
 
@@ -739,7 +713,7 @@ export const CareersPage = () => {
                     )}
 
                     {/* Bottom CTA / Culture Section */}
-                    <div id="life-at-halftone" style={{
+                    <div id="life-at-halftone-systems" style={{
                         marginTop: '80px', padding: '3rem', borderRadius: '16px', background: '#fff', border: `1px solid ${T.border}`,
                         display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px',
                     }}>

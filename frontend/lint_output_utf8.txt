@@ -1,0 +1,88 @@
+﻿
+> halftone-systems@0.0.0 lint
+> eslint .
+
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\ThemeContext.jsx
+  31:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\Contact.jsx
+   2:10  warning  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                      no-unused-vars
+  75:11  warning  'fadeUpVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  80:11  warning  'containerVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\Logo3D.jsx
+  6:1  error  'thr' is not defined  no-undef
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\Navbar.jsx
+  13:12  warning  'openMobileDropdown' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                no-unused-vars
+  22:13  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  20 |         if (isMobileMenuOpen) {
+  21 |             document.body.style.overflow = 'hidden';
+> 22 |             setIsHidden(false); // Make sure it's visible when open
+     |             ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  23 |         } else {
+  24 |             document.body.style.overflow = '';
+  25 |             setOpenMobileDropdown(null);  react-hooks/set-state-in-effect
+  50:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  48 |     // Also close mobile menu on route change
+  49 |     useEffect(() => {
+> 50 |         setIsMobileMenuOpen(false);
+     |         ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  51 |         window.scrollTo(0, 0);
+  52 |     }, [location]);
+  53 |                                                                                                     react-hooks/set-state-in-effect
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\Services.jsx
+  5:30  warning  'Icon' is defined but never used  no-unused-vars
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\SuccessStories\SuccessStories.jsx
+   2:10  warning  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                      no-unused-vars
+  35:11  warning  'containerVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  47:11  warning  'itemVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u       no-unused-vars
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\WhatWeDo\SpecializedServices.jsx
+  3:10  warning  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  6:27  warning  'Icon' is defined but never used                                               no-unused-vars
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\WhatWeDo\TechSuite.jsx
+  3:10  warning  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  6:27  warning  'Icon' is defined but never used                                               no-unused-vars
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\WhatWeDo\WhatWeDoTimeline.jsx
+  2:10  warning  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\WhatWeDo\WhyChoose.jsx
+  3:10  warning  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  6:29  warning  'Icon' is defined but never used                                               no-unused-vars
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\components\WhoWeAre\WhoWeAre.jsx
+   2:10  warning  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                      no-unused-vars
+  15:11  warning  'containerVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  23:11  warning  'itemVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u       no-unused-vars
+  28:11  warning  'floatVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u      no-unused-vars
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\pages\CareersPage.jsx
+  1:17  warning  'useRef' is defined but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  1:35  warning  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\SRUTHI\charan\halftonesystems\frontend\src\pages\Home.jsx
+  3:10  warning  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u           no-unused-vars
+  6:10  warning  'useScrollReveal' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+Γ£û 27 problems (4 errors, 23 warnings)
+

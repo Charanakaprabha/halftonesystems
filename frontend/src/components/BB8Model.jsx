@@ -1,58 +1,47 @@
-import React, { useRef, useEffect, useMemo } from 'react'
-import { useLoader, useFrame } from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import * as THREE from 'three'
-import modelPath from '../assets/bb8_animated.glb'
+import React, { useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
 
 export default function BB8Model(props) {
-    const group = useRef()
-    const gltf = useLoader(GLTFLoader, modelPath)
-    const { nodes, animations } = gltf
-
-    // Reference for animations
-    const mixer = useRef()
-
-    useEffect(() => {
-        if (!gltf.scene) return;
-        console.log('BB8 Nodes:', nodes)
-
-        if (animations && animations.length > 0) {
-            mixer.current = new THREE.AnimationMixer(gltf.scene)
-            try {
-                const action = mixer.current.clipAction(animations[0])
-                if (action) action.play()
-            } catch (e) {
-                console.warn("Animation failed to play:", e)
-            }
+    const group = useRef();
+    
+    // Simple rotation animation to make it feel alive
+    useFrame(() => {
+        if (group.current) {
+            group.current.rotation.y += 0.005;
         }
-        return () => mixer.current?.stopAllAction()
-    }, [gltf.scene, animations, nodes])
-
-    useFrame((state, delta) => {
-        if (mixer.current) mixer.current.update(delta)
-        if (!group.current || !nodes) return
-
-        const { x, y } = state.mouse
-
-        // Safety check for head node
-        const head = nodes.head || nodes.Head || nodes.BB8_Head || nodes.Cube_001 // Fallback names
-
-        if (head) {
-            // eslint-disable-next-line react-hooks/immutability
-            head.rotation.y = THREE.MathUtils.lerp(head.rotation.y, x * 0.5, 0.1)
-            // eslint-disable-next-line react-hooks/immutability
-            head.rotation.x = THREE.MathUtils.lerp(head.rotation.x, -y * 0.3, 0.1)
-        }
-    })
-
-    if (!nodes) return null
-
-    // Most GLTs have a Scene or scene
-    const sceneObject = gltf.scene
+    });
 
     return (
         <group ref={group} {...props} dispose={null}>
-            {sceneObject ? <primitive object={sceneObject} /> : null}
+            {/* Body */}
+            <mesh position={[0, 0, 0]}>
+                <sphereGeometry args={[1, 32, 32]} />
+                <meshStandardMaterial color="#ffffff" roughness={0.4} />
+            </mesh>
+
+            {/* Head */}
+            <mesh position={[0, 1.2, 0]}>
+                <sphereGeometry args={[0.6, 32, 32]} />
+                <meshStandardMaterial color="#e0e0e0" roughness={0.5} />
+            </mesh>
+
+            {/* Eye / Sensor */}
+            <mesh position={[0, 1.3, 0.55]}>
+                <sphereGeometry args={[0.15, 16, 16]} />
+                <meshStandardMaterial color="#222222" />
+            </mesh>
+
+            {/* Orange Stripe on Body */}
+            <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
+                <torusGeometry args={[1.01, 0.05, 16, 100]} />
+                <meshStandardMaterial color="#ff8800" />
+            </mesh>
+            
+            {/* Orange Stripe on Body (Vertical) */}
+            <mesh position={[0, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
+                <torusGeometry args={[1.01, 0.05, 16, 100]} />
+                <meshStandardMaterial color="#ff8800" />
+            </mesh>
         </group>
-    )
+    );
 }

@@ -49,6 +49,18 @@
   --color-text-muted: #94a3b8;
 }
 
+:root.dark-mode {
+  --c-dark: #FFFFFF;
+  --c-dark-soft: #F8F8F8;
+  --c-light: #1A202C;
+  --c-white: #0B1120;
+  --c-text-main: #E2E8F0;
+  --c-text-light: #A0AEC0;
+  --c-text-inverse: #111111;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
 @media (max-width: 768px) {
     :root {
         --header-height: 120px;
@@ -81,7 +93,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
 }
 
@@ -91,8 +103,9 @@ body {
   color: var(--c-text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
