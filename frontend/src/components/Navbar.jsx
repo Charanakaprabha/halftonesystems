@@ -106,6 +106,11 @@ export const Navbar = () => {
                 { name: 'Life at Halftone Systems', href: '/careers#life-at-halftone-systems' }
             ]
         },
+        {
+            name: 'Contact Us',
+            href: '/contact',
+            dropdown: []
+        },
     ];
 
     const scrollToTop = (e) => {
@@ -132,8 +137,8 @@ export const Navbar = () => {
 
                     {/* Utility: Contact + Mobile toggle */}
                     <div className="navbar-utility" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <Link to="/contact" className="contact-btn">
-                            Contact Us
+                        <Link to="/contact" className="book-call-btn">
+                            Book a Call
                         </Link>
                         <button className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -178,9 +183,9 @@ export const Navbar = () => {
                             );
                         })}
                         
-                        {/* Mobile-only Contact Button */}
+                        {/* Mobile-only Call Button */}
                         <Link to="/contact" className="mobile-contact-link" onClick={() => setIsMobileMenuOpen(false)}>
-                            Contact Us
+                            Book a Call
                         </Link>
                     </div>
                 </div>

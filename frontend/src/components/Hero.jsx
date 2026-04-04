@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Mail, Linkedin, Phone } from 'lucide-react';
-import heroBg from '../assets/hero_bg_tech_v2_1775215071873.png';
+import heroBg from '../assets/hts-backgroundimage.jpg';
 import './Hero.css';
 import { Link } from 'react-router-dom';
 

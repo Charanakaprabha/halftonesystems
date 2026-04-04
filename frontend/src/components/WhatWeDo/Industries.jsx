@@ -151,7 +151,7 @@ const industries = [
         number: "07",
         name: "TRAVEL & TOURISM",
         tagline: "Crafting Seamless Journeys in the Experience Economy",
-        image: "https://images.unsplash.com/photo-1436491865332-7a61a109c0f?auto=format&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80",
         description: "Halftone Systems helps airlines, hotels, tour operators, and travel agencies harness AI, mobile, and analytics to create journeys that inspire loyalty.",
         capabilities: [
             "Travel Booking & Reservation Platforms",

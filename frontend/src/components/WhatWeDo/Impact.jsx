@@ -26,7 +26,7 @@ export const Impact = () => {
     ];
 
     return (
-        <section className="impact section-padding" style={{ backgroundColor: 'var(--c-primary)' }}>
+        <section className="impact section-padding">
             <div className="container">
                 <div className="section-header text-center">
                     <h2 className="section-title impact-title reveal reveal-fade-up" style={{ color: '#fff' }}>
@@ -36,7 +36,7 @@ export const Impact = () => {
                 <div className="impact-grid">
                     {stats.map((stat, i) => (
                         <div key={i} className="impact-item text-center">
-                            <h3 className="impact-number text-white" style={{ background: 'none', WebkitTextFillColor: 'initial', color: '#fff' }}>{stat.number}</h3>
+                            <h3 className="impact-number text-white" style={{ color: '#fff' }}>{stat.number}</h3>
                             <p className="impact-label" style={{ color: '#fff' }}>{stat.label}</p>
                             <p className="impact-sub" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>{stat.sub}</p>
                         </div>
