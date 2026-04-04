@@ -373,7 +373,7 @@
 @media (max-width: 768px) {
     .hero {
         margin-top: 0 !important;
-        padding-top: 0 !important;
+        padding-top: 100px !important; /* Increased space for mobile header */
         padding-bottom: 80px !important;
         height: auto !important;
         min-height: 100dvh !important;
