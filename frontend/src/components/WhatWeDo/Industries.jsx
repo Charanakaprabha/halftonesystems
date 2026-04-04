@@ -128,7 +128,7 @@ const industries = [
         number: "06",
         name: "RETAIL",
         tagline: "Reimagining Shopping Experiences for the Digital Age",
-        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&q=80",
         description: "Today's retail winners are built on intelligent digital foundations. Halftone Systems equips retailers with the technology to compete, captivate, and grow.",
         capabilities: [
             "Omnichannel Commerce Platforms",
@@ -151,7 +151,7 @@ const industries = [
         number: "07",
         name: "TRAVEL & TOURISM",
         tagline: "Crafting Seamless Journeys in the Experience Economy",
-        image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1436491865332-7a61a109c0f?auto=format&fit=crop&q=80",
         description: "Halftone Systems helps airlines, hotels, tour operators, and travel agencies harness AI, mobile, and analytics to create journeys that inspire loyalty.",
         capabilities: [
             "Travel Booking & Reservation Platforms",
@@ -243,7 +243,7 @@ const industries = [
         number: "11",
         name: "FINANCE & BANKING",
         tagline: "Engineering Secure & Scalable Financial Ecosystems",
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80",
         description: "In a world of digital-first banking and decentralized finance, Halftone Systems builds robust, compliant, and innovative financial platforms that drive growth.",
         capabilities: [
             "Core Banking Modernization",

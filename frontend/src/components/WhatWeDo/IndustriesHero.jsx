@@ -90,19 +90,7 @@ export const IndustriesHero = () => {
                     Halftone Systems provides the domain depth and technological excellence you need to lead your industry in the digital age. We architect competitive advantages that last.
                 </p>
 
-                <div style={{ marginTop: '32px' }}>
-                    <Link 
-                        to="/contact" 
-                        className="btn btn-primary" 
-                        style={{ 
-                            padding: '16px 32px', borderRadius: '12px', fontSize: '1.1rem', 
-                            display: 'inline-flex', alignItems: 'center', gap: '8px',
-                            textDecoration: 'none', color: '#fff'
-                        }}
-                    >
-                        BOOK A CONSULTATION
-                    </Link>
-                </div>
+
             </div>
 
             <style>{`

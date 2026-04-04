@@ -20,32 +20,10 @@ export const Home = () => {
         <div className="home-page-new">
             <Hero />
 
-            {/* 1. Stats Bar (Directly below Hero) */}
-            <section className="home-stats-bar reveal">
-                <div className="container">
-                    <div className="stats-grid">
-                        <div className="stat-item">
-                            <h3 className="stat-number">100+</h3>
-                            <p className="stat-label">Projects Delivered</p>
-                        </div>
-                        <div className="stat-item border-left">
-                            <h3 className="stat-number">15+</h3>
-                            <p className="stat-label">Industries Served</p>
-                        </div>
-                        <div className="stat-item border-left">
-                            <h3 className="stat-number">2</h3>
-                            <p className="stat-label">Continents. One Vision.</p>
-                        </div>
-                        <div className="stat-item border-left">
-                            <h3 className="stat-number">100%</h3>
-                            <p className="stat-label">Client Referenceable</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
 
             {/* 2. Accelerate Sticky Section */}
-            <section className="home-section light-bg accelerate-section" style={{ paddingTop: '240px' }}>
+            <section className="home-section light-bg accelerate-section" style={{ paddingTop: '80px' }}>
                 <div className="container">
                     <div className="section-header-centered reveal">
                         <h2 className="section-title" style={{ 
@@ -323,28 +301,28 @@ export const Home = () => {
                 <div className="container" style={{ maxWidth: '1200px' }}>
                     <div className="cta-box-responsive" style={{ 
                         background: 'linear-gradient(90deg, #1e40af 0%, #030712 100%)',
-                        padding: 'clamp(2.5rem, 10vw, 5rem) clamp(1rem, 5vw, 3rem)',
+                        padding: 'clamp(2rem, 6vw, 3.5rem) clamp(1rem, 4vw, 2rem)',
                         textAlign: 'center',
-                        borderRadius: '1.25rem',
+                        borderRadius: '1rem',
                         color: 'white',
-                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.4)',
                         margin: '0 auto'
                     }}>
                         <h2 style={{ 
-                            fontSize: 'clamp(1.75rem, 6vw, 4rem)', 
+                            fontSize: 'clamp(1.5rem, 5vw, 2.75rem)', 
                             fontWeight: 800, 
-                            marginBottom: '1rem',
+                            marginBottom: '0.75rem',
                             letterSpacing: '-0.02em',
                             color: '#ffffff'
                         }}>Ready to Lead Your Industry?</h2>
                         
                         <p style={{ 
                             fontStyle: 'italic', 
-                            fontSize: 'clamp(1rem, 3vw, 1.25rem)', 
-                            marginBottom: '2.5rem', 
-                            maxWidth: '950px', 
-                            margin: '0 auto 3.5rem',
-                            lineHeight: 1.6,
+                            fontSize: 'clamp(0.9rem, 2.5vw, 1.05rem)', 
+                            marginBottom: '2rem', 
+                            maxWidth: '850px', 
+                            margin: '0 auto 2.5rem',
+                            lineHeight: 1.5,
                             opacity: 0.95
                         }}>
                             Transform your vision into reality with technology solutions that don't just meet today's needs — they anticipate tomorrow's opportunities.
@@ -352,14 +330,14 @@ export const Home = () => {
                         
                         <div style={{ 
                             color: '#60a5fa', 
-                            fontSize: 'clamp(0.85rem, 2.5vw, 1.25rem)', 
+                            fontSize: 'clamp(0.8rem, 2.2vw, 1.1rem)', 
                             fontWeight: 700, 
-                            marginBottom: '3rem', 
+                            marginBottom: '2rem', 
                             display: 'flex', 
                             justifyContent: 'center', 
-                            gap: '12px', 
+                            gap: '10px', 
                             flexWrap: 'wrap',
-                            letterSpacing: '0.02em'
+                            letterSpacing: '0.01em'
                         }}>
                             <span>Free Consultation</span> 
                             <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span> 
@@ -369,21 +347,21 @@ export const Home = () => {
                         </div>
                         
                         <p style={{ 
-                            fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', 
-                            marginBottom: '3rem', 
+                            fontSize: 'clamp(0.85rem, 2.2vw, 1rem)', 
+                            marginBottom: '2.5rem', 
                             opacity: 0.85,
-                            maxWidth: '800px',
-                            margin: '0 auto 3.5rem'
+                            maxWidth: '750px',
+                            margin: '0 auto 2.5rem'
                         }}>
                             Join the ranks of forward-thinking organizations who have chosen Halftone Systems as their trusted digital transformation partner.
                         </p>
                         
                         <h3 style={{ 
-                            fontSize: 'clamp(1.25rem, 4vw, 2.75rem)', 
+                            fontSize: 'clamp(1.1rem, 3.5vw, 2.25rem)', 
                             fontWeight: 800,
                             letterSpacing: '-0.01em'
                         }}>
-                            Contact us today | <span style={{ fontWeight: 700 }}>www.halftonesystems.com</span>
+                            Contact us today | <span style={{ fontWeight: 700 }}>HTS</span>
                         </h3>
                     </div>
                 </div>

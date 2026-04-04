@@ -531,19 +531,19 @@
         margin: 0 !important;
     }
     .accelerate-content-box h3 {
-        font-size: 1.8rem !important;
+        font-size: 1.4rem !important;
         text-align: left !important;
         width: 100% !important;
-        margin: 1rem 0 1.5rem !important;
+        margin: 0.75rem 0 1rem !important;
         line-height: 1.2 !important;
         font-weight: 800 !important;
     }
     .accelerate-content-box p {
-        font-size: 1.05rem !important;
+        font-size: 0.95rem !important;
         text-align: left !important;
         width: 100% !important;
-        margin: 0 0 1.5rem 0 !important;
-        line-height: 1.6 !important;
+        margin: 0 0 1rem 0 !important;
+        line-height: 1.5 !important;
     }
     .journey-stamp {
         position: absolute !important;
@@ -564,18 +564,26 @@
     }
     
     .bento-card-full {
-        padding: 2.5rem 1.5rem;
-        min-height: auto;
-        text-align: center;
-        align-items: center;
+        padding: 2rem 1rem !important;
+        min-height: auto !important;
+        text-align: center !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+        max-width: 500px !important;
     }
     
     .bento-content-header h4 {
-        justify-content: center;
+        justify-content: center !important;
+        font-size: 1.1rem !important;
     }
     
     .bento-card-full p {
-        text-align: center;
+        text-align: center !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .bento-image-full {
+        height: 180px !important;
     }
     
     .box-divider-blue-light {

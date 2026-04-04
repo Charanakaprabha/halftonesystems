@@ -1,11 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Mail, Linkedin, Phone } from 'lucide-react';
 import heroBg from '../assets/hero_bg_tech_v2_1775215071873.png';
 import './Hero.css';
 import { Link } from 'react-router-dom';
 
+const CountUp = ({ end, duration = 2000, suffix = "" }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let startTime = null;
+        const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            setCount(Math.floor(progress * end));
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        };
+        requestAnimationFrame(animate);
+    }, [end, duration]);
+
+    return <span>{count}{suffix}</span>;
+};
+
 export const Hero = () => {
-    const fullText = "Accelerate Your Digital Transformation";
+    const fullText = "WE RUN TECHNOLOGY";
     const [text, setText] = useState("");
     const [cursorVisible, setCursorVisible] = useState(true);
 
@@ -28,67 +47,66 @@ export const Hero = () => {
     }, []);
 
     return (
-        <section className="hero" style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${heroBg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-        }}>
-            <div className="container hero-container">
-                <div className="hero-grid">
-                    <div className="hero-content">
+        <section className="hero" style={{ '--hero-bg': `url(${heroBg})` }}>
+            <div className="hero-main-box">
+                <div className="container hero-container">
+                    <div className="hero-grid">
+                        <div className="hero-content">
+                            <h1 className="hero-title">
+                                {text}<span className="hero-cursor" style={{ opacity: cursorVisible ? 1 : 0 }}>|</span>
+                            </h1>
+                            <p className="hero-subtitle">
+                                Businesses with Information Technology & Technology Products
+                            </p>
+                            <div className="hero-actions">
+                                <Link to="/what-we-do" className="btn btn-primary hero-btn">
+                                    Explore Our Services <ArrowRight size={18} className="hero-btn-arrow" />
+                                </Link>
+                                <Link to="/success-stories" className="btn btn-outline hero-btn">
+                                    View Success Stories
+                                </Link>
+                            </div>
+                        </div>
 
-                        <h1 className="hero-title" style={{
-                            color: '#ffffff',
-                            lineHeight: 1.2,
-                            marginBottom: '1rem',
-                            minHeight: '120px'
-                        }}>
-                            {text}<span style={{ opacity: cursorVisible ? 1 : 0, color: '#3b82f6' }}>|</span>
-                        </h1>
-                        <p className="hero-subtitle" style={{
-                            color: 'rgba(255, 255, 255, 0.95)',
-                            margin: '0 auto 2rem',
-                            maxWidth: '750px',
-                            lineHeight: 1.5
-                        }}>
-                            We partner with global leaders to drive digital dominance through innovative technology services and talent solutions.
-                        </p>
-                        <div className="hero-actions">
-                            <Link to="/what-we-do" className="btn btn-primary hero-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
-                                Explore Our Services <ArrowRight size={18} className="hero-btn-arrow" style={{ marginLeft: '8px' }} />
-                            </Link>
-                            <Link to="/success-stories" className="btn btn-outline hero-btn" style={{ textDecoration: 'none' }}>
-                                View Success Stories
-                            </Link>
+                        <div className="hero-stats-column">
+                            <div className="hero-stat-card">
+                                <h3 className="hero-stat-number"><CountUp end={100} suffix="+" /></h3>
+                                <p className="hero-stat-label">Projects Delivered</p>
+                            </div>
+                            <div className="hero-stat-card">
+                                <h3 className="hero-stat-number"><CountUp end={15} suffix="+" /></h3>
+                                <p className="hero-stat-label">Industries Served</p>
+                            </div>
+                            <div className="hero-stat-card">
+                                <h3 className="hero-stat-number"><CountUp end={2} /></h3>
+                                <p className="hero-stat-label">Continents. One Vision.</p>
+                            </div>
+                            <div className="hero-stat-card">
+                                <h3 className="hero-stat-number"><CountUp end={100} suffix="%" /></h3>
+                                <p className="hero-stat-label">Client Referenceable</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Scroll hint now inside the 85% container box for desktop */}
+                <div className="hero-scroll-hint">
+                    <span>Scroll</span>
+                    <div className="scroll-line" />
+                </div>
             </div>
-            {/* Scroll hint centered at bottom */}
-            <div style={{
-                position: 'absolute',
-                bottom: '10px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '10px',
-                zIndex: 10
-            }}>
-                <span style={{
-                    fontSize: '10px',
-                    letterSpacing: '0.2em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(255, 255, 255, 0.7)',
-                    fontFamily: "'Inter', sans-serif"
-                }}>Scroll</span>
-                <div style={{
-                    width: '1px',
-                    height: '40px',
-                    background: 'linear-gradient(180deg, #ffffff, transparent)',
-                    animation: 'scrollPulse 2s ease-in-out infinite'
-                }} />
+
+            {/* Fixed Contact Widgets (Desktop Only) */}
+            <div className="fixed-contact-widgets">
+                <a href="mailto:info@halftonesystems.com" className="widget-icon" aria-label="Email Us">
+                    <Mail size={22} />
+                </a>
+                <a href="https://www.linkedin.com/company/halftone-systems" target="_blank" rel="noopener noreferrer" className="widget-icon" aria-label="LinkedIn">
+                    <Linkedin size={22} />
+                </a>
+                <a href="tel:+10000000000" className="widget-icon" aria-label="Call Us">
+                    <Phone size={22} />
+                </a>
             </div>
         </section>
     );
