@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
     Activity, Shield, Zap, CheckCircle2, Clock, Navigation, 
     Heart, Smartphone, Lock, Stethoscope, Users, 
@@ -44,8 +45,8 @@ const VayucareForgePage = () => {
                                 <span style={{ fontSize: '1.1rem', fontWeight: '400', opacity: 0.8 }}>Building India's Most Advanced Integrated Healthcare Platform</span>
                             </p>
                             <div className="hero-actions">
-                                <button className="vayucare-forge-btn-large hide-mobile">Explore Platform</button>
-                                <button className="book-call-btn-large">Request Demo</button>
+                                <Link to="/contact" className="vayucare-forge-btn-large hide-mobile" style={{ textDecoration: 'none' }}>Explore Platform</Link>
+                                <Link to="/contact" className="book-call-btn-large" style={{ textDecoration: 'none' }}>Request Demo</Link>
                             </div>
                         </motion.div>
 
@@ -540,8 +541,8 @@ const VayucareForgePage = () => {
                             Build India's health future with us.
                         </p>
                         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                            <button className="vayucare-forge-btn-large" style={{ border: 'none' }}>Request Demo</button>
-                            <button className="book-call-btn" style={{ padding: '16px 40px', fontSize: '1.05rem', background: 'white', border: '1px solid #e5e7eb', color: '#111827' }}>Contact Team</button>
+                            <Link to="/contact" className="vayucare-forge-btn-large" style={{ border: 'none', textDecoration: 'none' }}>Request Demo</Link>
+                            <Link to="/contact" className="book-call-btn" style={{ padding: '16px 40px', fontSize: '1.05rem', background: 'white', border: '1px solid #e5e7eb', color: '#111827', textDecoration: 'none' }}>Contact Team</Link>
                         </div>
                     </motion.div>
                     <div style={{ textAlign: 'center', marginTop: '4rem', opacity: 0.6, fontSize: '0.9rem', color: '#4b5563' }}>
@@ -552,9 +553,9 @@ const VayucareForgePage = () => {
 
             {/* ── FLOATING CTA ───────────────────────────────────────── */}
             <div className="floating-cta-right">
-                <a href="#hero" className="cta-btn-vertical">
+                <Link to="/contact" className="cta-btn-vertical" style={{ textDecoration: 'none' }}>
                     EXPLORE VAYUCARE FORGE
-                </a>
+                </Link>
             </div>
         </div>
     );

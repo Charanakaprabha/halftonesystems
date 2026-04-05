@@ -48,13 +48,14 @@
 
 @media (max-width: 1024px) {
     .hero::before {
-        display: none; 
+        display: none;
     }
 }
 
 /* 85% Container for Desktop */
 .hero-main-box {
-    width: 100%; /* Default mobile */
+    width: 100%;
+    /* Default mobile */
     height: 100%;
     display: flex;
     align-items: center;
@@ -63,8 +64,10 @@
 
 @media (min-width: 1024px) {
     .hero {
-        background: #ffffff; /* Section background is now white */
-        padding: 100px 0 40px; /* More space down from header */
+        background: #ffffff;
+        /* Section background is now white */
+        padding: 100px 0 40px;
+        /* More space down from header */
         height: auto;
         min-height: auto;
         align-items: flex-start;
@@ -73,16 +76,18 @@
     .hero-main-box {
         width: 85%;
         margin: 0 auto;
-        height: 500px; /* Further decreased height */
+        height: 500px;
+        /* Further decreased height */
         border-radius: 20px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), var(--hero-bg);
         background-size: cover;
         background-position: center;
-        box-shadow: 0 40px 120px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1);
-        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 40px 120px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         overflow: hidden;
         position: relative;
-        z-index: 2; /* Ensures background image stays above the diagonal background */
+        z-index: 2;
+        /* Ensures background image stays above the diagonal background */
     }
 
     /* Hide the 4th stat card on desktop */
@@ -173,15 +178,23 @@
 
     .widget-icon:hover {
         background: #3b82f6;
-        width: 64px; /* Pulls more to the left on hover */
+        width: 64px;
+        /* Pulls more to the left on hover */
         border-color: transparent;
         box-shadow: -5px 0 20px rgba(59, 130, 246, 0.3);
     }
 }
 
 @keyframes fadeInRight {
-    from { opacity: 0; transform: translateY(-50%) translateX(100%); }
-    to { opacity: 1; transform: translateY(-50%) translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
 }
 
 /* ─── Scroll Hint ─── */
@@ -284,7 +297,7 @@
 
 .hero-btn:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes slideIn {
@@ -328,22 +341,36 @@
 /* Mobile Overrides */
 @media (max-width: 900px) {
     .hero {
-        padding-top: 80px !important; /* Increased space from header */
+        padding-top: 80px !important;
+        /* Increased space from header */
     }
 
     .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem; /* Reduced gap between buttons and stats */
+        display: flex !important;
+        flex-direction: column;
+        gap: 1.5rem;
+        /* Reduced gap between buttons and stats */
     }
-    
+
+    .hero-content {
+        display: contents; /* Unwrap the text from layout allowing independent ordering */
+    }
+
     .hero-stats-column {
+        order: 3; /* Stats go before buttons */
         padding-top: 0;
         display: grid !important;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         align-items: stretch;
         width: 100%;
-        margin-bottom: 60px; /* Adjusted spacing for scroll hint */
+        margin-bottom: 2rem;
+        /* Adjusted spacing for scrolling */
+    }
+
+    .hero-actions {
+        order: 4; /* Buttons go at the very bottom */
+        width: 100%;
     }
 
     .hero-stat-card {
@@ -366,14 +393,16 @@
     }
 
     .hero-scroll-hint {
-        display: none !important; /* Remove scroll text in mobile */
+        display: none !important;
+        /* Remove scroll text in mobile */
     }
 }
 
 @media (max-width: 768px) {
     .hero {
         margin-top: 0 !important;
-        padding-top: 100px !important; /* Increased space for mobile header */
+        padding-top: 100px !important;
+        /* Increased space for mobile header */
         padding-bottom: 80px !important;
         height: auto !important;
         min-height: 100dvh !important;
@@ -383,12 +412,9 @@
         background-attachment: scroll !important;
     }
 
-    .hero-content {
-        padding-top: 20px; /* Minimal padding for the header overlap */
-        padding-bottom: 1rem;
-    }
-
     .hero-title {
+        padding-top: 20px;
+        /* Minimal padding for the header overlap */
         font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
         min-height: auto;
         margin-bottom: 0.75rem;
@@ -407,7 +433,8 @@
         max-width: 400px;
         opacity: 1 !important;
         animation: none !important;
-        margin-bottom: 2rem; /* Significantly reduced margin to bring stats closer */
+        margin-bottom: 2rem;
+        /* Significantly reduced margin to bring stats closer */
     }
 
     .hero-btn {
@@ -424,7 +451,8 @@
 
 @media (max-width: 380px) {
     .hero {
-        padding-top: 40px !important; /* Maintain minimal gap even on tiny screens */
+        padding-top: 40px !important;
+        /* Maintain minimal gap even on tiny screens */
     }
 
     .hero-content {

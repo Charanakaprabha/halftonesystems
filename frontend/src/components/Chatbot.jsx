@@ -108,7 +108,7 @@ const Chatbot = () => {
         try {
             // Get API URL from env, fallback to relative path for dev proxy
             const apiUrl = import.meta.env.VITE_API_URL || '';
-            
+
             // Send the request to your local Node.js backend
             const response = await fetch(`${apiUrl}/api/chat`, {
                 method: 'POST',
@@ -159,7 +159,7 @@ const Chatbot = () => {
                         {isMaximized && !isMobile && (
                             <>
                                 <button className="icon-btn" onClick={handleClearHistory}>
-                                     <RotateCcw size={20} />
+                                    <RotateCcw size={20} />
                                 </button>
                             </>
                         )}
@@ -192,9 +192,9 @@ const Chatbot = () => {
                                 <div className="greeting-bubble">
                                     Greetings! How can I be of service?
                                 </div>
-                                <Canvas 
-                                    shadows 
-                                    dpr={[1, 2]} 
+                                <Canvas
+                                    shadows
+                                    dpr={[1, 2]}
                                     camera={{ position: [0, 0, 5], fov: 45 }}
                                 >
                                     <ambientLight intensity={1.5} />

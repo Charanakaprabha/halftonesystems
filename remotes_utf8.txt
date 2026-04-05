@@ -1,0 +1,6 @@
+﻿origin	https://github.com/Charanakaprabha/halftonesystems (fetch)
+origin	https://github.com/Charanakaprabha/halftonesystems (push)
+render	https://github.com/Charanakaprabha/hts-render.git (fetch)
+render	https://github.com/Charanakaprabha/hts-render.git (push)
+upstream	https://github.com/dhavalaMadhav/halftonesystems (fetch)
+upstream	https://github.com/dhavalaMadhav/halftonesystems (push)

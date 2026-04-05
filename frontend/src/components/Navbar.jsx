@@ -113,12 +113,7 @@ export const Navbar = () => {
                 { name: 'Get in Touch', href: '/contact#get-in-touch' },
                 { name: 'Book a Call', href: '/contact#book-call' }
             ]
-        },
-        {
-            name: 'VAYUCARE FORGE',
-            href: '/vayucare-forge',
-            dropdown: []
-        },
+        }
     ];
 
     const scrollToTop = (e) => {
@@ -145,9 +140,6 @@ export const Navbar = () => {
 
                     {/* Utility: VAYUCARE_FORGE + Mobile toggle */}
                     <div className="navbar-utility" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <Link to="/contact" className="book-call-btn secondary-btn">
-                            Book a Call
-                        </Link>
                         <Link to="/vayucare-forge" className="vayucare-forge-btn hide-mobile">
                             VAYUCARE FORGE
                         </Link>
@@ -163,6 +155,7 @@ export const Navbar = () => {
                 <div className="container">
                     <div className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}>
                         {navLinks.map((link, idx) => {
+                            if (isMobileMenuOpen && link.name === 'Contact Us') return null;
                             const isActive = location.pathname === link.href ||
                                 (link.href !== '/' && location.pathname.startsWith(link.href));
                             return (

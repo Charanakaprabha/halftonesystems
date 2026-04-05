@@ -1,0 +1,253 @@
+﻿commit e541c529ca033ebd7727f731c8afedfe6fbc2094
+Author: madhav dhavala <madhavdhavala0@gmail.com>
+Date:   Fri Apr 3 22:28:35 2026 +0530
+
+    changed home page
+
+diff --git a/frontend/src/components/BB8Model.jsx b/frontend/src/components/BB8Model.jsx
+index c612d1e..95691ea 100644
+--- a/frontend/src/components/BB8Model.jsx
++++ b/frontend/src/components/BB8Model.jsx
+@@ -1,58 +1,47 @@
+-import React, { useRef, useEffect, useMemo } from 'react'
+-import { useLoader, useFrame } from '@react-three/fiber'
+-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+-import * as THREE from 'three'
+-import modelPath from '../assets/bb8_animated.glb'
++import React, { useRef } from 'react';
++import { useFrame } from '@react-three/fiber';
+ 
+ export default function BB8Model(props) {
+-    const group = useRef()
+-    const gltf = useLoader(GLTFLoader, modelPath)
+-    const { nodes, animations } = gltf
+-
+-    // Reference for animations
+-    const mixer = useRef()
+-
+-    useEffect(() => {
+-        if (!gltf.scene) return;
+-        console.log('BB8 Nodes:', nodes)
+-
+-        if (animations && animations.length > 0) {
+-            mixer.current = new THREE.AnimationMixer(gltf.scene)
+-            try {
+-                const action = mixer.current.clipAction(animations[0])
+-                if (action) action.play()
+-            } catch (e) {
+-                console.warn("Animation failed to play:", e)
+-            }
+-        }
+-        return () => mixer.current?.stopAllAction()
+-    }, [gltf.scene, animations, nodes])
+-
+-    useFrame((state, delta) => {
+-        if (mixer.current) mixer.current.update(delta)
+-        if (!group.current || !nodes) return
+-
+-        const { x, y } = state.mouse
+-
+-        // Safety check for head node
+-        const head = nodes.head || nodes.Head || nodes.BB8_Head || nodes.Cube_001 // Fallback names
+-
+-        if (head) {
+-            // eslint-disable-next-line react-hooks/immutability
+-            head.rotation.y = THREE.MathUtils.lerp(head.rotation.y, x * 0.5, 0.1)
+-            // eslint-disable-next-line react-hooks/immutability
+-            head.rotation.x = THREE.MathUtils.lerp(head.rotation.x, -y * 0.3, 0.1)
++    const group = useRef();
++    
++    // Simple rotation animation to make it feel alive
++    useFrame(() => {
++        if (group.current) {
++            group.current.rotation.y += 0.005;
+         }
+-    })
+-
+-    if (!nodes) return null
+-
+-    // Most GLTs have a Scene or scene
+-    const sceneObject = gltf.scene
++    });
+ 
+     return (
+         <group ref={group} {...props} dispose={null}>
+-            {sceneObject ? <primitive object={sceneObject} /> : null}
++            {/* Body */}
++            <mesh position={[0, 0, 0]}>
++                <sphereGeometry args={[1, 32, 32]} />
++                <meshStandardMaterial color="#ffffff" roughness={0.4} />
++            </mesh>
++
++            {/* Head */}
++            <mesh position={[0, 1.2, 0]}>
++                <sphereGeometry args={[0.6, 32, 32]} />
++                <meshStandardMaterial color="#e0e0e0" roughness={0.5} />
++            </mesh>
++
++            {/* Eye / Sensor */}
++            <mesh position={[0, 1.3, 0.55]}>
++                <sphereGeometry args={[0.15, 16, 16]} />
++                <meshStandardMaterial color="#222222" />
++            </mesh>
++
++            {/* Orange Stripe on Body */}
++            <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
++                <torusGeometry args={[1.01, 0.05, 16, 100]} />
++                <meshStandardMaterial color="#ff8800" />
++            </mesh>
++            
++            {/* Orange Stripe on Body (Vertical) */}
++            <mesh position={[0, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
++                <torusGeometry args={[1.01, 0.05, 16, 100]} />
++                <meshStandardMaterial color="#ff8800" />
++            </mesh>
+         </group>
+-    )
++    );
+ }
+
+commit a4315556d1e726c159f30084c44e39c5c6cc83e5
+Author: madhav dhavala <madhavdhavala0@gmail.com>
+Date:   Tue Mar 24 16:20:15 2026 +0530
+
+    added backend to the chatbot
+
+diff --git a/frontend/src/components/BB8Model.jsx b/frontend/src/components/BB8Model.jsx
+index 219bd99..c612d1e 100644
+--- a/frontend/src/components/BB8Model.jsx
++++ b/frontend/src/components/BB8Model.jsx
+@@ -1,32 +1,35 @@
+-import React, { useRef, useEffect } from 'react'
+-import { useGLTF, useAnimations } from '@react-three/drei'
+-import { useFrame } from '@react-three/fiber'
++import React, { useRef, useEffect, useMemo } from 'react'
++import { useLoader, useFrame } from '@react-three/fiber'
++import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+ import * as THREE from 'three'
+ import modelPath from '../assets/bb8_animated.glb'
+ 
+ export default function BB8Model(props) {
+     const group = useRef()
+-    const { nodes, materials, animations } = useGLTF(modelPath)
+-    const { actions } = useAnimations(animations, group)
++    const gltf = useLoader(GLTFLoader, modelPath)
++    const { nodes, animations } = gltf
+ 
+-    // References for bone/mesh rotation
+-    const headRef = useRef()
++    // Reference for animations
++    const mixer = useRef()
+ 
+     useEffect(() => {
+-        if (!nodes) return;
++        if (!gltf.scene) return;
+         console.log('BB8 Nodes:', nodes)
+ 
+-        if (actions && Object.keys(actions).length > 0) {
++        if (animations && animations.length > 0) {
++            mixer.current = new THREE.AnimationMixer(gltf.scene)
+             try {
+-                const firstAction = actions[Object.keys(actions)[0]]
+-                if (firstAction) firstAction.play()
++                const action = mixer.current.clipAction(animations[0])
++                if (action) action.play()
+             } catch (e) {
+                 console.warn("Animation failed to play:", e)
+             }
+         }
+-    }, [nodes, actions, animations])
++        return () => mixer.current?.stopAllAction()
++    }, [gltf.scene, animations, nodes])
+ 
+-    useFrame((state) => {
++    useFrame((state, delta) => {
++        if (mixer.current) mixer.current.update(delta)
+         if (!group.current || !nodes) return
+ 
+         const { x, y } = state.mouse
+@@ -45,7 +48,7 @@ export default function BB8Model(props) {
+     if (!nodes) return null
+ 
+     // Most GLTs have a Scene or scene
+-    const sceneObject = nodes.Scene || nodes.scene || Object.values(nodes).find(n => n.type === 'Scene') || nodes[Object.keys(nodes)[0]]
++    const sceneObject = gltf.scene
+ 
+     return (
+         <group ref={group} {...props} dispose={null}>
+@@ -53,5 +56,3 @@ export default function BB8Model(props) {
+         </group>
+     )
+ }
+-
+-useGLTF.preload(modelPath)
+
+commit 0e7554c15c2de1414b2c2baf148cd5f236c4e985
+Author: Halftone Systems Developer <user@halftonesystems.com>
+Date:   Sun Mar 22 14:18:24 2026 +0530
+
+    Update chatbot maximized UI styling, animations, and knowledge base
+
+diff --git a/frontend/src/components/BB8Model.jsx b/frontend/src/components/BB8Model.jsx
+new file mode 100644
+index 0000000..219bd99
+--- /dev/null
++++ b/frontend/src/components/BB8Model.jsx
+@@ -0,0 +1,57 @@
++import React, { useRef, useEffect } from 'react'
++import { useGLTF, useAnimations } from '@react-three/drei'
++import { useFrame } from '@react-three/fiber'
++import * as THREE from 'three'
++import modelPath from '../assets/bb8_animated.glb'
++
++export default function BB8Model(props) {
++    const group = useRef()
++    const { nodes, materials, animations } = useGLTF(modelPath)
++    const { actions } = useAnimations(animations, group)
++
++    // References for bone/mesh rotation
++    const headRef = useRef()
++
++    useEffect(() => {
++        if (!nodes) return;
++        console.log('BB8 Nodes:', nodes)
++
++        if (actions && Object.keys(actions).length > 0) {
++            try {
++                const firstAction = actions[Object.keys(actions)[0]]
++                if (firstAction) firstAction.play()
++            } catch (e) {
++                console.warn("Animation failed to play:", e)
++            }
++        }
++    }, [nodes, actions, animations])
++
++    useFrame((state) => {
++        if (!group.current || !nodes) return
++
++        const { x, y } = state.mouse
++
++        // Safety check for head node
++        const head = nodes.head || nodes.Head || nodes.BB8_Head || nodes.Cube_001 // Fallback names
++
++        if (head) {
++            // eslint-disable-next-line react-hooks/immutability
++            head.rotation.y = THREE.MathUtils.lerp(head.rotation.y, x * 0.5, 0.1)
++            // eslint-disable-next-line react-hooks/immutability
++            head.rotation.x = THREE.MathUtils.lerp(head.rotation.x, -y * 0.3, 0.1)
++        }
++    })
++
++    if (!nodes) return null
++
++    // Most GLTs have a Scene or scene
++    const sceneObject = nodes.Scene || nodes.scene || Object.values(nodes).find(n => n.type === 'Scene') || nodes[Object.keys(nodes)[0]]
++
++    return (
++        <group ref={group} {...props} dispose={null}>
++            {sceneObject ? <primitive object={sceneObject} /> : null}
++        </group>
++    )
++}
++
++useGLTF.preload(modelPath)
