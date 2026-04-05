@@ -9,6 +9,7 @@ import { IndustriesPage } from './pages/IndustriesPage';
 import { SuccessStoriesPage } from './pages/SuccessStoriesPage';
 import { ContactPage } from './pages/ContactPage';
 import { CareersPage } from './pages/CareersPage';
+import VayucareForgePage from './pages/VayucareForgePage';
 
 import { ThemeProvider } from './ThemeContext';
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/success-stories" element={<SuccessStoriesPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/careers" element={<CareersPage />} />
+            <Route path="/vayucare-forge" element={<VayucareForgePage />} />
           </Routes>
           <Footer />
           <Chatbot />

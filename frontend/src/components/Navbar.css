@@ -113,31 +113,51 @@
 }
 
 .book-call-btn {
-    padding: 8px 20px;
-    font-size: 0.95rem;
+    padding: 8px 18px;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
-    background-color: #2563EB;
-    color: #ffffff;
+    background-color: transparent;
+    color: #4b5563;
     font-weight: 600;
     text-decoration: none;
     border-radius: 100px;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
 }
 
 .book-call-btn:hover {
-    background-color: #1d4ed8;
+    background-color: rgba(37, 99, 235, 0.05);
+    border-color: #2563EB;
+    color: #2563EB;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-    color: #ffffff;
 }
 
-.book-call-btn:active {
-    transform: translateY(0);
+.vayucare-forge-btn {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    background: #2563EB;
+    color: #ffffff !important;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
 }
 
-@media (max-width: 515px) {
+.vayucare-forge-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.vayucare-forge-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+@media (max-width: 900px) {
     .book-call-btn {
         display: none;
     }
@@ -466,21 +486,34 @@
         display: none !important;
     }
 
+    .contact-btn, .hide-mobile {
+        display: none !important;
+    }
+
     .mobile-contact-link {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 1.5rem 1.5rem 2rem; /* Adjusted for better spacing at bottom */
-        padding: 1.25rem; /* Slightly larger */
-        background-color: #2563EB;
-        color: #ffffff !important;
-        border-radius: 100px; /* Match standard pill radius */
+        margin: 0.5rem 1.5rem; 
+        padding: 1.1rem;
+        background-color: #ffffff;
+        color: #2563EB !important;
+        border: 2px solid #2563EB;
+        border-radius: 100px;
         font-weight: 700;
-        font-size: 1.15rem;
+        font-size: 1rem;
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         transition: transform 0.2s ease;
+    }
+
+    .mobile-contact-link.vayucare-mobile-btn {
+    background: #2563EB;
+    color: #ffffff !important;
+        border: none;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
     }
     
     .mobile-contact-link:active {

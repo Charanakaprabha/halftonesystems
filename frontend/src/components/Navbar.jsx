@@ -109,6 +109,14 @@ export const Navbar = () => {
         {
             name: 'Contact Us',
             href: '/contact',
+            dropdown: [
+                { name: 'Get in Touch', href: '/contact#get-in-touch' },
+                { name: 'Book a Call', href: '/contact#book-call' }
+            ]
+        },
+        {
+            name: 'VAYUCARE FORGE',
+            href: '/vayucare-forge',
             dropdown: []
         },
     ];
@@ -135,10 +143,13 @@ export const Navbar = () => {
                         </Link>
                     </div>
 
-                    {/* Utility: Contact + Mobile toggle */}
+                    {/* Utility: VAYUCARE_FORGE + Mobile toggle */}
                     <div className="navbar-utility" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <Link to="/contact" className="book-call-btn">
+                        <Link to="/contact" className="book-call-btn secondary-btn">
                             Book a Call
+                        </Link>
+                        <Link to="/vayucare-forge" className="vayucare-forge-btn hide-mobile">
+                            VAYUCARE FORGE
                         </Link>
                         <button className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -183,8 +194,11 @@ export const Navbar = () => {
                             );
                         })}
                         
-                        {/* Mobile-only Call Button */}
-                        <Link to="/contact" className="mobile-contact-link" onClick={() => setIsMobileMenuOpen(false)}>
+                        {/* Mobile-only Buttons */}
+                        <Link to="/vayucare-forge" className="mobile-contact-link vayucare-mobile-btn" onClick={() => setIsMobileMenuOpen(false)}>
+                            VAYUCARE FORGE
+                        </Link>
+                        <Link to="/contact" className="mobile-contact-link secondary" onClick={() => setIsMobileMenuOpen(false)}>
                             Book a Call
                         </Link>
                     </div>
