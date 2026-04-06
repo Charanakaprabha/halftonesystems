@@ -28,7 +28,9 @@ export const Home = () => {
                     <div className="section-header-centered reveal">
                         <h2 className="section-title" style={{ 
                             fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
-                            fontWeight: 800
+                            fontWeight: 800,
+                            textAlign: 'center',
+                            width: '100%'
                         }}>ACCELERATE YOUR DIGITAL TRANSFORMATION</h2>
                         <p className="header-subtitle">The partner you need. The expertise you deserve. The results that matter.</p>
                     </div>

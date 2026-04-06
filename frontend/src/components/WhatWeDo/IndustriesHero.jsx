@@ -18,7 +18,7 @@ export const IndustriesHero = () => {
     );
 
     return (
-        <section className="hero-format-standard" style={{
+        <section className="hero-format-standard industries-hero-section" style={{
             position: 'relative', width: '100%', minHeight: '80vh',
             display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
             background: '#ffffff', overflow: 'hidden',
@@ -101,6 +101,12 @@ export const IndustriesHero = () => {
                 @keyframes scanPulse {
                     0%, 100% { opacity: 0.4; }
                     50% { opacity: 0.9; }
+                }
+                @media (max-width: 768px) {
+                    .industries-hero-section {
+                        min-height: auto !important;
+                        padding-bottom: 40px !important;
+                    }
                 }
             `}</style>
         </section>

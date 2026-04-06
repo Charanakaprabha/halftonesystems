@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, Phone, Check, Moon, Sun } from 'lucide-react';
+import { ChevronDown, Phone, Check } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import hsLogo from '../assets/HS_LOGO.png';
 import hsName from '../assets/name.png';
@@ -143,8 +143,14 @@ export const Navbar = () => {
                         <Link to="/vayucare-forge" className="vayucare-forge-btn hide-mobile">
                             VAYUCARE FORGE
                         </Link>
-                        <button className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                        <button
+                            className={`mobile-toggle ${isMobileMenuOpen ? 'is-open' : ''}`}
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            aria-label="Toggle menu"
+                        >
+                            <span className="hamburger-line" />
+                            <span className="hamburger-line" />
+                            <span className="hamburger-line" />
                         </button>
                     </div>
                 </div>

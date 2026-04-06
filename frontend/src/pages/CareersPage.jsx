@@ -531,7 +531,7 @@ export const CareersPage = () => {
 
             {/* HERO — standard standardized header */}
             <section
-                className="hero-format-standard"
+                className="hero-format-standard careers-hero-section"
                 style={{
                     position: 'relative', width: '100%', minHeight: '60vh',
                     display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
@@ -738,6 +738,13 @@ export const CareersPage = () => {
                 @keyframes floatParticle {
                     0%, 100% { transform: translateY(0) scale(1); }
                     50% { transform: translateY(-16px) scale(1.2); }
+                }
+
+                @media (max-width: 768px) {
+                    .careers-hero-section {
+                        min-height: auto !important;
+                        padding-bottom: 40px !important;
+                    }
                 }
                 
                 .custom-scrollbar::-webkit-scrollbar {
