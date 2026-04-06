@@ -35,7 +35,7 @@ const VayucareForgePage = () => {
                 <div className="container">
                     <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center' }}>
                         <motion.div className="hero-content" initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                            <div className="v-badge v-badge-offset" style={{ backgroundColor: '#2563EB', color: 'white', width: 'fit-content' }}>NEW PRODUCT</div>
+                            <div className="v-badge" style={{ backgroundColor: '#2563EB', color: 'white', alignSelf: 'flex-start', marginLeft: '0' }}>NEW PRODUCT</div>
                             <h1 className="hero-title" style={{ color: 'white' }}>
                                 VAYUCARE<br />
                                 <span style={{ color: 'var(--v-secondary)' }}>One Tap. One Life Saved.</span>
