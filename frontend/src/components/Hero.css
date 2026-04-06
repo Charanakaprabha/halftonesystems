@@ -357,7 +357,7 @@
     }
 
     .hero-stats-column {
-        order: 3; /* Stats go before buttons */
+        order: 3; /* Stats go last, below buttons */
         padding-top: 0;
         display: grid !important;
         grid-template-columns: repeat(2, 1fr);
@@ -365,11 +365,10 @@
         align-items: stretch;
         width: 100%;
         margin-bottom: 2rem;
-        /* Adjusted spacing for scrolling */
     }
 
     .hero-actions {
-        order: 4; /* Buttons go at the very bottom */
+        order: 2; /* Buttons just below title & subtitle */
         width: 100%;
     }
 

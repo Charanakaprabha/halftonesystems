@@ -111,7 +111,7 @@ export const Navbar = () => {
             href: '/contact',
             dropdown: [
                 { name: 'Get in Touch', href: '/contact#get-in-touch' },
-                { name: 'Book a Call', href: '/contact#book-call' }
+                { name: 'Contact Us', href: '/contact#book-call' }
             ]
         }
     ];
@@ -192,7 +192,7 @@ export const Navbar = () => {
                             VAYUCARE FORGE
                         </Link>
                         <Link to="/contact" className="mobile-contact-link secondary" onClick={() => setIsMobileMenuOpen(false)}>
-                            Book a Call
+                            Contact Us
                         </Link>
                     </div>
                 </div>
