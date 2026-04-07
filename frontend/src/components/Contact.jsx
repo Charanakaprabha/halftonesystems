@@ -1,159 +1,333 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Clock, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, Globe, MapPin, Cpu, Layers, Cloud, Laptop, Shield, PieChart, Bot, Zap, ArrowRight, Quote } from 'lucide-react';
 import './Contact.css';
 
-const ContactForm = () => {
-    return (
-        <form className="contact-form">
-            <h3 className="form-title">Tell Us About Your Project</h3>
-            <p className="form-subtitle">Fill in this form and one of our specialists will be in touch within one business day.</p>
-
-            <div className="form-grid-dense">
-                <div className="form-group">
-                    <label>FIRST NAME *</label>
-                    <input type="text" placeholder="Enter your first name" required />
-                </div>
-                <div className="form-group">
-                    <label>LAST NAME *</label>
-                    <input type="text" placeholder="Enter your last name" required />
-                </div>
-                <div className="form-group">
-                    <label>BUSINESS EMAIL *</label>
-                    <input type="email" placeholder="your@company.com" required />
-                </div>
-                <div className="form-group">
-                    <label>PHONE NUMBER</label>
-                    <input type="tel" placeholder="+91 98765 43210" />
-                </div>
-            </div>
-
-            <div className="form-group full-width">
-                <label>COMPANY / ORGANISATION</label>
-                <input type="text" placeholder="Your company name" />
-            </div>
-
-            <div className="form-group full-width">
-                <label>SERVICE AREA</label>
-                <div className="service-options">
-                    <label><input type="checkbox" /> Healthcare AI & Smart Ambulance Systems</label>
-                    <label><input type="checkbox" /> EV Fleet & Sustainable Mobility</label>
-                    <label><input type="checkbox" /> Smart Manufacturing & Industry 4.0</label>
-                    <label><input type="checkbox" /> Enterprise AI & ERP Transformation</label>
-                    <label><input type="checkbox" /> AI Solutions for MSMEs</label>
-                    <label><input type="checkbox" /> E-commerce & Digital Platforms</label>
-                    <label><input type="checkbox" /> Mobile App Development</label>
-                    <label><input type="checkbox" /> Networking & Infrastructure</label>
-                    <label><input type="checkbox" /> Strategic Technology Consulting</label>
-                    <label><input type="checkbox" /> Other / General Enquiry</label>
-                </div>
-            </div>
-
-            <div className="form-group full-width">
-                <label>YOUR MESSAGE *</label>
-                <textarea placeholder="Tell us about your project, goals, or the challenge you're looking to solve..." rows="5" required></textarea>
-            </div>
-
-            <button type="submit" className="btn btn-primary submit-btn">
-                SEND MESSAGE <ArrowRight size={18} />
-            </button>
-
-            <div className="privacy-note">
-                <ShieldCheck size={16} />
-                <span>Your information is completely confidential. We will never share your details with third parties.</span>
-            </div>
-        </form>
-    );
-};
+// Flag assets
+import indiaFlag from '../assets/india_flag.png';
+import usaFlag from '../assets/usa_flag.png';
 
 export const Contact = () => {
-    const locations = [
-        { country: "India", label: "Headquarters", flag: "https://flagcdn.com/w160/in.png" },
-        { country: "USA", label: "Americas", flag: "https://flagcdn.com/w160/us.png" }
+    const contactCards = [
+        {
+            icon: <Mail size={32} />,
+            title: "Email Us",
+            subtitle: "General & Business Inquiries",
+            info: "info@halftonesystems.com",
+            link: "mailto:info@halftonesystems.com"
+        },
+        {
+            icon: <Phone size={32} />,
+            title: "Call Us",
+            subtitle: "Direct Line — Mon to Fri, 9 AM – 6 PM IST",
+            info: "+91 99516 51515",
+            link: "tel:+919951651515"
+        },
+        {
+            icon: <Globe size={32} />,
+            title: "Website",
+            subtitle: "Explore Our Solutions & Portfolio",
+            info: "www.halftonesystems.com",
+            link: "http://www.halftonesystems.com"
+        },
+        {
+            icon: <MapPin size={32} />,
+            title: "Visit Us",
+            subtitle: "Headquarters — India",
+            info: "Plot No. 182/A, Road No. 12, MLA Colony, Banjara Hills, Hyderabad, India",
+            link: "https://maps.google.com/?q=Plot+No.+182/A,+Road+No.+12,+MLA+Colony,+Banjara+Hills,+Hyderabad"
+        }
     ];
 
-    const fadeUpVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-    };
+    const locations = [
+        {
+            country: "India",
+            city: "Hyderabad",
+            flagImg: indiaFlag,
+            details: "Plot No. 182/A, Road No. 12, MLA Colony, Banjara Hills, Hyderabad, Telangana, India — 500 034"
+        },
+        {
+            country: "USA",
+            city: "United States",
+            flagImg: usaFlag,
+            description: "Serving Clients Across North America",
+            details: "Enterprise Technology & Digital Transformation Consulting"
+        }
+    ];
+
+    const serviceCards = [
+        { 
+            icon: <Bot size={28} />, 
+            title: "Artificial Intelligence & ML", 
+            desc: "Predictive analytics, NLP, computer vision, and AI-driven automation solutions for your industry." 
+        },
+        { 
+            icon: <Layers size={28} />, 
+            title: "Enterprise Applications & SAP", 
+            desc: "ERP modernisation, SAP implementation, custom enterprise software, and legacy system transformation." 
+        },
+        { 
+            icon: <Cloud size={28} />, 
+            title: "Cloud & DevOps", 
+            desc: "Multi-cloud strategy, AWS, Azure, Google Cloud migration, CI/CD pipelines, and IaaS/PaaS/SaaS infrastructure." 
+        },
+        { 
+            icon: <Laptop size={28} />, 
+            title: "Mobile & Web Development", 
+            desc: "High-performance iOS, Android, cross-platform apps, PWAs, and conversion-optimised digital platforms." 
+        },
+        { 
+            icon: <Shield size={28} />, 
+            title: "Cybersecurity", 
+            desc: "Zero-Trust architecture, 24/7 AI-powered threat detection, GDPR & HIPAA compliance, military-grade protection." 
+        },
+        { 
+            icon: <PieChart size={28} />, 
+            title: "Data Science & Analytics", 
+            desc: "Real-time BI dashboards, predictive risk models, customer behaviour analytics, and data-driven operations." 
+        },
+        { 
+            icon: <Cpu size={28} />, 
+            title: "Automation & RPA", 
+            desc: "Robotic Process Automation, intelligent workflow management, QA automation — reduce operational costs by 50%." 
+        },
+        { 
+            icon: <Zap size={28} />, 
+            title: "Digital Marketing & Growth", 
+            desc: "ROI-focused campaigns, marketing automation, SEO, and 250%+ online engagement growth strategies." 
+        }
+    ];
+
+    const processSteps = [
+        { id: "01", title: "DISCOVER", desc: "Deep-dive into your goals, pain points & landscape" },
+        { id: "02", title: "ARCHITECT", desc: "Design optimal tech roadmap, solution stack & plan" },
+        { id: "03", title: "BUILD", desc: "Agile development with continuous feedback & quality" },
+        { id: "04", title: "DEPLOY", desc: "Zero-disruption go-live with full training & testing" },
+        { id: "05", title: "OPTIMISE", desc: "Ongoing monitoring, enhancements & advisory for ROI" }
+    ];
 
     const containerVariants = {
         hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2, delayChildren: 0.1 }
-        }
+        visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
     };
 
     return (
-        <section id="contact" className="contact section-padding">
-            <div className="container">
-                <motion.div
-                    className="section-header text-center"
-                >
-                    <p className="section-subtitle-small">WE'RE READY TO CONNECT</p>
-                    <h1 className="universal-hero-title" style={{ color: '#111827' }}>Let's Start a Conversation.</h1>
-                    <p className="contact-intro">
-                        Whether you have a bold vision, a complex challenge, or simply want to explore what's possible — our team is here, ready to listen and ready to deliver.
-                    </p>
-                </motion.div>
-
-                <motion.div
-                    className="contact-wrapper"
-                >
-                    <motion.div className="contact-form-wrapper glass-card huge-box">
-                        <h3 className="info-heading">SEND A MESSAGE</h3>
-                        <ContactForm />
+        <div className="contact-page-container">
+            {/* HERO SECTION */}
+            <section className="contact-hero hero-format-standard">
+                <div className="container text-center">
+                    <motion.p 
+                        className="eyebrow-format-standard"
+                        style={{
+                            color: 'var(--c-primary)',
+                            fontSize: '0.85rem',
+                            fontWeight: 700,
+                            letterSpacing: '0.12em',
+                            textTransform: 'uppercase',
+                            fontFamily: "'Inter', system-ui, sans-serif",
+                        }}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        CONTACT US
+                    </motion.p>
+                    <motion.h2 
+                        className="hero-main-title"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3, duration: 0.8 }}
+                    >
+                        Your Technology Transformation Starts With One Conversation
+                    </motion.h2>
+                    <motion.div 
+                        className="hero-bullets"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6, duration: 0.8 }}
+                    >
+                        <span>Free Consultation</span>
+                        <span className="bullet-dot">•</span>
+                        <span>Custom Technology Roadmap</span>
+                        <span className="bullet-dot">•</span>
+                        <span>Measurable ROI from Day One</span>
                     </motion.div>
+                </div>
+            </section>
 
-                    <motion.div className="contact-info">
-                        <h3 className="info-heading">CONTACT INFORMATION</h3>
-                        <h2 className="info-title">Reach Out to Us</h2>
+            {/* GET IN TOUCH */}
+            <section id="getting-in-touch" className="contact-section get-in-touch-section">
+                <div className="container">
+                    <div className="section-divider">
+                        <span className="divider-line"></span>
+                        <h2 className="section-label">GET IN TOUCH</h2>
+                        <span className="divider-line"></span>
+                    </div>
+                    <div className="text-center mb-5">
+                        <h3 className="section-subtitle-alt">We Are Ready When You Are</h3>
+                        <p className="section-text-alt">Reach out through any channel — our experts respond within 24 hours</p>
+                    </div>
 
-                        <div className="info-block glass-card partitioned-block">
-                            <div className="info-icon"><Mail size={24} /></div>
-                            <div>
-                                <h4>EMAIL US</h4>
-                                <a href="mailto:info@halftonesystems.com" className="contact-link">info@halftonesystems.com</a>
-                                <p className="info-note">We typically respond within 24 business hours. For urgent matters, please flag your email as HIGH PRIORITY.</p>
-                            </div>
-                        </div>
-
-                        <div className="info-block glass-card partitioned-block">
-                            <div className="info-icon"><MapPin size={24} /></div>
-                            <div>
-                                <h4>OFFICE HEADQUARTERS</h4>
-                                <p>Plot # 184/A, Mallu Royal Ascot</p>
-                                <p>Lane - 7, MLA's Colony</p>
-                                <p>Road No. 12, Banjara Hills</p>
-                                <p>Hyderabad, Telangana</p>
-                                <p>INDIA — 500 034</p>
-                                <p className="info-note">Located in the heart of Hyderabad's premier business district — Banjara Hills.</p>
-                            </div>
-                        </div>
+                    <motion.div 
+                        className="contact-grid"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {contactCards.map((card, idx) => (
+                            <motion.a 
+                                key={idx} 
+                                href={card.link} 
+                                className="contact-info-card"
+                                variants={itemVariants}
+                                whileHover={{ y: -5 }}
+                            >
+                                <div className="card-icon-wrapper">{card.icon}</div>
+                                <h4 className="card-title">{card.title}</h4>
+                                <p className="card-subtitle">{card.subtitle}</p>
+                                <p className="card-info">{card.info}</p>
+                            </motion.a>
+                        ))}
                     </motion.div>
-                </motion.div>
+                </div>
+            </section>
 
-                <motion.div
-                    className="global-presence text-center"
-                >
-                    <motion.div>
-                        <h3 className="info-heading">GLOBAL PRESENCE</h3>
-                        <h2 className="section-title section-title-dark text-center" style={{ fontSize: '2.5rem' }}>A Global Reach, A Local Touch</h2>
-                        <p className="presence-desc">Serving clients across four countries with the precision of a trusted partner and the power of an international firm.</p>
-                    </motion.div>
+            {/* GLOBAL PRESENCE */}
+            <section className="presence-section section-padding">
+                <div className="container">
+                    <div className="section-divider">
+                        <span className="divider-line"></span>
+                        <h2 className="section-label">OUR GLOBAL PRESENCE</h2>
+                        <span className="divider-line"></span>
+                    </div>
+                    <div className="text-center mb-5">
+                        <h3 className="section-subtitle-alt">Where In The World We Are</h3>
+                        <p className="section-text-alt">Offices across two continents — delivering local partnership with global expertise</p>
+                    </div>
 
-                    <div className="locations-grid">
+                    <div className="presence-grid">
                         {locations.map((loc, i) => (
-                            <motion.div key={i} className="location-card glass-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-                                <img src={loc.flag} alt={`${loc.country} Flag`} style={{ width: '80px', height: 'auto', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '4px', marginBottom: '1rem', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }} />
-                                <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.25rem' }}>{loc.country}</h4>
-                                <p style={{ margin: 0, color: 'var(--c-text-light)' }}>{loc.label}</p>
+                            <motion.div 
+                                key={i} 
+                                className="location-card-premium"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                            >
+                                <img src={loc.flagImg} alt={`${loc.country} Flag`} className="loc-flag-img" />
+                                <h4 className="loc-city">{loc.city}</h4>
+                                <h5 className="loc-country">{loc.country.toUpperCase()}</h5>
+                                {loc.description && <p className="loc-desc">{loc.description}</p>}
+                                <p className="loc-details">{loc.details}</p>
                             </motion.div>
                         ))}
                     </div>
-                </motion.div>
-            </div>
-        </section>
+                </div>
+            </section>
+
+            {/* SERVICES / CONTACT US SECTION */}
+            <section id="contact-us" className="contact-section contact-us-section">
+                <div className="container">
+                    <div className="section-divider">
+                        <span className="divider-line"></span>
+                        <h2 className="section-label">CONTACT US</h2>
+                        <span className="divider-line"></span>
+                    </div>
+                    <div className="text-center mb-5">
+                        <h3 className="section-subtitle-alt">How Can We Help You?</h3>
+                        <p className="section-text-alt">Tell us about your vision — we will architect the path forward</p>
+                    </div>
+
+                    <div className="services-grid-detailed">
+                        {serviceCards.map((service, idx) => (
+                            <motion.div 
+                                key={idx} 
+                                className="service-card-detailed"
+                                whileHover={{ scale: 1.02 }}
+                            >
+                                <div className="service-head">
+                                    <div className="service-icon-detailed">{service.icon}</div>
+                                    <h4 className="service-title-detailed">{service.title}</h4>
+                                </div>
+                                <p className="service-desc-detailed">{service.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* OUR PROCESS */}
+            <section className="process-section section-padding">
+                <div className="container">
+                    <div className="section-divider">
+                        <span className="divider-line"></span>
+                        <h2 className="section-label">OUR PROCESS</h2>
+                        <span className="divider-line"></span>
+                    </div>
+                    <div className="text-center mb-5">
+                        <h3 className="section-subtitle-alt">From First Call to Go-Live</h3>
+                        <p className="section-text-alt">A proven 5-step framework that transforms your vision into measurable results</p>
+                    </div>
+
+                    <div className="process-flow">
+                        {processSteps.map((step, i) => (
+                            <React.Fragment key={i}>
+                                <div className="process-step-item">
+                                    <span className="step-num">{step.id}</span>
+                                    <h4 className="step-title">{step.title}</h4>
+                                    <p className="step-desc">{step.desc}</p>
+                                </div>
+                                {i < processSteps.length - 1 && <div className="step-arrow">▶</div>}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* MANAGEMENT QUOTE */}
+            <section className="quote-section section-padding">
+                <div className="container">
+                    <div className="quote-wrapper">
+                        <Quote className="quote-icon-large" size={48} />
+                        <blockquote className="md-quote">
+                            “Technology is not just about digital adoption; it's about business transformation. 
+                            Every solution we architect must drive measurable value, enhance competitive positioning, 
+                            and create sustainable growth for our clients.”
+                        </blockquote>
+                        <cite className="quote-author">
+                            — Nagaraj Adireddy, Founder & Managing Director, Halftone Systems
+                        </cite>
+                    </div>
+                </div>
+            </section>
+
+            {/* FOOTER INFO */}
+            <section className="corporate-footer section-padding">
+                <div className="container text-center">
+                    <h4 className="corp-name">HALFTONE SYSTEMS PRIVATE LIMITED</h4>
+                    <p className="corp-tag">Businesses with Information Technology & Technology Products</p>
+                    <div className="corp-badges">
+                        <span>19+ Years of Expertise</span>
+                        <span className="badge-dot">•</span>
+                        <span>100+ Projects Delivered</span>
+                        <span className="badge-dot">•</span>
+                        <span>INDIA | USA</span>
+                    </div>
+                    <div className="corp-bottom-links">
+                        <span className="footer-link-item"><Mail size={16} /> info@halftonesystems.com</span>
+                        <span className="footer-pipe">|</span>
+                        <span className="footer-link-item"><Phone size={16} /> +91 99516 51515</span>
+                        <span className="footer-pipe">|</span>
+                        <span className="footer-link-item"><Globe size={16} /> www.halftonesystems.com</span>
+                    </div>
+                </div>
+            </section>
+        </div>
     );
 };

@@ -110,8 +110,8 @@ export const Navbar = () => {
             name: 'Contact Us',
             href: '/contact',
             dropdown: [
-                { name: 'Get in Touch', href: '/contact#get-in-touch' },
-                { name: 'Contact Us', href: '/contact#book-call' }
+                { name: 'Get in Touch', href: '/contact#getting-in-touch' },
+                { name: 'Contact Us', href: '/contact#contact-us' }
             ]
         }
     ];
