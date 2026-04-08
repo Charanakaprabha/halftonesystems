@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import { Activity, Leaf, Factory, Server, Rocket, ShoppingCart } from 'lucide-react';
 import './WhoWeAre.css';
-import founderImage from '../../assets/nagraj.webp';
+import founderImage from '../../assets/halftone_profile_image.jpeg';
 
 export const WhoWeAre = () => {
     const timelineRef = useRef(null);

@@ -38,6 +38,16 @@ section.contact-hero.hero-format-standard {
     background: radial-gradient(circle at top right, #f8faff 0%, #ffffff 100%);
 }
 
+@media (min-width: 1024px) {
+    section.contact-hero.hero-format-standard {
+        padding-top: 100px !important;
+    }
+}
+
+.contact-hero-eyebrow {
+    color: #b48c36 !important;
+}
+
 .hero-tagline {
     font-size: 0.9rem;
     font-weight: 700;

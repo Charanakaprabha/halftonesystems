@@ -122,9 +122,9 @@ export const Contact = () => {
             <section className="contact-hero hero-format-standard">
                 <div className="container text-center">
                     <motion.p 
-                        className="eyebrow-format-standard"
+                        className="eyebrow-format-standard contact-hero-eyebrow"
                         style={{
-                            color: 'var(--c-primary)',
+                            color: '#b48c36',
                             fontSize: '0.85rem',
                             fontWeight: 700,
                             letterSpacing: '0.12em',
