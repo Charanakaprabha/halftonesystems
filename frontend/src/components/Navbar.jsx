@@ -102,8 +102,8 @@ export const Navbar = () => {
             href: '/careers',
             dropdown: [
                 { name: 'Open Positions', href: '/careers#open-positions' },
-                { name: 'Our Culture', href: '/careers#life-at-halftone-systems' },
-                { name: 'Life at Halftone Systems', href: '/careers#life-at-halftone-systems' }
+                { name: 'Our Culture', href: '/careers#our-culture' },
+                { name: 'Life at HTS', href: '/careers#life-at-hts' }
             ]
         },
         {

@@ -1,0 +1,817 @@
+/* CareersPage.css - Premium Modern Design (Phase 2: Progressive Disclosure) */
+:root {
+  --c-primary: #2563EB;
+  --c-primary-hov: #1D4ED8;
+  --c-primary-light: #eff6ff;
+  --c-bg-light: #f9fafb;
+  --c-text-deep: #0f172a;
+  --c-text-body: #475569;
+  --c-text-muted: #64748b;
+  --c-border: #e2e8f0;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-glass: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+}
+
+.cp-container {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--c-text-deep);
+  background-color: #ffffff;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* OVERRIDE WHITESPACE - 60/30/10 RULE */
+.cp-whitespace-lg {
+  padding: 140px 5%;
+}
+
+.cp-whitespace-md {
+  padding: 80px 5%;
+  margin-bottom: 40px;
+}
+
+.cp-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+/* 1. HERO SECTION */
+.cp-hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+  padding: 140px 5% 80px;
+  overflow: hidden;
+}
+
+.cp-hero-content {
+  max-width: 650px;
+  position: relative;
+  z-index: 2;
+}
+
+.cp-hero-title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--c-text-deep);
+  margin-bottom: 1.5rem;
+}
+
+.cp-hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--c-text-body);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.cp-hero-actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.cp-btn-primary {
+  background: var(--c-primary);
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.cp-btn-primary:hover {
+  background: var(--c-primary-hov);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: #fff;
+}
+
+.cp-btn-secondary {
+  background: white;
+  color: var(--c-text-deep);
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 1px solid var(--c-border);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  box-shadow: var(--shadow-sm);
+}
+
+.cp-btn-secondary:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+  transform: translateY(-2px);
+}
+
+.cp-hero-visual {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  height: 80vh;
+  z-index: 1;
+}
+
+.cp-stat-card {
+  position: absolute;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-glass);
+  animation: cp-float 6s ease-in-out infinite;
+}
+
+.cp-stat-card h3 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--c-primary);
+  margin: 0 0 4px 0;
+}
+
+.cp-stat-card p {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-text-body);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.cp-stat-1 {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.cp-stat-2 {
+  top: 40%;
+  right: 10%;
+  animation-delay: 1.5s;
+}
+
+.cp-stat-3 {
+  bottom: 15%;
+  left: 25%;
+  animation-delay: 3s;
+}
+
+@keyframes cp-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@media (max-width: 968px) {
+  .cp-hero-visual {
+    display: none;
+  }
+
+  .cp-hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .cp-hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* 2. TRUST STRIP */
+.cp-trust-strip {
+  background: white;
+  padding: 40px 5%;
+  border-bottom: 1px solid var(--c-border);
+  text-align: center;
+}
+
+.cp-trust-quote-sm {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  margin-bottom: 24px;
+  letter-spacing: 0.03em;
+}
+
+.cp-trust-logos {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  opacity: 0.6;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--c-text-deep);
+  align-items: center;
+}
+
+/* 3. TABS COMPONENT FOR PROGRESSIVE DISCLOSURE */
+.cp-tabs-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.cp-tabs-nav {
+  display: flex;
+  background: var(--c-bg-light);
+  border-bottom: 1px solid var(--c-border);
+  overflow-x: auto;
+}
+
+.cp-tabs-nav::-webkit-scrollbar {
+  height: 0;
+}
+
+.cp-tab-trigger {
+  flex: 1;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--c-text-muted);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.cp-tab-trigger:hover {
+  color: var(--c-text-deep);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.cp-tab-trigger.active {
+  color: var(--c-primary);
+  border-bottom-color: var(--c-primary);
+  background: white;
+}
+
+.cp-tab-content {
+  padding: 48px;
+  background: white;
+  min-height: 200px;
+}
+
+.cp-tab-content h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--c-text-deep);
+  margin-bottom: 16px;
+}
+
+.cp-tab-content p {
+  font-size: 1.1rem;
+  color: var(--c-text-body);
+  line-height: 1.8;
+  max-width: 800px;
+  margin-bottom: 24px;
+}
+
+.cp-tab-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--c-primary);
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.cp-tab-readmore:hover {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .cp-tabs-nav {
+    flex-direction: column;
+    border-bottom: none;
+  }
+
+  .cp-tab-trigger {
+    border-bottom: 1px solid var(--c-border);
+    border-left: 3px solid transparent;
+    text-align: left;
+  }
+
+  .cp-tab-trigger.active {
+    border-bottom-color: var(--c-border);
+    border-left-color: var(--c-primary);
+  }
+
+  .cp-tab-content {
+    padding: 32px 24px;
+  }
+}
+
+/* 4. EXPANDABLE HOVER CARDS (ROLES & VALUES) */
+.cp-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cp-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media(max-width: 768px) {
+  .cp-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cp-expand-card {
+  background: white;
+  border: 1px solid var(--c-border);
+  padding: 32px;
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-expand-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.cp-expand-card:hover,
+.cp-expand-card.active {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: #bfdbfe;
+}
+
+.cp-expand-card:hover::before,
+.cp-expand-card.active::before {
+  background: var(--c-primary);
+}
+
+.cp-ec-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.cp-ec-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--c-bg-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-primary);
+}
+
+.cp-ec-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cp-ec-hook {
+  font-size: 1rem;
+  color: var(--c-text-body);
+  font-weight: 500;
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cp-ec-hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.cp-expand-card:hover .cp-ec-hidden,
+.cp-expand-card.active .cp-ec-hidden {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--c-border);
+}
+
+/* 5. INTERACTIVE TIMELINE */
+.cp-timeline-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media(max-width: 768px) {
+  .cp-timeline-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.cp-timeline-step {
+  padding: 24px;
+  position: relative;
+}
+
+.cp-timeline-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--c-border);
+}
+
+.cp-timeline-step::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 24px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  box-shadow: 0 0 0 4px white;
+}
+
+@media(max-width: 768px) {
+  .cp-timeline-step::before {
+    width: 2px;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .cp-timeline-step::after {
+    top: 24px;
+    left: -4px;
+  }
+}
+
+.cp-ts-time {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 16px 0 8px;
+}
+
+.cp-ts-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cp-ts-desc {
+  font-size: 0.95rem;
+  color: var(--c-text-body);
+}
+
+/* 6. MINIMAL ICON GRID (Benefits) */
+.cp-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cp-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cp-icon-circle {
+  width: 64px;
+  height: 64px;
+  background: var(--c-primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-primary);
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.cp-icon-item:hover .cp-icon-circle {
+  transform: translateY(-4px) scale(1.05);
+  background: var(--c-primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.cp-icon-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.cp-icon-desc {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+}
+
+/* 7. VISUAL BREAK FOUNDER QUOTE */
+.cp-quote-break {
+  padding: 120px 5%;
+  background: var(--c-primary-light);
+  text-align: center;
+  border-top: 1px solid #bfdbfe;
+  border-bottom: 1px solid #bfdbfe;
+}
+
+.cp-quote-text {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 800;
+  max-width: 900px;
+  margin: 0 auto 32px auto;
+  line-height: 1.3;
+  color: var(--c-primary-hov);
+}
+
+.cp-quote-author {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--c-text-deep);
+}
+
+/* 8. OPEN ROLES (SPLIT LAYOUT PRESERVED) */
+.cp-roles-bg {
+  background: white;
+  padding: 140px 5%;
+}
+
+.cp-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cp-job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 700px;
+  overflow-y: auto;
+  padding-right: 16px;
+}
+
+.cp-job-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cp-job-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.cp-job-card {
+  background: white;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.cp-job-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  border-color: #bfdbfe;
+}
+
+.cp-job-card.active {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 1px var(--c-primary);
+  background: var(--c-primary-light);
+}
+
+.cp-section-tag {
+  color: var(--c-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.cp-section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 16px;
+  color: var(--c-text-deep);
+}
+
+.cp-section-subtitle {
+  font-size: 1.1rem;
+  color: var(--c-text-body);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cp-job-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.cp-job-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.cp-tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--c-border);
+}
+
+.cp-tag.hiring {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.cp-tag.primary {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+
+.cp-job-detail {
+  background: white;
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 40px;
+  position: sticky;
+  top: 100px;
+  height: max-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+}
+
+.cp-job-detail::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cp-job-detail::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.cp-detail-header {
+  border-bottom: 1px solid var(--c-border);
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+
+.cp-detail-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+}
+
+.cp-detail-body h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px 0;
+}
+
+.cp-detail-body p,
+.cp-detail-body li {
+  color: var(--c-text-body);
+  line-height: 1.6;
+}
+
+.cp-detail-body ul {
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+/* 9. FINAL CTA */
+.cp-cta-section {
+  padding: 120px 5%;
+  background: var(--c-text-deep);
+  color: white;
+  text-align: center;
+}
+
+.cp-cta-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.cp-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cp-cta-btn-white {
+  background: white;
+  color: var(--c-text-deep);
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cp-cta-btn-white:hover {
+  transform: translateY(-2px);
+}
+
+.cp-cta-btn-outline {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.cp-cta-btn-outline:hover {
+  border-color: white;
+}
